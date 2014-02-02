@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- english strings -->
+	
+	<!-- general -->
+    <string name="app_name">Costinator</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+   
+    <!-- Main -->
+    <string name="title_activity_main">Main</string>
+    
+    <!-- BusinessAssesment -->
+    <string name="title_activity_business_assesment">BusinessAssesment</string>
+    
+    <!-- Costgroup -->
+    <string name="title_activity_costgroup">Costgroup</string>
+    
+    <!-- CostgroupBusinessAssesment -->
+    <string name="title_activity_costgroup_business_assesment">CostgroupBusinessAssesment</string>
+    
+    <!-- NewCostelement -->
+    <string name="title_activity_new_costelement">NewCostelement</string>
+    
+    <!-- NewCostgroup -->
+    <string name="title_activity_new_costgroup">NewCostgroup</string>
+
+</resources>
