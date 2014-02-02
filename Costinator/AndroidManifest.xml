@@ -14,13 +14,33 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.bandb.costinator.MainActivity"
+            android:name="de.bandb.costinator.Main"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.Costgroup"
+            android:label="@string/title_activity_costgroup" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.NewCostgroup"
+            android:label="@string/title_activity_new_costgroup" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.NewCostelement"
+            android:label="@string/title_activity_new_costelement" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.BusinessAssesment"
+            android:label="@string/title_activity_business_assesment" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.CostgroupBusinessAssesment"
+            android:label="@string/title_activity_costgroup_business_assesment" >
         </activity>
     </application>
 
