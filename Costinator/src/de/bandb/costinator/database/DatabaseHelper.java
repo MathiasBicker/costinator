@@ -16,6 +16,9 @@ import de.bandb.costinator.database.entities.TCostgroup;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * 
+ * Helper-class that manages the communication between the entity-classes
+ * and the databasetables
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {

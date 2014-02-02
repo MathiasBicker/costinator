@@ -8,6 +8,8 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * 
+ * Entitiy-class that describes the databasetable T_COSTGROUP
  */
 
 @DatabaseTable(tableName="T_COSTGROUP")
