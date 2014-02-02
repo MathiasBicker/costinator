@@ -1,5 +1,10 @@
 package de.bandb.costinator;
 
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ */
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
