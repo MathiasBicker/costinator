@@ -8,7 +8,7 @@
     <string name="hello_world">Hello world!</string>
    
     <!-- Main -->
-    <string name="title_activity_main">Main</string>
+    <string name="title_activity_main">Costinator</string>
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">BusinessAssesment</string>

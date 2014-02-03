@@ -3,26 +3,26 @@
 	<!-- german strings -->
 	
 	<!-- general -->
-    <string name="app_name">Costinator</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Kostinator</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="hello_world">Hallo Welt!</string>
    
     <!-- Main -->
-    <string name="title_activity_main">Main</string>
+    <string name="title_activity_main">Kostinator</string>
     
     <!-- BusinessAssesment -->
-    <string name="title_activity_business_assesment">BusinessAssesment</string>
+    <string name="title_activity_business_assesment">Auswertung</string>
     
     <!-- Costgroup -->
-    <string name="title_activity_costgroup">Costgroup</string>
+    <string name="title_activity_costgroup">Kostengruppe</string>
     
     <!-- CostgroupBusinessAssesment -->
-    <string name="title_activity_costgroup_business_assesment">CostgroupBusinessAssesment</string>
+    <string name="title_activity_costgroup_business_assesment">Kostengruppenauswertung</string>
     
     <!-- NewCostelement -->
-    <string name="title_activity_new_costelement">NewCostelement</string>
+    <string name="title_activity_new_costelement">Neues Kostenelement erstellen</string>
     
     <!-- NewCostgroup -->
-    <string name="title_activity_new_costgroup">NewCostgroup</string>
+    <string name="title_activity_new_costgroup">Neue Kostengruppe erstellen</string>
 
 </resources>

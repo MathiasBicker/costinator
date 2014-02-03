@@ -11,18 +11,18 @@
     <string name="title_activity_main">Main</string>
     
     <!-- BusinessAssesment -->
-    <string name="title_activity_business_assesment">BusinessAssesment</string>
+    <string name="title_activity_business_assesment">Business assesment</string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
     
     <!-- CostgroupBusinessAssesment -->
-    <string name="title_activity_costgroup_business_assesment">CostgroupBusinessAssesment</string>
+    <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>
     
     <!-- NewCostelement -->
-    <string name="title_activity_new_costelement">NewCostelement</string>
+    <string name="title_activity_new_costelement">creating new costelement</string>
     
     <!-- NewCostgroup -->
-    <string name="title_activity_new_costgroup">NewCostgroup</string>
+    <string name="title_activity_new_costgroup">creating new costgroup</string>
 
 </resources>
