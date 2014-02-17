@@ -1,5 +1,8 @@
+
+<!-- default layout activity main -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools" 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -7,27 +10,35 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Main" >
+ 
+ <TextView
+        android:id="@+id/textViewTitleMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listViewMain"
+        android:layout_alignParentTop="true"
+        android:text="@string/title_activity_main"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+ <View
+        android:id="@+id/lineMain"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/Black"
+        android:layout_alignLeft="@+id/textViewTitleMain"
+        android:layout_below="@+id/textViewTitleMain" />
+ 
+ 
+    <ListView
+        android:id="@+id/listViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_Listview"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:dividerHeight="5dp">
+    </ListView>
+
     
-    <!-- default layout activity main -->
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="63dp"
-        android:ems="10"
-        android:hint="hallo" >
-
-        <requestFocus />
-    </EditText>
 
 </RelativeLayout>
+
