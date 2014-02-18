@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
- 
-        
-        <TextView 
-         	android:id="@+id/textViewCostgroupTitle"
-         	android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Haus"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+    android:layout_height="fill_parent" >
 
-    	<TextView
-    	    android:id="@+id/textViewCostgroupTotalCost"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignBottom="@+id/imageButtonCostgroupDelete"
-    	    android:layout_alignParentLeft="true"
-    	    android:text="-4056,54/month" />
+    <TextView
+        android:id="@+id/textViewCostgroupTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Haus"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    	<ImageButton
-    	    android:id="@+id/imageButtonCostgroupDelete"
-    	    android:layout_width="40dp"
-    	    android:layout_height="40dp"
-    	    android:layout_alignParentTop="true"
-    	    android:layout_marginLeft="16dp"
-    	    android:layout_toRightOf="@+id/textViewCostgroupTotalCost" />
+    <ImageButton
+        android:id="@+id/imageButtonCostgroupDelete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="56dp" 
+        android:src="@drawable/ic_action_discard"
+        android:background="@color/White"
+        android:clickable="true"
+        />
 
-    	<ImageView
-    	    android:layout_width="30dp"
-    	    android:layout_height="30dp"
-    	    android:layout_alignParentRight="true"
-    	    android:layout_alignParentTop="true" />
+    <ImageButton
+        android:id="@+id/imageButtonCostgroupGoInside"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" 
+        android:src="@drawable/ic_action_next_item"
+        android:background="@color/White"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/textViewCostgroupTotalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewCostgroupTitle"
+        android:text="-4056,54/month" />
 
 </RelativeLayout>

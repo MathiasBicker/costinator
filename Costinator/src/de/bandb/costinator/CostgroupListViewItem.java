@@ -10,6 +10,12 @@ public class CostgroupListViewItem {
 		this.costgroupTitle= costgroupTitle;
 		this.totalCost= totalCost;
 	}
+	
+	public CostgroupListViewItem (String costgroupTitle) {
+		
+		this.costgroupTitle= costgroupTitle;
+	}
+	
 
 	public String getCostgroupTitle() {
 		return costgroupTitle;

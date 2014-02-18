@@ -8,7 +8,7 @@
     <string name="hello_world">Hello world!</string>
    
     <!-- Main -->
-    <string name="title_activity_main">Costinator</string>
+    <string name="title_activity_main">Costgroups</string>
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Business assesment</string>
@@ -20,9 +20,13 @@
     <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>
     
     <!-- NewCostelement -->
-    <string name="title_activity_new_costelement">creating new costelement</string>
+    <string name="title_activity_new_costelement">Add new costelement</string>
     
     <!-- NewCostgroup -->
-    <string name="title_activity_new_costgroup">creating new costgroup</string>
+    <string name="title_activity_new_costgroup">Add new costgroup</string>
+    
+   <!-- AddCostgroupDialogFragment -->
+    <string name="title_dialog_add_costgroup">Add new costgroup</string>
+    <string name="hint_dialog_name_costgroup">Costgroup name</string>
 
 </resources>
