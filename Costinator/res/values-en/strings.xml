@@ -9,6 +9,8 @@
    
     <!-- Main -->
     <string name="title_activity_main">Costgroups</string>
+    <string name="positive">Yes</string>
+    <string name="negative">No</string>
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Business assesment</string>

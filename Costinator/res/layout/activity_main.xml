@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_Listview"
         android:layout_marginBottom="@dimen/marginBottom"
-        android:dividerHeight="5dp">
+        android:dividerHeight="5dp"
+        android:clickable="true">
     </ListView>
 
     <ImageButton
@@ -45,7 +46,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_action_new"
-        android:background="@color/White" />
+        android:background="@color/White"
+        android:clickable="true"
+        android:focusable="false" />
 
 </RelativeLayout>
 
