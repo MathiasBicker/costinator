@@ -28,5 +28,5 @@
    <!-- AddCostgroupDialogFragment -->
     <string name="title_dialog_add_costgroup">Add new costgroup</string>
     <string name="hint_dialog_name_costgroup">Costgroup name</string>
-
+	<string name="ButtonSave">Save</string>
 </resources>

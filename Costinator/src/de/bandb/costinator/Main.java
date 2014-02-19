@@ -7,6 +7,7 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
+import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-public class Main extends FragmentActivity implements IAddCostgroupDialogFragment {
+public class Main extends FragmentActivity implements onSubmitListener {
 
 	private ListView costgroupList;
 	private ArrayList<CostgroupListViewItem> items;
@@ -59,23 +60,27 @@ public class Main extends FragmentActivity implements IAddCostgroupDialogFragmen
 		@Override
 		public void onClick(View v) {
 
-			FragmentManager fm = getSupportFragmentManager();
-			AddCostgroupDialogFragment addCostgroupDialog = new AddCostgroupDialogFragment();
-			addCostgroupDialog.show(fm, "fragment_add_costgroup");
-			
-
+			AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();   
+		    fragment.mListener = Main.this;  
+		    fragment.show(getSupportFragmentManager(), ""); 
 		}
 	};
-	
-	/**
-	 * Input Text von addCostgroupListener DialogFragment
-	 */
+
+
 	@Override
-    public void onFinishEditDialog(String inputText) {
-        
-		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(inputText);
+	public void setOnSubmitListener(String arg) {
+		
+		addCostgroup(arg);
+		
+	}
+	
+	
+	public void addCostgroup (String name) {
+		
+		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(name,"");
 		items.add(newCostgroup);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
-    }
-
+		
+	}
+	
 }

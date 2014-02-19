@@ -29,5 +29,7 @@
     <!-- AddCostgroupDialogFragment -->
     <string name="title_dialog_add_costgroup">Neue Kostengruppe erstellen</string>
     <string name="hint_dialog_name_costgroup">Kostgruppen Name</string>
+    <string name="ButtonSave">Speichern</string>
+    
 
 </resources>

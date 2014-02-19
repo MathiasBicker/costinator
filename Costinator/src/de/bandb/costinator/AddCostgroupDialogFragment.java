@@ -1,73 +1,69 @@
 package de.bandb.costinator;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
+
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.EditorInfo;
+import android.view.View.OnClickListener;
+
+import android.view.Window;
+import android.view.WindowManager;
+
+import android.widget.Button;
 import android.widget.EditText;
 
-import android.widget.TextView.OnEditorActionListener;
 
 
 
 
 
 
-public class AddCostgroupDialogFragment extends DialogFragment implements IAddCostgroupDialogFragment  {
+public class AddCostgroupDialogFragment extends DialogFragment  {
 	
 	private EditText costgroupName;
+	private Button saveButton;
+	
 	
 	public AddCostgroupDialogFragment() {}
 	
 	
-	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_costgroup, container);
-        costgroupName = (EditText) view.findViewById(R.id.fragment_dialog_add_costgroup_name);
-        getDialog().setTitle(R.string.title_dialog_add_costgroup);
-        
-        costgroupName.requestFocus();
-        //setOnEditorActionListener(costgroupName);
-        getDialog().getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        
-        
-        
-
-
-        return view;
-    }
+	interface onSubmitListener {  
+		  void setOnSubmitListener(String arg);  
+		 }  
 	
+	public onSubmitListener mListener;
 	
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (EditorInfo.IME_ACTION_DONE == actionId) {
-            // Return input text to activity
-        	onFinishEditDialog(costgroupName.getText().toString());
-            this.dismiss();
-            return true;
-        }
-        return false;
-    }
-
-
-	@Override
-	public void onFinishEditDialog(String string) {
+	@Override  
+	 public Dialog onCreateDialog(Bundle savedInstanceState) {  
+	  final Dialog dialog = new Dialog(getActivity());  
+	  dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);  
+	  dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  
+	  dialog.setContentView(R.layout.fragment_add_costgroup);
+	
+	  dialog.show();
 		
-		IAddCostgroupDialogFragment activity = (IAddCostgroupDialogFragment) getActivity();
-        activity.onFinishEditDialog(string);
-		
+	  saveButton = (Button) dialog.findViewById(R.id.buttonSave);  
+	  costgroupName = (EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_name);  
+	  
+	  saveButton.setOnClickListener(new OnClickListener() {  
+	  
+	   @Override  
+	   public void onClick(View v) {  
+	    mListener.setOnSubmitListener(costgroupName.getText().toString());  
+	    dismiss();  
+	   }  
+	  });  
+	  return dialog; 
+	  
+	  
 	}
 
 
 	
 	
-
-  }
+}
+  
 
 
 	
