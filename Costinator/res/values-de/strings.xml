@@ -24,6 +24,10 @@
     
     <!-- NewCostelement -->
     <string name="title_activity_new_costelement">Neues Kostenelement erstellen</string>
+    <string name="name_hint">Name</string>
+    <string name="value_hint">Wert</string>
+    <string name="name_RadioButton_OnetimeFixed">fix-einmalige Kosten</string>
+    <string name="name_RadioButton_PeriodicalFixed">fix-periodische Kosten</string>
     
     <!-- NewCostgroup -->
     <string name="title_activity_new_costgroup">Neue Kostengruppe erstellen</string>

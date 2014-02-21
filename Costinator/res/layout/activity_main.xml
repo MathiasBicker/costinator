@@ -11,7 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Main" >
  
- <TextView
+
+    
+    <TextView
         android:id="@+id/textViewTitleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,10 +22,10 @@
         android:text="@string/title_activity_main"
         android:textAppearance="?android:attr/textAppearanceLarge" />
  
- <View
+ 	<View
         android:id="@+id/lineMain"
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:background="@color/Black"
         android:layout_alignLeft="@+id/textViewTitleMain"
         android:layout_below="@+id/textViewTitleMain" />
@@ -35,18 +37,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_Listview"
         android:layout_marginBottom="@dimen/marginBottom"
-        android:dividerHeight="5dp"
+        android:dividerHeight="1dp"
+        android:divider="@color/Black"
         android:clickable="true">
     </ListView>
 
+    
     <ImageButton
         android:id="@+id/imageButtonAddNewCostgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/listViewMain"
+        android:layout_marginTop="1dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_action_new"
-        android:background="@color/White"
+        android:background="@color/transparenz"
         android:clickable="true"
         android:focusable="false" />
 

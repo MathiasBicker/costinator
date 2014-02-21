@@ -10,9 +10,45 @@
     
     <!-- default layout activity costgroup -->
 
-    <TextView
+  	
+ 	 <TextView
+        android:id="@+id/textViewTitleCostgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:layout_alignParentTop="true"
+        android:text="@string/title_activity_costgroup"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+ 	<View
+        android:id="@+id/lineMain"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@color/Black"
+        android:layout_alignLeft="@+id/textViewTitleCostgroup"
+        android:layout_below="@+id/textViewTitleCostgroup" />
+ 
+ 
+    <ListView
+        android:id="@+id/listViewCostgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_Listview"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:dividerHeight="1dp"
+        android:divider="@color/Black"
+        android:clickable="true">
+    </ListView>
 
+    <ImageButton
+        android:id="@+id/imageButtonAddNewCostelement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_action_new"
+        android:background="@color/White"
+        android:clickable="true"
+        android:focusable="false" />
+    
 </RelativeLayout>

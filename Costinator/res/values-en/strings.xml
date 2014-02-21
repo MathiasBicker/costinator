@@ -23,6 +23,10 @@
     
     <!-- NewCostelement -->
     <string name="title_activity_new_costelement">Add new costelement</string>
+    <string name="name_hint">Name</string>
+    <string name="value_hint">Wert</string>
+    <string name="name_RadioButton_OnetimeFixed">onetime-fixed Costs</string>
+    <string name="name_RadioButton_PeriodicalFixed">periodical-fixed Costs</string>
     
     <!-- NewCostgroup -->
     <string name="title_activity_new_costgroup">Add new costgroup</string>

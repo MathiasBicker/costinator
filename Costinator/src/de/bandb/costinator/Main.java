@@ -7,12 +7,14 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
+
+
+import 	android.util.Log;
+
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,14 +23,22 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
+
 
 public class Main extends FragmentActivity implements onSubmitListener {
 
+	
+	private static final String TAG = "Main";
+	
+	public final static String COSTGROUP_TITLE = "de.bandb.costinator.COSTGROUP_TITLE";
+	
+	
 	private ListView costgroupList;
 	private ArrayList<CostgroupListViewItem> items;
 	private ImageButton addCostgroup;
-	private ImageButton delCostgroup;
+	//private ImageButton delCostgroup;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +72,8 @@ public class Main extends FragmentActivity implements onSubmitListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		 // Inflate the menu items for use in the action bar
+	  
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -146,8 +157,13 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 
-			Toast.makeText(getApplicationContext(), "" + arg2,
-					Toast.LENGTH_SHORT).show();
+			//Start von Costgroup, der Title wird fuer den Kostengruppe title mitgegeben
+			Intent intent = new Intent(Main.this, Costgroup.class);
+			CostgroupListViewItem aktuelleCostgroup = (CostgroupListViewItem) items.get(arg2);
+			String costgroupTitle = aktuelleCostgroup.getCostgroupTitle();
+			Log.v(TAG, costgroupTitle);
+			intent.putExtra(COSTGROUP_TITLE, costgroupTitle);
+			startActivity(intent);
 
 		}
 	};
