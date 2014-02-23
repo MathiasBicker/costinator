@@ -5,6 +5,9 @@ package de.bandb.costinator;
  * version: 1.0
  */
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,9 +18,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class Costgroup extends Activity {
+	
+	
+	static final int ONTIME_COSTELEMENT_REQUEST = 0;
+	static final int PERIODICAL_COSTELEMENT_REQUEST = 1;
+	
+	private ListView costelementList;
+	private ArrayList<CostelementListViewItem> items;
 	
 	private TextView costgroupTitle;
 	private ImageButton addCostelement;
@@ -35,10 +46,26 @@ public class Costgroup extends Activity {
 		
 		costgroupTitle = (TextView) findViewById(R.id.textViewTitleCostgroup);
 		addCostelement = (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
+		costelementList = (ListView) findViewById(R.id.listViewCostgroup);
 		
 		ontime = getString(R.string.name_RadioButton_OnetimeFixed);
 		periodical = getString(R.string.name_RadioButton_PeriodicalFixed);
 		costClasses = new String[] {ontime, periodical};
+		
+		items = new ArrayList<CostelementListViewItem>();
+		
+		
+		/**
+		 * Dummy Data
+		 */
+		Date date = new Date();
+		double value = 200.98;
+		CostelementListViewItem costelement1 = new CostelementListViewItem("Werkstatt", value, date);
+		CostelementListViewItem costelement2 = new CostelementListViewItem("Werkstatt", value +1, date, date, "monatlich");
+		items.add(costelement1);
+		items.add(costelement2);
+
+		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
 		// Der Title der in Main ausgewaehlten Kostengruppe wird angezeigt.
 		Intent intent = getIntent();
@@ -56,11 +83,11 @@ public class Costgroup extends Activity {
 			
 		if (which == 0) {
 			Intent intent = new Intent(Costgroup.this, NewCostelementOntime.class);
-			startActivity(intent);
+			startActivityForResult(intent, ONTIME_COSTELEMENT_REQUEST);
 			
 		} else {
 			Intent intent = new Intent(Costgroup.this, NewCostelementPeriodical.class);
-			startActivity(intent);
+			startActivityForResult(intent, PERIODICAL_COSTELEMENT_REQUEST);
 			
 		}
 	
@@ -117,4 +144,41 @@ public class Costgroup extends Activity {
 
 			}
 	};
+	
+	/**
+	 * Wird automatisch aufgerufen wenn gestartete NewCostelementOntime oder NewCostelementPeriodical beendet wird.
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // Check which request we're responding to
+	    if (requestCode == ONTIME_COSTELEMENT_REQUEST) {
+	        // Make sure the request was successful
+	        if (resultCode == RESULT_OK) {
+	            
+	        	//TODO Handle Receive Data put to ListView
+	        	
+	        	} else {
+	        	//TODO Exception
+	        	
+	        	} 
+	        
+	    } else if (requestCode == PERIODICAL_COSTELEMENT_REQUEST) {
+	    	
+	    	if (resultCode == RESULT_OK) {
+	            
+	    		//TODO Handle Receive Data put to ListView
+	    		
+	    		} else {
+	        	//TODO Exception
+	        	
+	    		} 
+	    }	
+	        	
+	        
+	    }
+	
+	
+	
 }
+	
+

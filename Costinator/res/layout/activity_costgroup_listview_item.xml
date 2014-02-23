@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:descendantFocusability="blocksDescendants" >
+
+<!-- Zeigt CostelementItems an -->
+    
+    <TextView
+        android:id="@+id/textViewCostelementName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Werkstatt"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+       android:id="@+id/textViewCostelementValue"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textViewCostelementName"
+       android:text="133,78 €"
+       android:textAppearance="?android:attr/textAppearanceSmall" />
+
+   <TextView
+       android:id="@+id/textViewCostelementPeriode"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textViewCostelementValue"
+       android:text="monatlich"
+       android:textAppearance="?android:attr/textAppearanceSmall" />
+
+   <TextView
+       android:id="@+id/textViewCostelementDateEnd"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignRight="@+id/textViewCostelementDateStart"
+       android:layout_below="@+id/textViewCostelementValue"
+       android:text="bis:  16.03.2015"
+       android:textAppearance="?android:attr/textAppearanceSmall" />
+
+   <TextView
+       android:id="@+id/textViewCostelementDateStart"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/textViewCostelementName"
+       android:layout_marginLeft="21dp"
+       android:layout_toRightOf="@+id/textViewCostelementPeriode"
+       android:text="von: 10.07.2013"
+       android:textAppearance="?android:attr/textAppearanceSmall" />
+
+   <ImageButton
+       android:id="@+id/imageButtonCostelementDelete"
+       android:layout_width="40dp"
+       android:layout_height="40dp"
+       android:layout_alignBottom="@+id/textViewCostelementDateEnd"
+       android:layout_marginRight="18dp"
+       android:layout_toLeftOf="@+id/imageButtonCostelementGoInside"
+       android:background="@color/White"
+       android:clickable="true"
+       android:focusable="false"
+       android:focusableInTouchMode="false"
+       android:src="@drawable/ic_action_discard" />
+
+   <ImageButton
+       android:id="@+id/imageButtonCostelementGoInside"
+       android:layout_width="40dp"
+       android:layout_height="40dp"
+       android:layout_alignParentRight="true"
+       android:layout_alignTop="@+id/imageButtonCostelementDelete"
+       android:background="@color/White"
+       android:clickable="true"
+       android:focusable="false"
+       android:focusableInTouchMode="false"
+       android:src="@drawable/ic_action_next_item" />
+
+</RelativeLayout>

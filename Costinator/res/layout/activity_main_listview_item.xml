@@ -4,6 +4,8 @@
     android:layout_height="fill_parent"
     android:descendantFocusability="blocksDescendants" >
 
+<!-- Zeigt CostgroupItems an -->
+    
     <TextView
         android:id="@+id/textViewCostgroupTitle"
         android:layout_width="fill_parent"
