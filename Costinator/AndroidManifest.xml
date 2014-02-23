@@ -30,10 +30,7 @@
             android:name="de.bandb.costinator.NewCostgroup"
             android:label="@string/title_activity_new_costgroup" >
         </activity>
-        <activity
-            android:name="de.bandb.costinator.NewCostelement"
-            android:label="@string/title_activity_new_costelement" >
-        </activity>
+        
         <activity
             android:name="de.bandb.costinator.BusinessAssesment"
             android:label="@string/title_activity_business_assesment" >
@@ -41,6 +38,16 @@
         <activity
             android:name="de.bandb.costinator.CostgroupBusinessAssesment"
             android:label="@string/title_activity_costgroup_business_assesment" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.NewCostelementOntime"
+            android:label="@string/title_activity_new_costelement_ontime"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="de.bandb.costinator.NewCostelementPeriodical"
+            android:label="@string/title_activity_new_costelement_periodical"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
     </application>
 

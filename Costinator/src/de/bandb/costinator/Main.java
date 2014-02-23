@@ -9,13 +9,14 @@ import java.util.ArrayList;
 
 
 
-import 	android.util.Log;
 
+import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -77,6 +78,29 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	/**
+	 * Clicks auf ActionbarItems
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_addCostgroup:
+	        	
+	        	AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
+				fragment.mListener = Main.this;
+				fragment.show(getSupportFragmentManager(), "");
+	        	
+	            return true;
+	        case R.id.action_settings:
+	            //openSettings();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+
 
 	/**
 	 * Start des DialogFragments, wenn auf ImageButton addCostgroup geklickt
@@ -103,7 +127,8 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	};
 
 	/**
-	 * String arg enthaelt die Texteingabe von AddCostgroupDialogFragment
+	 * String arg enthaelt die Texteingabe von AddCostgroupDialogFragment, wird automatisch
+	 * aufgerufen, sobald FragmentDialog beendet
 	 */
 	@Override
 	public void setOnSubmitListener(String arg) {

@@ -23,13 +23,34 @@
     
     <!-- NewCostelement -->
     <string name="title_activity_new_costelement">Add new costelement</string>
-    <string name="name_hint">Name</string>
-    <string name="value_hint">Wert</string>
-    <string name="name_RadioButton_OnetimeFixed">onetime-fixed Costs</string>
+    <string name="title_activity_select_category">Please choose a Costcategory:</string>
+   <string name="name_hint">Name</string>
+    <string name="value_hint">Value</string>
+    <string name="name_RadioButton_OnetimeFixed">ontimed-fixed Costs</string>
     <string name="name_RadioButton_PeriodicalFixed">periodical-fixed Costs</string>
+    <string name="title_datePicker_Start">Select Payment Start Date:</string>
+    <string name="title_datePicker_End">Select Payment End Date:</string>
+    <string name="title_save_costelement">Save!</string>
+    
+    
+     <!-- NewCostelementOntime -->
+    <string name="title_activity_new_costelementOntime">Add new ontimed-fixed Costelement</string>
+    <string name="title_datePicker_date_ontime">Select due Date:</string>
+    
+    <!-- NewCostelementPeriodical -->
+    <string name="title_activity_new_costelementPeriodical">Add new periodical-fixed Costelement</string>
+    <string-array name="periods">
+        <item>daily</item>
+        <item>weekly</item>
+        <item>monthly</item>
+        <item>yearly</item>
+    </string-array>
+    <string name="title_period_spinner">Select Period:</string>
     
     <!-- NewCostgroup -->
     <string name="title_activity_new_costgroup">Add new costgroup</string>
+    
+    
     
    <!-- AddCostgroupDialogFragment -->
     <string name="title_dialog_add_costgroup">Add new costgroup</string>
