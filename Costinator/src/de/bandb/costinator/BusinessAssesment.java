@@ -64,6 +64,11 @@ public class BusinessAssesment extends Activity {
 					   + "; " + perYear + getResources().getString(R.string.yearly) + ")");
 	}
 	
+	
+	/**
+	 * @param period period constant form TCostelement
+	 * @return string containing e.g. '/dayly'
+	 */
 	private String findPeriod(int period) {
 		String type = null;
 		switch(period) {
