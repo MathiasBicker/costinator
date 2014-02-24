@@ -5,9 +5,6 @@ package de.bandb.costinator;
  * version: 1.0
  */
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import de.bandb.costinator.database.entities.TCostelement;
@@ -93,6 +90,12 @@ public class BusinessAssesment extends Activity {
 		return type;
 	}
 	
+	/**
+	 * computing value for given phase
+	 * @param value value per period
+	 * @param period period in which value needs to be payed
+	 * @return computed value 
+	 */
 	private double computeValue(double value, int period) {
 		double computedValue = -1.0;
 		switch(period) {
