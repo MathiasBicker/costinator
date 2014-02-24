@@ -4,6 +4,7 @@ package de.bandb.costinator;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -16,12 +17,13 @@ import android.widget.EditText;
 public class AddCostgroupDialogFragment extends DialogFragment  {
 	
 	private EditText 	costgroupName;
+	private EditText	costgroupDescription;
 	private Button 		saveButton;
 	
 	public AddCostgroupDialogFragment() {}
 	
 	interface onSubmitListener {  
-		  void setOnSubmitListener(String arg);  
+		  void setOnSubmitListener(String arg, String arg1);  
 		 }  
 	
 	public onSubmitListener mListener;
@@ -32,14 +34,19 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);  
 	dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  
 	dialog.setContentView(R.layout.fragment_add_costgroup);
+	
 	dialog.show();
 		
-	saveButton 		= (Button) dialog.findViewById(R.id.buttonSave);  
-	costgroupName 	= (EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_name);  
-	saveButton.setOnClickListener(new OnClickListener() {    
+	saveButton 		= 		(Button) dialog.findViewById(R.id.buttonSave);  
+	costgroupName 	= 		(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_name); 
+	costgroupDescription=	(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_description);
+	
+ 	saveButton.setOnClickListener(new OnClickListener() {    
 		@Override  
 		public void onClick(View v) {  
-		    mListener.setOnSubmitListener(costgroupName.getText().toString());  
+		    mListener.setOnSubmitListener(costgroupName.getText().toString(), costgroupDescription.getText().toString()); 
+		   
+		    
 		    dismiss();  
 		}  
 	});  

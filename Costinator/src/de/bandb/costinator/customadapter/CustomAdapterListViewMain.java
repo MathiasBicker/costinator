@@ -42,10 +42,12 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	         }
 	 
 	         TextView 				title 		= (TextView) v.findViewById(R.id.textViewCostgroupTitle);
+	         TextView				desc		= (TextView) v.findViewById(R.id.textViewCostgroupDesc);
 	         TextView 				totalCost 	= (TextView) v.findViewById(R.id.textViewCostgroupTotalCost);
 	         CostgroupListViewItem 	item 		= data.get(position);
 	          
 	         title.setText(item.getCostgroupTitle());
+	         desc.setText(item.getCostgroupDesc());
 	         totalCost.setText(item.getTotalCost());
 	                        
 	         return v;
