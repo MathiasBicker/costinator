@@ -3,14 +3,24 @@ package de.bandb.costinator.customadapter;
 public class CostgroupListViewItem {
 	
 	private String costgroupTitle;
+	private String costgroupDesc;
 	private String totalCost;
 	
-	public CostgroupListViewItem (String costgroupTitle, String totalCost) {
+	public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
 		
 		this.costgroupTitle= costgroupTitle;
+		this.costgroupDesc= costgroupDesc;
 		this.totalCost= totalCost;
 	}
 	
+	public String getCostgroupDesc() {
+		return costgroupDesc;
+	}
+
+	public void setCostgroupDesc(String costgroupDesc) {
+		this.costgroupDesc = costgroupDesc;
+	}
+
 	public CostgroupListViewItem (String costgroupTitle) {
 		
 		this.costgroupTitle= costgroupTitle;

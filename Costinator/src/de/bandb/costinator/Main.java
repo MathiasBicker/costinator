@@ -59,13 +59,14 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		/**
 		 * Dummy Data
 		 */
-		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus",
+		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX",
 				"-6634,61/month Û");
-		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto",
+		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3",
 				"-345,15/month Û");
 		items.add(costgroup1);
 		items.add(costgroup2);
 
+		
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 
 		costgroupList.setOnItemClickListener(costgroupListListener);
@@ -132,12 +133,13 @@ public class Main extends FragmentActivity implements onSubmitListener {
 
 	/**
 	 * String arg enthaelt die Texteingabe von AddCostgroupDialogFragment, wird automatisch
-	 * aufgerufen, sobald FragmentDialog beendet
+	 * aufgerufen, sobald FragmentDialog beendet wird
 	 */
 	@Override
-	public void setOnSubmitListener(String arg) {
-
-		addCostgroup(arg);
+	public void setOnSubmitListener(String arg, String arg1) {
+		
+		
+		addCostgroup(arg, arg1);
 
 	}
 
@@ -146,9 +148,10 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	 * ListView wird erneut mit der aktualisierten ArrayList erstellt
 	 * 
 	 */
-	public void addCostgroup(String name) {
+	public void addCostgroup(String name, String desc) {
 
-		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(name, "");
+		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(name, desc, "");
+		
 		items.add(newCostgroup);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 

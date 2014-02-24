@@ -11,38 +11,49 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
+        
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageButton
         android:id="@+id/imageButtonCostgroupDelete"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="56dp" 
-        android:src="@drawable/ic_action_discard"
+        android:layout_below="@+id/textViewCostgroupTitle"
+        android:layout_marginRight="54dp"
+        android:layout_toLeftOf="@+id/imageButtonCostgroupGoInside"
         android:background="@color/White"
-        android:focusable="false" 
-		android:focusableInTouchMode="false" 
-		android:clickable="true"/> 
+        android:clickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ic_action_discard" />
 
-   <ImageButton
+    <ImageButton
         android:id="@+id/imageButtonCostgroupGoInside"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" 
-        android:src="@drawable/ic_action_next_item"
+        android:layout_below="@+id/textViewCostgroupTitle"
         android:background="@color/White"
-        android:focusable="false" 
-		android:focusableInTouchMode="false"
-		android:clickable="true" /> 
+        android:clickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ic_action_next_item" />
 
     <TextView
         android:id="@+id/textViewCostgroupTotalCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButtonCostgroupDelete"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textViewCostgroupTitle" />
+        
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewCostgroupDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewCostgroupTotalCost"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
