@@ -156,17 +156,19 @@ public class BusinessAssesment extends Activity {
 	private void openChart(){
 		 
         // Pie Chart Section Names
-        String[] code = new String[] {
-            "Eclair & Older", "Froyo", "Gingerbread", "Honeycomb",
-            "IceCream Sandwich", "Jelly Bean"
-        };
+        String[] code = new String[elementList.size()];
+        for(int i = 0; i < code.length; i++)
+        	code[i] = elementList.get(i).getName();
  
         // Pie Chart Section Value
-        double[] distribution = { 3.9, 12.9, 55.8, 1.9, 23.7, 1.8 } ;
- 
-        // Color of each Pie Chart Sections
-        int[] colors = { Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN, Color.RED,
-                        Color.YELLOW };
+        double[] distribution = new double[elementList.size()];
+        for(int i = 0; i < distribution.length; i++)
+        	distribution[i] = elementList.get(i).getValue();
+        
+        // generating colors
+        int[] colors = new int[elementList.size()];
+        for(int i = 0; i < colors.length; i++)
+        	colors[i] = Color.rgb((int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255);
  
         // Instantiating CategorySeries to plot Pie Chart
         CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
