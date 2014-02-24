@@ -2,6 +2,7 @@ package de.bandb.costinator.customadapter;
 
 import java.util.ArrayList;
 
+import de.bandb.costinator.Main;
 import de.bandb.costinator.R;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -55,7 +56,7 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	        	  @Override
 	        	  public void onClick(View v)
 	        	   {	
-	        		  
+	        
 	        		  	data.remove(position);
 	        		  	notifyDataSetChanged();
 	        	   }

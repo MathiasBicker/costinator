@@ -8,8 +8,11 @@ package de.bandb.costinator;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
+import de.bandb.costinator.database.entities.TCostelement;
+import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -31,6 +34,7 @@ public class Costgroup extends Activity {
 	
 	private ListView costelementList;
 	private ArrayList<CostelementListViewItem> items;
+	private ArrayList<TCostelement> elementList;
 	
 	private TextView costgroupTitle;
 	private ImageButton addCostelement;
@@ -39,6 +43,7 @@ public class Costgroup extends Activity {
 	private String ontime;
 	private String periodical; 
 	private String[] costClasses;  
+	
 	 
 
 	@Override
@@ -119,6 +124,45 @@ public class Costgroup extends Activity {
 	        case R.id.action_settings:
 	            //openSettings();
 	            return true;
+	            
+	        case R.id.action_assessCostgroup:
+	        	Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
+	        	
+	        	TCostgroup costgroup = new TCostgroup();
+	        	costgroup.setDescription("Stephanstr. 27A");
+	        	costgroup.setId(1);
+	        	costgroup.setName("Haus");
+	        	
+	        	TCostelement costelement1 = new TCostelement();
+	        	costelement1.setCostgroup(costgroup);
+	        	costelement1.setDescription("Frau Schmitt");
+	        	costelement1.setName("Putzfrau");
+	        	costelement1.setPeriod(2);
+	        	costelement1.setValue(100);
+	        	costelement1.setId(1);
+	        	
+	        	TCostelement costelement2 = new TCostelement();
+	        	costelement2.setCostgroup(costgroup);
+	        	costelement2.setDescription("Schäferhund");
+	        	costelement2.setName("Wachhund");
+	        	costelement2.setPeriod(3);
+	        	costelement2.setValue(1000);
+	        	costelement2.setId(2);
+	        	
+	        	elementList = new ArrayList<TCostelement>();
+	        	
+	        	elementList.add(costelement1);
+	        	elementList.add(costelement2);
+	        	
+	        	int days = 180;
+	        	
+	        	intent.putExtra(BusinessAssesment.DAYSTAG, days);
+	        	
+	        	
+	        	startActivity(intent);
+	        	
+	        	
+	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

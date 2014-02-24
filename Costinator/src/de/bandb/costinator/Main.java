@@ -12,10 +12,14 @@ import java.util.ArrayList;
 
 
 
+
+
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -42,6 +46,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	private ArrayList<CostgroupListViewItem> items;
 	private ImageButton addCostgroup;
 	private ImageButton delCostgroup;
+	private AlertDialog deleteDialog;
 	
 	
 
@@ -73,8 +78,10 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
+		
+	
 
-		//delCostgroup.setOnClickListener(delCostgroupListener);
+		
 	}
 
 	@Override
@@ -123,14 +130,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		}
 	};
 
-	OnClickListener delCostgroupListener = new OnClickListener() {
-
-		@Override
-		public void onClick(View v) {
-
-		}
-
-	};
+	
 
 	/**
 	 * String arg enthaelt die Texteingabe von AddCostgroupDialogFragment, wird automatisch
@@ -201,4 +201,5 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		}
 	};
 
+	
 }
