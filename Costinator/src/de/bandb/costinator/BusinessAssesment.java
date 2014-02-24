@@ -187,7 +187,7 @@ public class BusinessAssesment extends Activity {
             defaultRenderer.addSeriesRenderer(seriesRenderer);
         }
  
-        defaultRenderer.setChartTitle("Android version distribution as on October 1, 2012 ");
+        defaultRenderer.setChartTitle(getResources().getString(R.string.categories) + costgroup.getName());
         defaultRenderer.setChartTitleTextSize(20);
         defaultRenderer.setZoomButtonsVisible(true);
  
