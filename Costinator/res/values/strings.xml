@@ -16,6 +16,7 @@
 
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Auswertung</string>
+    <string name="costgroup">Kostengruppe: </string>
 
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>

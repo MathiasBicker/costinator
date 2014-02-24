@@ -11,8 +11,11 @@
     <!-- default layout activity business assesment -->
 
     <TextView
+        android:id="@+id/business_assesment_costgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/costgroup" />
 
 </RelativeLayout>

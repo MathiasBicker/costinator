@@ -22,7 +22,13 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName="T_COSTELEMENT")
 public class TCostelement implements Serializable {
 
-	private static final long serialVersionUID = 3725841290753976725L;
+	private static final long 	serialVersionUID = 3725841290753976725L;
+	
+	public static final int	DAYLY 	= 1;
+	public static final int	WEEKLY 	= 2;
+	public static final int	MONTHLY = 3;
+	public static final int	QUART 	= 4;
+	public static final int	YEARLY 	= 5;
 	
 	@DatabaseField(columnName="C_ID", generatedId=true)
 	private int id;
