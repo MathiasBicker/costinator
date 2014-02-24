@@ -8,6 +8,8 @@
     <string name="app_name">Kostinator</string>
     <string name="action_settings">Einstellungen</string>
     <string name="hello_world">Hallo Welt!</string>
+    <string name="currency">€</string>
+    
 
     <!-- Main -->
     <string name="title_activity_main">Kostengruppen</string>
@@ -17,6 +19,13 @@
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Auswertung</string>
     <string name="costgroup">Kostengruppe: </string>
+    <string name="sum">Summe: </string>
+    <string name="dayly">/Tag</string>
+    <string name="weekly">/Woche</string>
+    <string name="monthly">/Monat</string>
+    <string name="quart">/Quartal</string>
+    <string name="yearly">/Jahr</string>
+    
 
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>
@@ -46,6 +55,7 @@
         <item>täglich</item>
         <item>wöchentlich</item>
         <item>monatlich</item>
+        <item>Quartal</item>
         <item>jährlich</item>
     </string-array>
     <string name="title_period_spinner">Periode auswählen:</string>
