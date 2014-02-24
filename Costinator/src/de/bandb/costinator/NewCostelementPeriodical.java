@@ -2,7 +2,6 @@ package de.bandb.costinator;
 
 import java.util.Date;
 
-import de.bandb.costinator.customadapter.CostelementListViewItem;
 import android.os.Bundle;
 
 import android.app.Activity;

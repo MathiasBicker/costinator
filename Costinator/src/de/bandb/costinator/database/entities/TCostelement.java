@@ -10,6 +10,12 @@ import com.j256.ormlite.table.DatabaseTable;
  * version: 1.0
  * 
  * Entitiy-class that describes the databasetable T_COSTELEMENT
+ * possible periods:
+ * 1 - dayly
+ * 2 - weekly
+ * 3 - monthly
+ * 4 - quart
+ * 5 - yearly
  */
 
 
@@ -28,6 +34,8 @@ public class TCostelement implements Serializable {
 	private double value;
 	@DatabaseField(columnName="C_PERIOD")
 	private int period;
+	@DatabaseField(columnName="C_TOLERANCE", canBeNull=true)
+	private int tolerance;
 	@DatabaseField(columnName="C_COSTGROUP", foreign=true)
 	private TCostgroup costgroup;
 	

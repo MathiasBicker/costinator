@@ -80,29 +80,22 @@ public class Costgroup extends Activity {
 		builder.setTitle(R.string.title_activity_select_category);
 		builder.setIcon(R.drawable.ic_action_new);
 		builder.setItems(costClasses, new DialogInterface.OnClickListener() {
-
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			
-		if (which == 0) {
-			Intent intent = new Intent(Costgroup.this, NewCostelementOntime.class);
-			startActivityForResult(intent, ONTIME_COSTELEMENT_REQUEST);
-			
-		} else {
-			Intent intent = new Intent(Costgroup.this, NewCostelementPeriodical.class);
-			startActivityForResult(intent, PERIODICAL_COSTELEMENT_REQUEST);
-			
-		}
-	
-		}
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				if (which == 0) {
+					Intent intent = new Intent(Costgroup.this, NewCostelementOntime.class);
+					startActivityForResult(intent, ONTIME_COSTELEMENT_REQUEST);
+				} else {
+					Intent intent = new Intent(Costgroup.this, NewCostelementPeriodical.class);
+					startActivityForResult(intent, PERIODICAL_COSTELEMENT_REQUEST);	
+				}
+			}
 		});
 
 		builder.setCancelable(true);
 		costClassDialog = builder.create();
 		
 		addCostelement.setOnClickListener(addCostelementListener);
-		
-		
 	}
 
 	@Override
