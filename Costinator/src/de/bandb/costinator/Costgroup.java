@@ -8,8 +8,8 @@ package de.bandb.costinator;
 import java.util.ArrayList;
 import java.util.Date;
 
-import de.bandb.costinator.CustomAdapter.CostelementListViewItem;
-import de.bandb.costinator.CustomAdapter.CustomAdapterListViewCostgroup;
+import de.bandb.costinator.customadapter.CostelementListViewItem;
+import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
