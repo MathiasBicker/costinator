@@ -6,8 +6,10 @@ import de.bandb.costinator.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class CustomAdapterListViewMain extends BaseAdapter {
@@ -34,7 +36,7 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	        return position;
 	    }
 	   
-	    public View getView(int position, View convertView, ViewGroup parent) {
+	    public View getView(final int position, View convertView, ViewGroup parent) {
 	         View v = convertView;
 	         if (v == null) {
 	            LayoutInflater vi = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -44,8 +46,21 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	         TextView 				title 		= (TextView) v.findViewById(R.id.textViewCostgroupTitle);
 	         TextView				desc		= (TextView) v.findViewById(R.id.textViewCostgroupDesc);
 	         TextView 				totalCost 	= (TextView) v.findViewById(R.id.textViewCostgroupTotalCost);
+	         ImageButton			delete		= (ImageButton) v.findViewById(R.id.imageButtonCostgroupDelete);
+	         
 	         CostgroupListViewItem 	item 		= data.get(position);
-	          
+	         
+	         delete.setOnClickListener(new OnClickListener()
+	         {
+	        	  @Override
+	        	  public void onClick(View v)
+	        	   {	
+	        		  
+	        		  	data.remove(position);
+	        		  	notifyDataSetChanged();
+	        	   }
+	        	});
+	         
 	         title.setText(item.getCostgroupTitle());
 	         desc.setText(item.getCostgroupDesc());
 	         totalCost.setText(item.getTotalCost());

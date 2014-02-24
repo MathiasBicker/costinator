@@ -17,6 +17,7 @@
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
+    <string name="assessCostgroup">Assess Costgroup</string>
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>

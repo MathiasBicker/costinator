@@ -41,7 +41,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	private ListView costgroupList;
 	private ArrayList<CostgroupListViewItem> items;
 	private ImageButton addCostgroup;
-	//private ImageButton delCostgroup;
+	private ImageButton delCostgroup;
 	
 	
 
@@ -51,7 +51,8 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		setContentView(R.layout.activity_main);
 
 		addCostgroup = (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
-		//Muellheimer: delCostgroup = (ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
+		//Muellheimer icon
+		delCostgroup = (ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
 		costgroupList = (ListView) findViewById(R.id.listViewMain);
 
 		items = new ArrayList<CostgroupListViewItem>();
@@ -73,7 +74,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
 
-		// delCostgroup.setOnClickListener(delCostgroupListener);
+		//delCostgroup.setOnClickListener(delCostgroupListener);
 	}
 
 	@Override

@@ -18,6 +18,7 @@
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>
+    <string name="assessCostgroup">Kostengruppe auswerten</string>
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Kostengruppenauswertung</string>

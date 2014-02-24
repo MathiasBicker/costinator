@@ -11,7 +11,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageButton
@@ -21,7 +20,7 @@
         android:layout_below="@+id/textViewCostgroupTitle"
         android:layout_marginRight="54dp"
         android:layout_toLeftOf="@+id/imageButtonCostgroupGoInside"
-        android:background="@color/White"
+        android:background="@color/transparenz"
         android:clickable="true"
         android:focusable="false"
         android:focusableInTouchMode="false"
@@ -33,7 +32,7 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textViewCostgroupTitle"
-        android:background="@color/White"
+        android:background="@color/transparenz"
         android:clickable="true"
         android:focusable="false"
         android:focusableInTouchMode="false"

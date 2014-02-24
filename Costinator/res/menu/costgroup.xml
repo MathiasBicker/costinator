@@ -13,5 +13,12 @@
         android:showAsAction="always"
         android:title="@string/title_activity_new_costelement"
         android:icon="@drawable/ic_action_new"/>
+    
+     <item
+        android:id="@+id/action_assessCostgroup"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/title_activity_new_costelement"
+        android:icon="@drawable/ic_action_new"/>
 
 </menu>
