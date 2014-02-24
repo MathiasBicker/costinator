@@ -4,8 +4,7 @@ import java.util.Date;
 
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -32,7 +31,6 @@ public class NewCostelementPeriodical extends Activity  {
 	private DatePicker endDate;
 	private Spinner periode;
 
-	private double valueDouble;
 
 	
 
@@ -48,7 +46,7 @@ public class NewCostelementPeriodical extends Activity  {
 		endDate = (DatePicker) findViewById(R.id.datePickerEndPeriodical);
 		periode = (Spinner) findViewById(R.id.spinnerCostelementPeriodical);
 		
-		//save.setOnClickListener(saveListener);
+		save.setOnClickListener(saveListener);
 		
 	}
 
@@ -66,7 +64,7 @@ public class NewCostelementPeriodical extends Activity  {
 		public void onClick(View v) {
 
 			String nameString = name.getText().toString();
-			valueDouble = Double.parseDouble(value.getText().toString());
+			double valueDouble = Double.parseDouble(value.getText().toString());
 
 			Date startdate = new Date();
 			startdate.setMonth(startDate.getMonth());
