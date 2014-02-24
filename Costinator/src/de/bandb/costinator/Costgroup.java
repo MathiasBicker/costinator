@@ -8,6 +8,8 @@ package de.bandb.costinator;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.bandb.costinator.CustomAdapter.CostelementListViewItem;
+import de.bandb.costinator.CustomAdapter.CustomAdapterListViewCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -59,9 +61,10 @@ public class Costgroup extends Activity {
 		 * Dummy Data
 		 */
 		Date date = new Date();
+		String dateString = date.toString();
 		double value = 200.98;
-		CostelementListViewItem costelement1 = new CostelementListViewItem("Werkstatt", value, date);
-		CostelementListViewItem costelement2 = new CostelementListViewItem("Werkstatt", value +1, date, date, "monatlich");
+		CostelementListViewItem costelement1 = new CostelementListViewItem("Werkstatt", value, dateString);
+		CostelementListViewItem costelement2 = new CostelementListViewItem("Werkstatt", value +1, dateString, dateString, "monatlich");
 		items.add(costelement1);
 		items.add(costelement2);
 
@@ -155,6 +158,7 @@ public class Costgroup extends Activity {
 	        // Make sure the request was successful
 	        if (resultCode == RESULT_OK) {
 	            
+	        	
 	        	//TODO Handle Receive Data put to ListView
 	        	
 	        	} else {
@@ -165,8 +169,17 @@ public class Costgroup extends Activity {
 	    } else if (requestCode == PERIODICAL_COSTELEMENT_REQUEST) {
 	    	
 	    	if (resultCode == RESULT_OK) {
+	            String name =data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_NAME);
+	            double value = data.getDoubleExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_VALUE, 0);
+	            String startDate = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_STARTDATE);
+	            String endDate = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_ENDDATE);
+	            String periode = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_PERIODE);
 	            
-	    		//TODO Handle Receive Data put to ListView
+	            CostelementListViewItem newCostelement = new CostelementListViewItem(name, value, startDate, endDate, periode);
+	            addCostelement(newCostelement);
+	    		
+	    		
+	    		
 	    		
 	    		} else {
 	        	//TODO Exception
@@ -177,6 +190,13 @@ public class Costgroup extends Activity {
 	        
 	    }
 	
+	public void addCostelement (CostelementListViewItem costelement) {
+		
+		items.add(costelement);
+		
+		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
+		
+	}
 	
 	
 }

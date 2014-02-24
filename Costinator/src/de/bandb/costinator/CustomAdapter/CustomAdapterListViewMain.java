@@ -1,7 +1,10 @@
-package de.bandb.costinator;
+package de.bandb.costinator.CustomAdapter;
 
 import java.util.ArrayList;
 
+import de.bandb.costinator.R;
+import de.bandb.costinator.R.id;
+import de.bandb.costinator.R.layout;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

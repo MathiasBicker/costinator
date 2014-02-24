@@ -1,4 +1,4 @@
-package de.bandb.costinator;
+package de.bandb.costinator.CustomAdapter;
 
 public class CostgroupListViewItem {
 	
