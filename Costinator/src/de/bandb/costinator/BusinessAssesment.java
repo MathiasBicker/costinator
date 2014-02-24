@@ -7,14 +7,25 @@ package de.bandb.costinator;
 
 import java.util.List;
 
+import org.achartengine.ChartFactory;
+import org.achartengine.model.CategorySeries;
+import org.achartengine.renderer.DefaultRenderer;
+import org.achartengine.renderer.SimpleSeriesRenderer;
+
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class BusinessAssesment extends Activity {
 
@@ -30,6 +41,12 @@ public class BusinessAssesment extends Activity {
 	private TCostgroup 			costgroup;
 	private int					days;
 	private double				sum = 0.0;
+	private OnClickListener 	chartButtonListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			openChart();
+		}
+	};
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -41,6 +58,8 @@ public class BusinessAssesment extends Activity {
 		TextView 	elements 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements);
 		TextView 	costgroupView 	= (TextView) findViewById(R.id.costgroup_business_assesment_costgroup);
 		TextView 	sumView 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum);
+		Button 		chartButton		= (Button) findViewById(R.id.costgroup_business_assesment_btn);
+		chartButton.setOnClickListener(chartButtonListener);
 		//getting information from intent
 		Intent 		intent 			= getIntent();
 		Bundle 		bundle 			= intent.getExtras();
@@ -75,7 +94,6 @@ public class BusinessAssesment extends Activity {
 					   + "; " + perMonth + getResources().getString(R.string.monthly) + "; " + perQuart + getResources().getString(R.string.quart)
 					   + "; " + perYear + getResources().getString(R.string.yearly) + ")");
 	}
-	
 	
 	/**
 	 * @param period period constant form TCostelement
@@ -137,6 +155,50 @@ public class BusinessAssesment extends Activity {
 		return computedValue;
 	}
 
+	private void openChart(){
+		 
+        // Pie Chart Section Names
+        String[] code = new String[] {
+            "Eclair & Older", "Froyo", "Gingerbread", "Honeycomb",
+            "IceCream Sandwich", "Jelly Bean"
+        };
+ 
+        // Pie Chart Section Value
+        double[] distribution = { 3.9, 12.9, 55.8, 1.9, 23.7, 1.8 } ;
+ 
+        // Color of each Pie Chart Sections
+        int[] colors = { Color.BLUE, Color.MAGENTA, Color.GREEN, Color.CYAN, Color.RED,
+                        Color.YELLOW };
+ 
+        // Instantiating CategorySeries to plot Pie Chart
+        CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
+        for(int i=0 ;i < distribution.length;i++){
+            // Adding a slice with its values and name to the Pie Chart
+            distributionSeries.add(code[i], distribution[i]);
+        }
+ 
+        // Instantiating a renderer for the Pie Chart
+        DefaultRenderer defaultRenderer  = new DefaultRenderer();
+        for(int i = 0 ;i<distribution.length;i++){
+            SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
+            seriesRenderer.setColor(colors[i]);
+            seriesRenderer.setDisplayChartValues(true);
+            // Adding a renderer for a slice
+            defaultRenderer.addSeriesRenderer(seriesRenderer);
+        }
+ 
+        defaultRenderer.setChartTitle("Android version distribution as on October 1, 2012 ");
+        defaultRenderer.setChartTitleTextSize(20);
+        defaultRenderer.setZoomButtonsVisible(true);
+ 
+        // Creating an intent to plot bar chart using dataset and multipleRenderer
+        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, "AChartEnginePieChartDemo");
+ 
+        // Start Activity
+        startActivity(intent);
+ 
+    }
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
