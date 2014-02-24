@@ -20,6 +20,7 @@
     <string name="title_activity_business_assesment">Auswertung</string>
     <string name="costgroup">Kostengruppe: </string>
     <string name="btn_pie_chart">Diagramm</string>
+    <string name="categories">Kostenverteilung </string>
     <string name="sum">Summe: </string>
     <string name="dayly">/Tag</string>
     <string name="weekly">/Woche</string>

@@ -171,7 +171,7 @@ public class BusinessAssesment extends Activity {
         	colors[i] = Color.rgb((int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255);
  
         // Instantiating CategorySeries to plot Pie Chart
-        CategorySeries distributionSeries = new CategorySeries(" Android version distribution as on October 1, 2012");
+        CategorySeries distributionSeries = new CategorySeries(getResources().getString(R.string.categories) + costgroup.getName());
         for(int i=0 ;i < distribution.length;i++){
             // Adding a slice with its values and name to the Pie Chart
             distributionSeries.add(code[i], distribution[i]);
