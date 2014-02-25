@@ -67,13 +67,7 @@
             android:text="@string/yearlyAssesmentSpinner" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/title_fragment_dialog_costgroup_business_assesment_seekbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/title_dialog_costgroup_business_assesment_amount_period"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+   
 
     <TextView
         android:id="@+id/title_fragment_dialog_costgroup_business_assesment_seekbar_info_progress"
