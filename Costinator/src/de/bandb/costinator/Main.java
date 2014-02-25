@@ -19,7 +19,6 @@ import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -45,8 +44,6 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	private ListView costgroupList;
 	private ArrayList<CostgroupListViewItem> items;
 	private ImageButton addCostgroup;
-	private ImageButton delCostgroup;
-	private AlertDialog deleteDialog;
 	
 	
 
@@ -56,7 +53,6 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		setContentView(R.layout.activity_main);
 
 		addCostgroup = 			(ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
-		delCostgroup = 			(ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
 		costgroupList = 		(ListView) findViewById(R.id.listViewMain);
 
 		String currency 	= getResources().getString(R.string.currency);

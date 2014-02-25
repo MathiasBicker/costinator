@@ -10,11 +10,7 @@ import java.util.ArrayList;
 import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
-import de.bandb.costinator.database.entities.TCostelement;
-import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.ClipData.Item;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -31,7 +27,6 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	
 	private ListView 							costelementList;
 	private ArrayList<CostelementListViewItem> 	items;
-	private ArrayList<TCostelement> 			elementList;
 	private TextView 							costgroupTitle;
 	private ImageButton 						addCostelement;
 	private OnClickListener addCostelementListener = new OnClickListener() {

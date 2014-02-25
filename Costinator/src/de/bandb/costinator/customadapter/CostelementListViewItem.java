@@ -1,8 +1,5 @@
 package de.bandb.costinator.customadapter;
 
-import android.util.Log;
-import de.bandb.costinator.R;
-import de.bandb.costinator.database.entities.TCostelement;
 
 
 
