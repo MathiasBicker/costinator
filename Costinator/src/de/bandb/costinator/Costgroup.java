@@ -14,6 +14,7 @@ import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.ClipData.Item;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -51,16 +52,34 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		costelementList = (ListView) findViewById(R.id.listViewCostgroup);
 
 		items = new ArrayList<CostelementListViewItem>();
+		String[] periods 	= getResources().getStringArray(R.array.periods);
+		String currency 	= getResources().getString(R.string.currency);
+		String tolerancetxt = getResources().getString(R.string.tolerancetxt);
+		String percent 		= getResources().getString(R.string.percent);
 		
 		//Dummy Data
+		/*
 		double value1 = 200.98;
 		double value2 = 5057.56;
-		String[] periods = getResources().getStringArray(R.array.periods);
 		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1, getResources().getString(R.string.currency), periods[3], getResources().getString(R.string.tolerancetxt) + "15" + getResources().getString(R.string.percent));
 		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , periods[4]);
 		items.add(costelement1);
 		items.add(costelement2);
+		*/
 		//----
+		
+		//Dummy car
+		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[4]);
+		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[2], tolerancetxt + "20" + percent);
+		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[4]);
+		CostelementListViewItem wartung 			= new CostelementListViewItem("Wartung", "Reperaturen, Reifen, etc.", 1500.0, currency, periods[4], tolerancetxt + "100" + percent);
+		CostelementListViewItem finanzierungsrate 	= new CostelementListViewItem("Finanzierungsrate", "Darlehen Sparkasse 6% Zinsen pa.", 628.3, currency, periods[2]);
+		items.add(steuer);
+		items.add(kraftstoff);
+		items.add(versicherung);
+		items.add(wartung);
+		items.add(finanzierungsrate);
+		//-------
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
 		//showing name of costgroup as title
