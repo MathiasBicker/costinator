@@ -99,4 +99,10 @@
     <string name="months">Monate</string>
     <string name="quartals">Quartale</string>
     <string name="years">Jahre</string>
+    
+    <string name="day">Tag</string>
+    <string name="week">Woche</string>
+    <string name="month">Monat</string>
+    <string name="quartal">Quartal</string>
+    <string name="year">Jahr</string>
 </resources>
