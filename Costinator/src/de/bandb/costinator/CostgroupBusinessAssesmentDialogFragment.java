@@ -46,7 +46,7 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 	periods=			(RadioGroup) dialog.findViewById(R.id.radioGroupPeriods);
 	amountPeriods=		(SeekBar) 	 dialog.findViewById(R.id.seekBarAmountPeriods);
 	
-	progressInfo.setText("0"+""+getString(R.string.days));
+	progressInfo.setText("0"+" "+getString(R.string.days));
 	
 	amountPeriods.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -67,27 +67,27 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 			if(period.getText().toString().equals(daily)) {
 				
 				String days = getString(R.string.days);
-				progressInfo.setText(arg1+""+ days);
+				progressInfo.setText(arg1+" "+ days);
 				
 			} else if (period.getText().toString().equals(weekly)) {
 				
 				String weeks = getString(R.string.weeks);
-				progressInfo.setText(arg1+""+ weeks);
+				progressInfo.setText(arg1+" "+ weeks);
 				
 			} else if (period.getText().toString().equals(monthly)) {
 				
 				String months = getString(R.string.months);
-				progressInfo.setText(arg1+""+ months);
+				progressInfo.setText(arg1+" "+ months);
 				
 			} else if (period.getText().toString().equals(quartal)) {
 				
 				String quartals = getString(R.string.quartals);
-				progressInfo.setText(arg1+""+ quartals);
+				progressInfo.setText(arg1+" "+ quartals);
 				
 			} else if (period.getText().toString().equals(yearly)) {
 				
 				String years = getString(R.string.years);
-				progressInfo.setText(arg1+""+ years);
+				progressInfo.setText(arg1+" "+ years);
 			}
 				
 			
