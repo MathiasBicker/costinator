@@ -79,6 +79,12 @@
     <string name="dailyAssesmentSpinner">daily</string>
     <string name="weeklyAssesmentSpinner">weekly</string>
     <string name="monthlyAssesmentSpinner">monthly</string>
-    <string name="quartalAssesmentSpinner">Quartal</string>
+    <string name="quartalAssesmentSpinner">quarter</string>
     <string name="yearlyAssesmentSpinner">yearly</string>
+    
+    <string name="daiys">Days</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
+    <string name="quartals">Quarters</string>
+    <string name="years">Jahre</string>
 </resources>

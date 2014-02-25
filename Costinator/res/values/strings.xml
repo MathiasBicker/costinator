@@ -93,4 +93,10 @@
     <string name="monthlyAssesmentSpinner">monatlich</string>
     <string name="quartalAssesmentSpinner">Quartal</string>
     <string name="yearlyAssesmentSpinner">j&#228;hrlich</string>
+ 
+    <string name="daiys">Tage</string>
+    <string name="weeks">Wochen</string>
+    <string name="months">Monate</string>
+    <string name="quartals">Quartale</string>
+    <string name="years">Jahre</string>
 </resources>
