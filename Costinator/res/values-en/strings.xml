@@ -70,15 +70,15 @@
 	<string name="ButtonSave">Save</string>
 	
 	
-	<!-- Costgroup Business Assesment DialogFragment -->
+<!-- Costgroup Business Assesment DialogFragment -->
     <string name="title_dialog_costgroup_business_assesment">Evaluate Costgroup!</string>
     <string name="title_dialog_costgroup_business_assesment_periode_spinner">Select Period for Result:</string>
     <string name="title_dialog_costgroup_business_assesment_periode_tolerance">Select expectable Cost-Scenario:</string>
-    <string name="ButtonEvaluate">Auswerten!</string>
-     <string-array name="scenarios" formatted="false">
-        <item>--optional--</item>
-        <item>Best Case: Costs -5% until -30%</item>
-        <item>Average Case: </item>
-        <item>Worst Case: Costs +5% until +30%</item>
-    </string-array>
+     <string name="title_dialog_costgroup_business_assesment_amount_period">Select Amount of Periods:</string>
+    <string name="ButtonEvaluate">Evaluate</string>
+    <string name="dailyAssesmentSpinner">daily</string>
+    <string name="weeklyAssesmentSpinner">weekly</string>
+    <string name="monthlyAssesmentSpinner">monthly</string>
+    <string name="quartalAssesmentSpinner">Quartal</string>
+    <string name="yearlyAssesmentSpinner">yearly</string>
 </resources>

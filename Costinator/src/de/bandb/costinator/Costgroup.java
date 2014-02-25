@@ -252,7 +252,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 
 	@Override
 	public void setOnSubmitListenerCostgroupBusinessAssesment(String periode,
-			String scenario) {
+			int amountPeriods) {
 	}
 }
 	
