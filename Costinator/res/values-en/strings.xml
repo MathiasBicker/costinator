@@ -6,7 +6,7 @@
     <string name="app_name">Costinator</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="currency">&#36;</string>
+    <string name="currency">&#36; </string>
    
     <!-- Main -->
     <string name="title_activity_main">Costgroups</string>
@@ -15,11 +15,11 @@
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Business assesment</string>
-    <string name="dayly"> per day</string>
-    <string name="weekly"> per week</string>
-    <string name="monthly"> per month</string>
-    <string name="quart"> per quarter</string>
-    <string name="yearly"> per year</string>
+    <string name="dayly">per day</string>
+    <string name="weekly">per week</string>
+    <string name="monthly">per month</string>
+    <string name="quart">per quarter</string>
+    <string name="yearly">per year</string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
