@@ -24,6 +24,14 @@ public class TCostgroup implements Serializable{
 	@DatabaseField(columnName="C_DESCRIPTION", canBeNull=true)
 	private String description;
 	
+	private TCostelement[] elements;
+	
+	public TCostelement[] getElements() {
+		return elements;
+	}
+	public void setElements(TCostelement[] elements) {
+		this.elements = elements;
+	}
 	public int getId() {
 		return id;
 	}

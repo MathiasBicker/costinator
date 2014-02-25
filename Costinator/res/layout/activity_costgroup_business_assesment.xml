@@ -28,16 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/business_assesment_elements"
-        android:layout_alignTop="@+id/business_assesment_elements"
-        android:text="TextView" />
+        android:layout_alignTop="@+id/business_assesment_elements" />
 
     <TextView
         android:id="@+id/costgroup_business_assesment_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/business_assesment_elements"
-        android:layout_below="@+id/costgroup_business_assesment_elements"
-        android:text="TextView" />
+        android:layout_below="@+id/costgroup_business_assesment_elements" />
 
     <Button
         android:id="@+id/costgroup_business_assesment_btn"

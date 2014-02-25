@@ -109,15 +109,7 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 					progressInfo.setText(arg1+" "+ year);
 				}
 				progressInfo.setText(arg1+" "+ years);
-			}
-				
-			
-			
-			
-			
-			
-			
-			
+			}	
 		}
 
 		@Override

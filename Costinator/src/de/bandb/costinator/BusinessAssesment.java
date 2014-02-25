@@ -5,8 +5,6 @@ package de.bandb.costinator;
  * version: 1.0
  */
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.model.CategorySeries;
@@ -29,14 +27,13 @@ import android.widget.TextView;
 public class BusinessAssesment extends Activity {
 
 	public static final String LOGTAG 			= "BusinessAssesment";
-	public static final String ELEMENTLISTTAG 	= "elementlist";
 	public static final String COSTGROUPTAG 	= "costgroup";
 	public static final String DAYSTAG 			= "days";
 	//error messages
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
 	
-	private ArrayList<TCostelement> 	elementList;
+	private TCostelement[] 				elementList;
 	private TCostgroup 					costgroup;
 	private int							days;
 	private double						sum	= 0.0;
@@ -47,11 +44,10 @@ public class BusinessAssesment extends Activity {
 		}
 	};
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_business_assesment);
+		setContentView(R.layout.activity_costgroup_business_assesment);
 		
 		//initializing widgets
 		TextView 	elements 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements);
@@ -63,15 +59,15 @@ public class BusinessAssesment extends Activity {
 		Intent 		intent 			= getIntent();
 		Bundle 		bundle 			= intent.getExtras();
 		if(bundle != null) {
-			elementList = (ArrayList<TCostelement>) bundle.get(ELEMENTLISTTAG);
 			costgroup 	= (TCostgroup) bundle.get(COSTGROUPTAG);
+			elementList = costgroup.getElements();
 			days 		= bundle.getInt(DAYSTAG);
 			//displaying name of costgroup
 			costgroupView.append(costgroup.getName());
 		}
 		
 		//checking if elementlist is empty
-		if(elementList.isEmpty()) {
+		if(elementList.length == 0) {
 			Log.e(LOGTAG, EMPTYLIST);
 			throw new RuntimeException(EMPTYLIST);
 		}
@@ -157,17 +153,17 @@ public class BusinessAssesment extends Activity {
 	private void openChart(){
 		 
         // Pie Chart Section Names
-        String[] code = new String[elementList.size()];
+        String[] code = new String[elementList.length];
         for(int i = 0; i < code.length; i++)
-        	code[i] = elementList.get(i).getName();
+        	code[i] = elementList[i].getName();
  
         // Pie Chart Section Value
-        double[] distribution = new double[elementList.size()];
+        double[] distribution = new double[elementList.length];
         for(int i = 0; i < distribution.length; i++)
-        	distribution[i] = elementList.get(i).getValue();
+        	distribution[i] = elementList[i].getValue();
         
         // generating colors
-        int[] colors = new int[elementList.size()];
+        int[] colors = new int[elementList.length];
         for(int i = 0; i < colors.length; i++)
         	colors[i] = Color.rgb((int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255);
  
