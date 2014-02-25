@@ -48,7 +48,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		addCostelement 		= (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
 		costelementList 	= (ListView) findViewById(R.id.listViewCostgroup);
 		costgroupDesc		= (TextView) findViewById(R.id.textViewTitleCostgroupDesc);
-		costgroupTotalCost  = (TextView) findViewById(R.id.textViewCostgroupTotalCost);
+		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
 
 		items = new ArrayList<CostelementListViewItem>();
 		String[] periods 	= getResources().getStringArray(R.array.periods);

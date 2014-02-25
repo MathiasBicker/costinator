@@ -67,7 +67,7 @@
     
      <!-- Costgroup Business Assesment DialogFragment -->
     <string name="title_dialog_costgroup_business_assesment">Kostgruppe auswerten!</string>
-    <string name="title_dialog_costgroup_business_assesment_periode_spinner">Periode für Ergebnis auswählen:</string>
+    <string name="title_dialog_costgroup_business_assesment_periode_spinner">Periodizität auswählen:</string>
     <string name="title_dialog_costgroup_business_assesment_periode_tolerance">Zu erwartendes Kosten-Szenario auswählen:</string>
     <string name="title_dialog_costgroup_business_assesment_amount_period">Anzahl an Perioden auswählen:</string>
     <string name="ButtonEvaluate">Auswerten</string>
