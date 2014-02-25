@@ -33,7 +33,7 @@
     <string name="name_RadioButton_PeriodicalFixed">fix-periodische Kosten</string>
    <string name="title_datePicker_Start">Beginn Zahlung Datum auswählen:</string>
     <string name="title_datePicker_End">Ende Zahlung Datum auswählen:</string>
-    <string name="title_save_costelement">Speichern!</string>
+    <string name="title_save_costelement">Speichern</string>
     
      <string-array name="periods">
         <item>--bitte auswählen--</item>
