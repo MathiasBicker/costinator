@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="1000dp"
+	android:minHeight="200dp"
+    android:orientation="vertical" >
+    
+	<TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment" 
+        android:text="@string/title_dialog_costgroup_business_assesment" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <View
+        android:id="@+id/lineMain_costgroup_business_assesment"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/White" />
+    
+    <TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment_spinner_periode" 
+        android:text="@string/title_dialog_costgroup_business_assesment_periode_spinner" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <Spinner
+        android:id="@+id/spinner_costgroup_business_assesment_periode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:entries="@array/periods" />
+    
+     <TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment_spinner_tolerance" 
+        android:text="@string/title_dialog_costgroup_business_assesment_periode_tolerance" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <Spinner
+        android:id="@+id/spinner_costgroup_business_assesment_scenario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:entries="@array/scenarios" />
+    
+    <Button
+         android:id="@+id/button_costgroup_business_assesment_evaluate"
+         android:layout_width="@dimen/button_width"
+         android:layout_height="@dimen/button_height"
+         android:layout_gravity="center_horizontal"
+         android:layout_marginTop="10dp"
+         android:background="@color/OrangeDark"
+         android:text="@string/ButtonEvaluate" />
+    
+    
+</LinearLayout>

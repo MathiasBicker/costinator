@@ -9,7 +9,10 @@
     <dimen name="marginBottom">30dp</dimen>
     
     <!-- default buttonlayout -->
-	 <dimen name="button_height">40dp</dimen>
+	<dimen name="button_height">40dp</dimen>
     <dimen name="button_width">150dp</dimen>
     
+    <!-- popup size AddCostgroupDialogFrament -->
+    <dimen name="addCostgroupDialog_width">300dp</dimen>
+    <dimen name="addCostgroupDialog_height">500dp</dimen>
 </resources>

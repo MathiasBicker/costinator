@@ -20,6 +20,7 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	private EditText	costgroupDescription;
 	private Button 		saveButton;
 	
+	
 	public AddCostgroupDialogFragment() {}
 	
 	interface onSubmitListener {  
@@ -32,12 +33,11 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	public Dialog onCreateDialog(Bundle savedInstanceState) {  
 	final Dialog dialog = new Dialog(getActivity());  
 	dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);  
-	dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);  
+	dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	dialog.setContentView(R.layout.fragment_add_costgroup);
-	
 	dialog.show();
 		
-	saveButton 		= 		(Button) dialog.findViewById(R.id.buttonSave);  
+	saveButton 		= 		(Button) dialog.findViewById(R.id.buttonSaveCostgroup);
 	costgroupName 	= 		(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_name); 
 	costgroupDescription=	(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_description);
 	
@@ -45,8 +45,6 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 		@Override  
 		public void onClick(View v) {  
 		    mListener.setOnSubmitListener(costgroupName.getText().toString(), costgroupDescription.getText().toString()); 
-		   
-		    
 		    dismiss();  
 		}  
 	});  

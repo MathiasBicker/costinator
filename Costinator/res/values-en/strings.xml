@@ -62,4 +62,17 @@
     <string name="title_dialog_add_costgroup">Add new costgroup</string>
     <string name="hint_dialog_name_costgroup">Costgroup name</string>
 	<string name="ButtonSave">Save</string>
+	
+	
+	<!-- Costgroup Business Assesment DialogFragment -->
+    <string name="title_dialog_costgroup_business_assesment">Evaluate Costgroup!</string>
+    <string name="title_dialog_costgroup_business_assesment_periode_spinner">Select Period for Result:</string>
+    <string name="title_dialog_costgroup_business_assesment_periode_tolerance">Select expectable Cost-Scenario:</string>
+    <string name="ButtonEvaluate">Auswerten!</string>
+     <string-array name="scenarios" formatted="false">
+        <item>--optional--</item>
+        <item>Best Case: Costs -5% until -30%</item>
+        <item>Average Case: </item>
+        <item>Worst Case: Costs +5% until +30%</item>
+    </string-array>
 </resources>
