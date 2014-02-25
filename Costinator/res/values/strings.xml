@@ -8,7 +8,7 @@
     <string name="app_name">Kostinator</string>
     <string name="action_settings">Einstellungen</string>
     <string name="hello_world">Hallo Welt!</string>
-    <string name="currency">€</string>
+    <string name="currency">&#8364;</string>
     
 
     <!-- Main -->
@@ -45,17 +45,17 @@
     <string name="value_hint">Wert</string>
     <string name="name_RadioButton_OnetimeFixed">fix-einmalige Kosten</string>
     <string name="name_RadioButton_PeriodicalFixed">fix-periodische Kosten</string>
-    <string name="title_datePicker_Start">Beginn Zahlung Datum auswählen:</string>
+    <string name="title_datePicker_Start">Beginn Zahlung Datum ausw&#228;hlen:</string>
     <string name="title_datePicker_End">Ende Zahlung Datum auswählen:</string>
     <string name="title_save_costelement">Speichern!</string>
     
     <string-array name="periods">
         <item>--bitte auswählen--</item>
-        <item>täglich</item>
-        <item>wöchentlich</item>
+        <item>t&#228;glich</item>
+        <item>w&#246;chentlich</item>
         <item>monatlich</item>
         <item>Quartal</item>
-        <item>jährlich</item>
+        <item>j&#228;hrlich</item>
     </string-array>
      <string-array name="tolerances">
         <item>--optional--</item>
