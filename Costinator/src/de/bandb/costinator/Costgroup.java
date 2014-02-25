@@ -66,8 +66,9 @@ public class Costgroup extends Activity {
 		 */
 		double value1 = 200.98;
 		double value2 = 5057.56;
-		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1, getResources().getString(R.string.currency), getResources().getString(R.string.weekly), getResources().getString(R.string.tolerancetxt) + getResources().getString(R.string.percent));
-		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , getResources().getString(R.string.yearly));
+		String[] periods = getResources().getStringArray(R.array.periods);
+		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1, getResources().getString(R.string.currency), periods[3], getResources().getString(R.string.tolerancetxt) + "15" + getResources().getString(R.string.percent));
+		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , periods[4]);
 		items.add(costelement1);
 		items.add(costelement2);
 
