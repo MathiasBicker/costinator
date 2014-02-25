@@ -40,12 +40,7 @@
             android:label="@string/title_activity_costgroup_business_assesment" >
         </activity>
         <activity
-            android:name="de.bandb.costinator.NewCostelementOntime"
-            android:label="@string/title_activity_new_costelement_ontime"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
-        <activity
-            android:name="de.bandb.costinator.NewCostelementPeriodical"
+            android:name="de.bandb.costinator.NewCostelement"
             android:label="@string/title_activity_new_costelement_periodical"
             android:windowSoftInputMode="stateHidden" >
         </activity>

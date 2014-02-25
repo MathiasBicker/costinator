@@ -48,33 +48,31 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
             v = vi.inflate(R.layout.activity_costgroup_listview_item, null);
          }
  
-          TextView name = (TextView) v.findViewById(R.id.textViewCostelementName);
-          TextView value = (TextView) v.findViewById(R.id.textViewCostelementValue);
-          TextView startDate = (TextView) v.findViewById(R.id.textViewCostelementDateStart);
-          TextView endDate = (TextView) v.findViewById(R.id.textViewCostelementDateEnd);
-          TextView periode = (TextView) v.findViewById(R.id.textViewCostelementPeriode);
-          
+          TextView name = 		(TextView) v.findViewById(R.id.textViewCostelementName);
+          TextView desc  = 		(TextView) v.findViewById(R.id.textViewCostelementDesc);
+          TextView value = 		(TextView) v.findViewById(R.id.textViewCostelementValue);
+          TextView periode =	(TextView) v.findViewById(R.id.textViewCostelementPeriode);
+          TextView tolerance = 	(TextView) v.findViewById(R.id.textViewCostelementToleranz);
+          TextView currency = 	(TextView) v.findViewById(R.id.textViewCostelementCurrency);
           
           
           CostelementListViewItem item = data.get(position);
           
           name.setText(item.getName());
+         
+          desc.setText(item.getDesc());
           
           String valueString = String.valueOf(item.getValue());
           value.setText(valueString);
           
-          String dateStartString = item.getStartDate().toString();
-          startDate.setText(dateStartString);
-          
-          if(item.getEndDate() != null) {
+          periode.setText(item.getPeriode());
         	  
+          tolerance.setText(item.getTolerance());
           
-          String dateEndString = String.valueOf(item.getEndDate());
-          endDate.setText(dateEndString);
+          currency.setText(item.getCurrency());
           
-          periode.setText(item.getName());
           
-          }
+          
                         
         return v;
 		

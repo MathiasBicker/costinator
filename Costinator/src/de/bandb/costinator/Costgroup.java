@@ -6,7 +6,6 @@ package de.bandb.costinator;
  */
 
 import java.util.ArrayList;
-import java.util.Date;
 
 
 import de.bandb.costinator.customadapter.CostelementListViewItem;
@@ -15,8 +14,8 @@ import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
+
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,8 +28,10 @@ import android.widget.TextView;
 public class Costgroup extends Activity {
 	
 	
-	static final int ONTIME_COSTELEMENT_REQUEST = 0;
-	static final int PERIODICAL_COSTELEMENT_REQUEST = 1;
+	static final int NEW_COSTELEMENT_REQUEST = 10;
+	
+	static final String CURRENCY_EURO = "€";
+	static final String CURRENCY_DOLLAR_US = "$";
 	
 	private ListView costelementList;
 	private ArrayList<CostelementListViewItem> items;
@@ -39,10 +40,9 @@ public class Costgroup extends Activity {
 	private TextView costgroupTitle;
 	private ImageButton addCostelement;
 	
-	private AlertDialog costClassDialog;
-	private String ontime;
-	private String periodical; 
-	private String[] costClasses;  
+	
+	
+	  
 	
 	 
 
@@ -55,9 +55,8 @@ public class Costgroup extends Activity {
 		addCostelement = (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
 		costelementList = (ListView) findViewById(R.id.listViewCostgroup);
 		
-		ontime = getString(R.string.name_RadioButton_OnetimeFixed);
-		periodical = getString(R.string.name_RadioButton_PeriodicalFixed);
-		costClasses = new String[] {ontime, periodical};
+		
+		
 		
 		items = new ArrayList<CostelementListViewItem>();
 		
@@ -65,11 +64,10 @@ public class Costgroup extends Activity {
 		/**
 		 * Dummy Data
 		 */
-		Date date = new Date();
-		String dateString = date.toString();
-		double value = 200.98;
-		CostelementListViewItem costelement1 = new CostelementListViewItem("Werkstatt", value, dateString);
-		CostelementListViewItem costelement2 = new CostelementListViewItem("Werkstatt", value +1, dateString, dateString, "monatlich");
+		double value1 = 200.98;
+		double value2 = 5057.56;
+		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1,"€", "wöchentlich", "Toleranz: 15%" );
+		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2,"€" , "jährlich");
 		items.add(costelement1);
 		items.add(costelement2);
 
@@ -80,25 +78,7 @@ public class Costgroup extends Activity {
 		String title = intent.getStringExtra(Main.COSTGROUP_TITLE);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
 		
-		//Kostenkategorie Dialog
-		AlertDialog.Builder builder = new AlertDialog.Builder(Costgroup.this);
-		builder.setTitle(R.string.title_activity_select_category);
-		builder.setIcon(R.drawable.ic_action_new);
-		builder.setItems(costClasses, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if (which == 0) {
-					Intent intent = new Intent(Costgroup.this, NewCostelementOntime.class);
-					startActivityForResult(intent, ONTIME_COSTELEMENT_REQUEST);
-				} else {
-					Intent intent = new Intent(Costgroup.this, NewCostelementPeriodical.class);
-					startActivityForResult(intent, PERIODICAL_COSTELEMENT_REQUEST);	
-				}
-			}
-		});
-
-		builder.setCancelable(true);
-		costClassDialog = builder.create();
+		
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 	}
@@ -118,7 +98,9 @@ public class Costgroup extends Activity {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
 	        case R.id.action_addCostelement:
-	        	costClassDialog.show();
+	        	
+	        	Intent intentNew = new Intent(Costgroup.this, NewCostelement.class);
+				startActivityForResult(intentNew, NEW_COSTELEMENT_REQUEST);
 	        	
 	            return true;
 	        case R.id.action_settings:
@@ -178,7 +160,8 @@ public class Costgroup extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			costClassDialog.show();
+			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
+			startActivityForResult(intent, NEW_COSTELEMENT_REQUEST);
 			
 			
 
@@ -191,41 +174,36 @@ public class Costgroup extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request we're responding to
-	    if (requestCode == ONTIME_COSTELEMENT_REQUEST) {
+	    if (requestCode == NEW_COSTELEMENT_REQUEST) {
 	        // Make sure the request was successful
 	        if (resultCode == RESULT_OK) {
 	            
+	        		String name =		data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_NAME);
+		            String desc =		data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_DESC);
+		            double value = 		data.getDoubleExtra(NewCostelement.PERIODICAL_COSTELEMENT_VALUE, 0);
+		            String periode = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_PERIODE);
+		            String tolerance = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_TOLERANCE);
+		            
+		            //Wenn User --opitonal-- bei Spinner tolerance auswählt, dann darf dies nicht im Layout angezeigt werden
+		            String[] periodes = getResources().getStringArray(R.array.tolerances);
+		            //--opitonal-- wert
+		            String optionalString= periodes[0];
+		            	
+		            if(tolerance.equals(optionalString)) 
+		            tolerance = "";
+		            
+		            CostelementListViewItem newCostelement = new CostelementListViewItem(name, desc, value,CURRENCY_EURO, periode, tolerance); 
+		            addCostelement(newCostelement);
 	        	
-	        	//TODO Handle Receive Data put to ListView
 	        	
 	        	} else {
 	        	//TODO Exception
 	        	
 	        	} 
 	        
-	    } else if (requestCode == PERIODICAL_COSTELEMENT_REQUEST) {
-	    	
-	    	if (resultCode == RESULT_OK) {
-	            String name =data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_NAME);
-	            double value = data.getDoubleExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_VALUE, 0);
-	            String startDate = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_STARTDATE);
-	            String endDate = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_ENDDATE);
-	            String periode = data.getStringExtra(NewCostelementPeriodical.PERIODICAL_COSTELEMENT_PERIODE);
-	            
-	            CostelementListViewItem newCostelement = new CostelementListViewItem(name, value, startDate, endDate, periode);
-	            addCostelement(newCostelement);
-	    		
-	    		
-	    		
-	    		
-	    		} else {
-	        	//TODO Exception
-	        	
-	    		} 
-	    }	
-	        	
-	        
-	    }
+	    } 
+	    		  
+	}
 	
 	public void addCostelement (CostelementListViewItem costelement) {
 		

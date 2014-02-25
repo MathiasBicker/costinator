@@ -5,29 +5,42 @@ package de.bandb.costinator.customadapter;
 public class CostelementListViewItem {
 
 	private String name;
+	private String desc;
 	private double value;
-	private String startDate;
-	private String endDate;
+	private String tolerance;
 	private String periode;
+	private String currency;
 
-	public CostelementListViewItem(String name, double value, String startDate,
-			String endDate, String periode) {
+	public CostelementListViewItem(String name, String desc, double value, String currency, String periode, String tolerance) {
 
 		this.name = name;
+		this.desc = desc;
 		this.value = value;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.currency = currency;
 		this.periode = periode;
+		this.tolerance = tolerance;
+		
 
 	}
 	
-	public CostelementListViewItem(String name, double value, String startDate) {
+	public CostelementListViewItem(String name, String desc, double value, String currency, String periode) {
 
 		this.name = name;
+		this.desc = desc;
 		this.value = value;
-		this.startDate = startDate;
+		this.currency = currency;
+		this.periode = periode;
+		
 		
 
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 
 	public String getName() {
@@ -38,6 +51,14 @@ public class CostelementListViewItem {
 		this.name = name;
 	}
 
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 	public double getValue() {
 		return value;
 	}
@@ -46,20 +67,12 @@ public class CostelementListViewItem {
 		this.value = value;
 	}
 
-	public String getStartDate() {
-		return startDate;
+	public String getTolerance() {
+		return tolerance;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-
-	public String getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setTolerance(String tolerance) {
+		this.tolerance = tolerance;
 	}
 
 	public String getPeriode() {
@@ -69,6 +82,8 @@ public class CostelementListViewItem {
 	public void setPeriode(String periode) {
 		this.periode = periode;
 	}
-
+	
+	
+	
 	
 }

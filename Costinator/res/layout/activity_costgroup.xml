@@ -47,7 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_action_new"
-        android:background="@color/White"
+        android:background="@color/transparenz"
         android:clickable="true"
         android:focusable="false" />
     

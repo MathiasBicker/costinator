@@ -41,28 +41,33 @@
     <string name="title_activity_new_costelement">Neues Kostenelement erstellen</string>
     <string name="title_activity_select_category">Wählen Sie bitte eine Kostenkategorie:</string>
     <string name="name_hint">Name</string>
+    <string name="desc_hint">Beschreibung</string>
     <string name="value_hint">Wert</string>
     <string name="name_RadioButton_OnetimeFixed">fix-einmalige Kosten</string>
     <string name="name_RadioButton_PeriodicalFixed">fix-periodische Kosten</string>
     <string name="title_datePicker_Start">Beginn Zahlung Datum auswählen:</string>
     <string name="title_datePicker_End">Ende Zahlung Datum auswählen:</string>
     <string name="title_save_costelement">Speichern!</string>
-
-    <!-- NewCostelementOntime -->
-    <string name="title_activity_new_costelementOntime">Neues fix-einmaliges Kostenelement erstellen</string>
-    <string name="title_datePicker_date_ontime">Fälligkeitsdatum auswählen:</string>
     
-    <!-- NewCostelementPeriodical -->
-    <string name="title_activity_new_costelementPeriodical">Neues fix-periodisches Kostenelement erstellen</string>
     <string-array name="periods">
+        <item>--bitte auswählen--</item>
         <item>täglich</item>
         <item>wöchentlich</item>
         <item>monatlich</item>
         <item>Quartal</item>
         <item>jährlich</item>
     </string-array>
+     <string-array name="tolerances">
+         <item>--optional--</item>
+        <item>5%</item>
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>25%</item>
+        <item>30%</item>
+    </string-array>
     <string name="title_period_spinner">Periode auswählen:</string>
-    
+    <string name="title_tolerance_spinner">Toleranz auswählen:</string>
     
     
     <!-- NewCostgroup -->

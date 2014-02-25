@@ -7,5 +7,9 @@
     <!-- layout=>activity_main -->
     <dimen name="marginTop_Listview">50dp</dimen>
     <dimen name="marginBottom">30dp</dimen>
-
+    
+    <!-- default buttonlayout -->
+	 <dimen name="button_height">40dp</dimen>
+    <dimen name="button_width">150dp</dimen>
+    
 </resources>

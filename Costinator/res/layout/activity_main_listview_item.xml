@@ -44,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageButtonCostgroupDelete"
         android:layout_alignParentLeft="true"
-        
+        android:textColor="@color/OrangeDark"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView

@@ -19,7 +19,7 @@ import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -55,20 +55,17 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		addCostgroup = (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
-		//Muellheimer icon
-		delCostgroup = (ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
-		costgroupList = (ListView) findViewById(R.id.listViewMain);
+		addCostgroup = 			(ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
+		delCostgroup = 			(ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
+		costgroupList = 		(ListView) findViewById(R.id.listViewMain);
 
 		items = new ArrayList<CostgroupListViewItem>();
 
 		/**
 		 * Dummy Data
 		 */
-		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX",
-				"-6634,61/month Û");
-		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3",
-				"-345,15/month Û");
+		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month Û");
+		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3", "-45,15/month Û");
 		items.add(costgroup1);
 		items.add(costgroup2);
 
