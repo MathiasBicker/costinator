@@ -7,16 +7,15 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
-
+import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.app.Activity;
-
-
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Costgroup extends Activity {
+public class Costgroup extends FragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
 	
 	static final int NEW_COSTELEMENT_REQUEST = 10;
 	
@@ -91,36 +90,41 @@ public class Costgroup extends Activity {
 	            //openSettings();
 	            return true;
 	        case R.id.action_assessCostgroup:
-	        	Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
 	        	
-	        	TCostgroup costgroup = new TCostgroup();
-	        	costgroup.setDescription("Stephanstr. 27A");
-	        	costgroup.setId(1);
-	        	costgroup.setName("Haus");
-	        	
-	        	TCostelement costelement1 = new TCostelement();
-	        	costelement1.setCostgroup(costgroup);
-	        	costelement1.setDescription("Frau Schmitt");
-	        	costelement1.setName("Putzfrau");
-	        	costelement1.setPeriod(2);
-	        	costelement1.setValue(100);
-	        	costelement1.setId(1);
-	        	
-	        	TCostelement costelement2 = new TCostelement();
-	        	costelement2.setCostgroup(costgroup);
-	        	costelement2.setDescription("Sch�ferhund");
-	        	costelement2.setName("Wachhund");
-	        	costelement2.setPeriod(3);
-	        	costelement2.setValue(1000);
-	        	costelement2.setId(2);
-	        	
-	        	elementList = new ArrayList<TCostelement>();
-	        	elementList.add(costelement1);
-	        	elementList.add(costelement2);
-	        	
-	        	int days = 180;
-	        	intent.putExtra(BusinessAssesment.DAYSTAG, days);
-	        	startActivity(intent);
+	        	CostgroupBusinessAssesmentDialogFragment fragment = new CostgroupBusinessAssesmentDialogFragment();
+				fragment.mListener = Costgroup.this;
+				fragment.show(getSupportFragmentManager(), "");
+				
+//	        	Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
+//	        	
+//	        	TCostgroup costgroup = new TCostgroup();
+//	        	costgroup.setDescription("Stephanstr. 27A");
+//	        	costgroup.setId(1);
+//	        	costgroup.setName("Haus");
+//	        	
+//	        	TCostelement costelement1 = new TCostelement();
+//	        	costelement1.setCostgroup(costgroup);
+//	        	costelement1.setDescription("Frau Schmitt");
+//	        	costelement1.setName("Putzfrau");
+//	        	costelement1.setPeriod(2);
+//	        	costelement1.setValue(100);
+//	        	costelement1.setId(1);
+//	        	
+//	        	TCostelement costelement2 = new TCostelement();
+//	        	costelement2.setCostgroup(costgroup);
+//	        	costelement2.setDescription("Sch�ferhund");
+//	        	costelement2.setName("Wachhund");
+//	        	costelement2.setPeriod(3);
+//	        	costelement2.setValue(1000);
+//	        	costelement2.setId(2);
+//	        	
+//	        	elementList = new ArrayList<TCostelement>();
+//	        	elementList.add(costelement1);
+//	        	elementList.add(costelement2);
+//	        	
+//	        	int days = 180;
+//	        	intent.putExtra(BusinessAssesment.DAYSTAG, days);
+//	        	startActivity(intent);
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
@@ -164,6 +168,13 @@ public class Costgroup extends Activity {
 	public void addCostelement (CostelementListViewItem costelement) {
 		items.add(costelement);
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
+	}
+
+	@Override
+	public void setOnSubmitListenerCostgroupBusinessAssesment(String periode,
+			String scenario) {
+		
+		
 	}
 }
 	
