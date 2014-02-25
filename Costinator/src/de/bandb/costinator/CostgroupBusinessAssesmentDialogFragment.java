@@ -14,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-
 import android.widget.TextView;
 
 public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
@@ -55,7 +54,27 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 			int selectedId= periods.getCheckedRadioButtonId();
 			period = (RadioButton) dialog.findViewById(selectedId);
 			
-			progressInfo.setText(period.getText().toString()+""+arg1);
+			String daily = getString(R.string.dailyAssesmentSpinner);
+			String weekly = getString(R.string.weeklyAssesmentSpinner);
+			String monthly = getString(R.string.monthlyAssesmentSpinner);
+			String quartal = getString(R.string.quartalAssesmentSpinner);
+			String yearly = getString(R.string.yearlyAssesmentSpinner);
+			
+			String showAsInfo;
+			
+			if(period.getText().toString().equals(daily)) {
+				
+				String days = getString(R.string.days);
+				progressInfo.setText(""+arg1);
+			}
+				
+			
+			
+			
+			
+			
+			
+			progressInfo.setText(""+arg1);
 		}
 
 		@Override
