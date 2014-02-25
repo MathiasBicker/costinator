@@ -152,8 +152,10 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
 		//showing name of costgroup as title
-		Intent intent 	= getIntent();
-		String title	= intent.getStringExtra(Main.COSTGROUP_TITLE);
+		Intent intent 		= getIntent();
+		String title		= intent.getStringExtra(Main.COSTGROUP_TITLE);
+		String desc			= intent.getStringExtra(Main.COSTGROUP_DESC);
+		String totalCost	= intent.getStringExtra(Main.COSTGROUP_TOTAL_COAST);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
 		
 		addCostelement.setOnClickListener(addCostelementListener);
