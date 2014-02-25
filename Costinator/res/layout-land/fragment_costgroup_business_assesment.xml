@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="400dp"
+    android:minWidth="1000dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_dialog_costgroup_business_assesment"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/lineMain_costgroup_business_assesment"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/Black" />
+
+    <TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment_spinner_periode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/title_dialog_costgroup_business_assesment_periode_spinner"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroupPeriods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <RadioButton
+            android:id="@+id/radioDaily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/dailyAssesmentSpinner" />
+
+        <RadioButton
+            android:id="@+id/radioWeekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weeklyAssesmentSpinner" />
+
+        <RadioButton
+            android:id="@+id/radioMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monthlyAssesmentSpinner" />
+        
+         <RadioButton
+            android:id="@+id/radioQuartal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quartalAssesmentSpinner" />
+         
+         <RadioButton
+            android:id="@+id/radioYearly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yearlyAssesmentSpinner" />
+    </RadioGroup>
+
+   
+
+    <TextView
+        android:id="@+id/title_fragment_dialog_costgroup_business_assesment_seekbar_info_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="130dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <SeekBar
+        android:id="@+id/seekBarAmountPeriods"
+        android:max="30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" />
+    
+    <Button
+        android:id="@+id/button_costgroup_business_assesment_evaluate"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/OrangeDark"
+        android:text="@string/ButtonEvaluate" />
+
+</LinearLayout>

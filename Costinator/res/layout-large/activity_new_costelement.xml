@@ -1,18 +1,114 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".NewCostelement" >
-    
-    <!-- large layout activity new costelement -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewTitleCostelement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/title_activity_new_costelement"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <View
+            android:id="@+id/lineMain"
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_alignLeft="@+id/textViewTitleCostelement"
+            android:layout_below="@+id/textViewTitleCostelement"
+            android:background="@color/Black" />
+
+        <EditText
+            android:id="@+id/editTextCostelementName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lineMain"
+            android:layout_alignRight="@+id/lineMain"
+            android:layout_below="@+id/lineMain"
+            android:layout_marginTop="29dp"
+            android:ems="10"
+            android:hint="@string/name_hint"
+            android:inputType="text" />
+        
+
+         <EditText
+            android:id="@+id/editTextCostelementDesc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextCostelementName"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:hint="@string/desc_hint"
+            android:inputType="text" />
+        
+        
+         <EditText
+            android:id="@+id/editTextCostelementValue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextCostelementDesc"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:hint="@string/value_hint"
+            android:inputType="numberDecimal" />
+        
+          <TextView
+            android:id="@+id/textViewTitleSpinnerTitleTolerance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextCostelementValue"
+            android:layout_marginTop="18dp"
+            android:text="@string/title_tolerance_spinner"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/spinnerCostelementTolerance"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitleSpinnerTitleTolerance"
+            android:entries="@array/tolerances" />
+         
+         
+        <TextView
+            android:id="@+id/textViewTitleSpinnerTitlePeriode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerCostelementTolerance"
+            android:layout_marginTop="18dp"
+            android:text="@string/title_period_spinner"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <Spinner
+            android:id="@+id/spinnerCostelementPeriodical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitleSpinnerTitlePeriode"
+            android:entries="@array/periods" />
+      
+        
+        <Button
+            android:id="@+id/buttonSaveCostelement"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@+id/spinnerCostelementPeriodical"
+            android:background="@color/OrangeDark"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/title_save_costelement" />
+
+       
+
+        
+
+  
+    </RelativeLayout>
+
+</ScrollView>

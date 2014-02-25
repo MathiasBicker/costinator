@@ -38,7 +38,7 @@
     <string name="name_RadioButton_PeriodicalFixed">periodical-fixed Costs</string>
     <string name="title_datePicker_Start">Select Payment Start Date:</string>
     <string name="title_datePicker_End">Select Payment End Date:</string>
-    <string name="title_save_costelement">Save!</string>
+    <string name="title_save_costelement">Save</string>
    
     <string-array name="periods">
         <item>--please select--</item>

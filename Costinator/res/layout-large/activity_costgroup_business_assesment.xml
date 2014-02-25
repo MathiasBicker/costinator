@@ -7,12 +7,44 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CostgroupBusinessAssesment" >
-    
-    <!-- large layout activity costgroup business assesment -->
+
+    <!-- default layout activity costgroup business assesment -->
 
     <TextView
+        android:id="@+id/costgroup_business_assesment_costgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/costgroup" />
+
+    <TextView
+        android:id="@+id/business_assesment_elements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/costgroup_business_assesment_costgroup"
+        android:layout_below="@+id/costgroup_business_assesment_costgroup" />
+
+    <TextView
+        android:id="@+id/costgroup_business_assesment_elements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/business_assesment_elements"
+        android:layout_alignTop="@+id/business_assesment_elements"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/costgroup_business_assesment_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/business_assesment_elements"
+        android:layout_below="@+id/costgroup_business_assesment_elements"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/costgroup_business_assesment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_pie_chart" />
 
 </RelativeLayout>
