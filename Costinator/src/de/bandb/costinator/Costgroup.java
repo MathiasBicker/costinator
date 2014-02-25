@@ -27,43 +27,33 @@ import android.widget.TextView;
 
 public class Costgroup extends Activity {
 	
-	
 	static final int NEW_COSTELEMENT_REQUEST = 10;
 	
-	static final String CURRENCY_EURO = "�";
-	static final String CURRENCY_DOLLAR_US = "$";
-	
-	private ListView costelementList;
-	private ArrayList<CostelementListViewItem> items;
-	private ArrayList<TCostelement> elementList;
-	
-	private TextView costgroupTitle;
-	private ImageButton addCostelement;
-	
-	
-	
-	  
-	
-	 
+	private ListView 							costelementList;
+	private ArrayList<CostelementListViewItem> 	items;
+	private ArrayList<TCostelement> 			elementList;
+	private TextView 							costgroupTitle;
+	private ImageButton 						addCostelement;
+	private OnClickListener addCostelementListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
+			startActivityForResult(intent, NEW_COSTELEMENT_REQUEST);
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_costgroup);
 		
-		costgroupTitle = (TextView) findViewById(R.id.textViewTitleCostgroup);
-		addCostelement = (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
+		costgroupTitle 	= (TextView) findViewById(R.id.textViewTitleCostgroup);
+		addCostelement 	= (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
 		costelementList = (ListView) findViewById(R.id.listViewCostgroup);
-		
-		
-		
-		
+
 		items = new ArrayList<CostelementListViewItem>();
 		
-		
-		/**
-		 * Dummy Data
-		 */
+		//Dummy Data
 		double value1 = 200.98;
 		double value2 = 5057.56;
 		String[] periods = getResources().getStringArray(R.array.periods);
@@ -71,15 +61,13 @@ public class Costgroup extends Activity {
 		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , periods[4]);
 		items.add(costelement1);
 		items.add(costelement2);
-
+		//----
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
-		// Der Title der in Main ausgewaehlten Kostengruppe wird angezeigt.
-		Intent intent = getIntent();
-		String title = intent.getStringExtra(Main.COSTGROUP_TITLE);
+		//showing name of costgroup as title
+		Intent intent 	= getIntent();
+		String title	= intent.getStringExtra(Main.COSTGROUP_TITLE);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
-		
-		
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 	}
@@ -91,23 +79,17 @@ public class Costgroup extends Activity {
 		return true;
 	}
 	
-	/**
-	 * Clicks auf ActionbarItems
-	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
 	        case R.id.action_addCostelement:
-	        	
 	        	Intent intentNew = new Intent(Costgroup.this, NewCostelement.class);
 				startActivityForResult(intentNew, NEW_COSTELEMENT_REQUEST);
-	        	
 	            return true;
 	        case R.id.action_settings:
 	            //openSettings();
 	            return true;
-	            
 	        case R.id.action_assessCostgroup:
 	        	Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
 	        	
@@ -133,45 +115,18 @@ public class Costgroup extends Activity {
 	        	costelement2.setId(2);
 	        	
 	        	elementList = new ArrayList<TCostelement>();
-	        	
 	        	elementList.add(costelement1);
 	        	elementList.add(costelement2);
 	        	
 	        	int days = 180;
-	        	
 	        	intent.putExtra(BusinessAssesment.DAYSTAG, days);
-	        	
-	        	
 	        	startActivity(intent);
-	        	
-	        	
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
-
 	
-	
-	
-	/**
-	 * Start NewCostelement Activity durch Click auf AddButton
-	 */
-	OnClickListener addCostelementListener = new OnClickListener() {
-
-		@Override
-		public void onClick(View v) {
-			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
-			startActivityForResult(intent, NEW_COSTELEMENT_REQUEST);
-			
-			
-
-			}
-	};
-	
-	/**
-	 * Wird automatisch aufgerufen wenn gestartete NewCostelementOntime oder NewCostelementPeriodical beendet wird.
-	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request we're responding to
@@ -193,7 +148,7 @@ public class Costgroup extends Activity {
 		            if(tolerance.equals(optionalString)) 
 		            tolerance = "";
 		            
-		            CostelementListViewItem newCostelement = new CostelementListViewItem(name, desc, value,CURRENCY_EURO, periode, tolerance); 
+		            CostelementListViewItem newCostelement = new CostelementListViewItem(name, desc, value, getResources().getString(R.string.currency), periode, tolerance); 
 		            addCostelement(newCostelement);
 	        	
 	        	
@@ -207,14 +162,9 @@ public class Costgroup extends Activity {
 	}
 	
 	public void addCostelement (CostelementListViewItem costelement) {
-		
 		items.add(costelement);
-		
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
-		
 	}
-	
-	
 }
 	
 
