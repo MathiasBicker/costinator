@@ -15,6 +15,11 @@
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Business assesment</string>
+    <string name="dayly"> per day</string>
+    <string name="weekly"> per week</string>
+    <string name="monthly"> per month</string>
+    <string name="quart"> per quarter</string>
+    <string name="yearly"> per year</string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
