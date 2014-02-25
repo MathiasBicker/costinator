@@ -64,8 +64,8 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		/**
 		 * Dummy Data
 		 */
-		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month Û");
-		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3", "-45,15/month Û");
+		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month");
+		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3", "-45,15/month");
 		items.add(costgroup1);
 		items.add(costgroup2);
 

@@ -97,7 +97,7 @@ public class BusinessAssesment extends Activity {
 	 * @param period period constant form TCostelement
 	 * @return string containing e.g. '/dayly'
 	 */
-	private String findPeriod(int period) {
+	public String findPeriod(int period) {
 		String type = null;
 		switch(period) {
 		case TCostelement.DAYLY:

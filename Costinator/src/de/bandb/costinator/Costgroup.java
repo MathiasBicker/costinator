@@ -30,7 +30,7 @@ public class Costgroup extends Activity {
 	
 	static final int NEW_COSTELEMENT_REQUEST = 10;
 	
-	static final String CURRENCY_EURO = "Û";
+	static final String CURRENCY_EURO = "ï¿½";
 	static final String CURRENCY_DOLLAR_US = "$";
 	
 	private ListView costelementList;
@@ -66,8 +66,8 @@ public class Costgroup extends Activity {
 		 */
 		double value1 = 200.98;
 		double value2 = 5057.56;
-		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1,"Û", "wšchentlich", "Toleranz: 15%" );
-		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2,"Û" , "jŠhrlich");
+		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1, getResources().getString(R.string.currency), getResources().getString(R.string.weekly), getResources().getString(R.string.tolerancetxt) + getResources().getString(R.string.percent));
+		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , getResources().getString(R.string.yearly));
 		items.add(costelement1);
 		items.add(costelement2);
 
@@ -125,7 +125,7 @@ public class Costgroup extends Activity {
 	        	
 	        	TCostelement costelement2 = new TCostelement();
 	        	costelement2.setCostgroup(costgroup);
-	        	costelement2.setDescription("SchŠferhund");
+	        	costelement2.setDescription("Schï¿½ferhund");
 	        	costelement2.setName("Wachhund");
 	        	costelement2.setPeriod(3);
 	        	costelement2.setValue(1000);
@@ -184,7 +184,7 @@ public class Costgroup extends Activity {
 		            String periode = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_PERIODE);
 		            String tolerance = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_TOLERANCE);
 		            
-		            //Wenn User --opitonal-- bei Spinner tolerance auswŠhlt, dann darf dies nicht im Layout angezeigt werden
+		            //Wenn User --opitonal-- bei Spinner tolerance auswï¿½hlt, dann darf dies nicht im Layout angezeigt werden
 		            String[] periodes = getResources().getStringArray(R.array.tolerances);
 		            //--opitonal-- wert
 		            String optionalString= periodes[0];

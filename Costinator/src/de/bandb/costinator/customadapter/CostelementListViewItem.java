@@ -1,9 +1,12 @@
 package de.bandb.costinator.customadapter;
 
+import android.util.Log;
+import de.bandb.costinator.R;
+import de.bandb.costinator.database.entities.TCostelement;
 
 
-public class CostelementListViewItem {
 
+public class CostelementListViewItem {	
 	private String name;
 	private String desc;
 	private double value;
@@ -12,27 +15,16 @@ public class CostelementListViewItem {
 	private String currency;
 
 	public CostelementListViewItem(String name, String desc, double value, String currency, String periode, String tolerance) {
-
-		this.name = name;
-		this.desc = desc;
-		this.value = value;
-		this.currency = currency;
-		this.periode = periode;
+		this(name, desc, value, currency, periode);
 		this.tolerance = tolerance;
-		
-
 	}
 	
 	public CostelementListViewItem(String name, String desc, double value, String currency, String periode) {
-
 		this.name = name;
 		this.desc = desc;
 		this.value = value;
 		this.currency = currency;
 		this.periode = periode;
-		
-		
-
 	}
 
 	public String getCurrency() {

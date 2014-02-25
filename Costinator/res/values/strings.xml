@@ -9,6 +9,7 @@
     <string name="action_settings">Einstellungen</string>
     <string name="hello_world">Hallo Welt!</string>
     <string name="currency">&#8364;</string>
+    <string name="percent">&#37;</string>
     
 
     <!-- Main -->
@@ -32,6 +33,7 @@
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>
     <string name="assessCostgroup">Kostengruppe auswerten</string>
+    <string name="tolerancetxt">Toleranz: </string>
     
 
     <!-- CostgroupBusinessAssesment -->
