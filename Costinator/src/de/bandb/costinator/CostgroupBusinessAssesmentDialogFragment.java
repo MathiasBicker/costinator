@@ -67,26 +67,47 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 			if(period.getText().toString().equals(daily)) {
 				
 				String days = getString(R.string.days);
+				String day = getString(R.string.day);
+				if(arg1 == 1) {
+					progressInfo.setText(arg1+" "+ day);
+				}
+					
 				progressInfo.setText(arg1+" "+ days);
 				
 			} else if (period.getText().toString().equals(weekly)) {
 				
 				String weeks = getString(R.string.weeks);
+				String week = getString(R.string.week);
+				if(arg1 == 1) {
+					progressInfo.setText(arg1+" "+ week);
+				}
 				progressInfo.setText(arg1+" "+ weeks);
 				
 			} else if (period.getText().toString().equals(monthly)) {
 				
 				String months = getString(R.string.months);
+				String month = getString(R.string.month);
+				if(arg1 == 1) {
+					progressInfo.setText(arg1+" "+ month);
+				}
 				progressInfo.setText(arg1+" "+ months);
 				
 			} else if (period.getText().toString().equals(quartal)) {
 				
 				String quartals = getString(R.string.quartals);
+				String quartalSingle = getString(R.string.quartal);
+				if(arg1 == 1) {
+					progressInfo.setText(arg1+" "+ quartalSingle);
+				}
 				progressInfo.setText(arg1+" "+ quartals);
 				
 			} else if (period.getText().toString().equals(yearly)) {
 				
 				String years = getString(R.string.years);
+				String year = getString(R.string.year);
+				if(arg1 == 1) {
+					progressInfo.setText(arg1+" "+ year);
+				}
 				progressInfo.setText(arg1+" "+ years);
 			}
 				
