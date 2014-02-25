@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:descendantFocusability="blocksDescendants" >
+
+<!-- Zeigt CostelementItems an -->
+    
+    <TextView
+        android:id="@+id/textViewCostelementName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Werkstatt"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+   <ImageButton
+       android:id="@+id/imageButtonCostelementGoInside"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_alignParentRight="true"
+       android:layout_alignTop="@+id/imageButtonCostelementDelete"
+       android:background="@color/transparenz"
+       android:clickable="true"
+       android:focusable="false"
+       android:focusableInTouchMode="false"
+       android:src="@drawable/ic_action_next_item" />
+
+   <TextView
+       android:id="@+id/textViewCostelementPeriode"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textViewCostelementToleranz"
+       android:text="monatlich"
+       android:textAppearance="?android:attr/textAppearanceMedium" />
+
+   <TextView
+       android:id="@+id/textViewCostelementValue"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textViewCostelementName"
+       android:layout_marginTop="19dp"
+       android:text="133,78"
+       android:textStyle="bold"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:textColor="@color/OrangeDark" />
+
+   <TextView
+       android:id="@+id/textViewCostelementDesc"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textViewCostelementName"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:text="Stephanstr. 27 A" />
+
+   <TextView
+       android:id="@+id/textViewCostelementCurrency"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/textViewCostelementPeriode"
+       android:layout_toRightOf="@+id/textViewCostelementValue"
+       android:text="€"
+       android:textColor="@color/OrangeDark"
+       android:textStyle="bold" />
+
+   <TextView
+       android:id="@+id/textViewCostelementToleranz"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/textViewCostelementDesc"
+       android:layout_toRightOf="@+id/textViewCostelementDesc"
+       android:text="Toleranz: 10%"
+       android:textAppearance="?android:attr/textAppearanceMedium" />
+
+   <ImageButton
+       android:id="@+id/imageButtonCostelementDelete"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_alignTop="@+id/textViewCostelementDesc"
+       android:layout_marginRight="138dp"
+       android:layout_toLeftOf="@+id/imageButtonCostelementGoInside"
+       android:background="@color/transparenz"
+       android:clickable="true"
+       android:focusable="false"
+       android:focusableInTouchMode="false"
+       android:src="@drawable/ic_action_discard" />
+
+</RelativeLayout>

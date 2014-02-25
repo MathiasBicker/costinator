@@ -10,9 +10,64 @@
     
     <!-- default layout activity costgroup -->
 
-    <TextView
+  	
+ 	 <TextView
+        android:id="@+id/textViewTitleCostgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:layout_alignParentTop="true"
+        android:text="@string/title_activity_costgroup"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+ 
+    <ListView
+        android:id="@+id/listViewCostgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_Listview"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:dividerHeight="1dp"
+        android:divider="@color/Black"
+        android:clickable="true">
+    </ListView>
 
+    <ImageButton
+        android:id="@+id/imageButtonAddNewCostelement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_action_new"
+        android:background="@color/transparenz"
+        android:clickable="true"
+        android:focusable="false" />
+
+    <View
+        android:id="@+id/lineMain"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:layout_alignTop="@+id/listViewCostgroup"
+        android:background="@color/Black" />
+
+    <TextView
+        android:id="@+id/textViewTitleCostgroupDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lineMain"
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewTitleCostgroupCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewTitleCostgroupDesc"
+        android:layout_alignBottom="@+id/textViewTitleCostgroupDesc"
+        android:layout_alignRight="@+id/listViewCostgroup"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/OrangeDark" />
+    
 </RelativeLayout>
