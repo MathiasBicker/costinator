@@ -20,14 +20,6 @@
         android:text="@string/title_activity_costgroup"
         android:textAppearance="?android:attr/textAppearanceLarge" />
  
- 	<View
-        android:id="@+id/lineMain"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="@color/Black"
-        android:layout_alignLeft="@+id/textViewTitleCostgroup"
-        android:layout_below="@+id/textViewTitleCostgroup" />
- 
  
     <ListView
         android:id="@+id/listViewCostgroup"
@@ -50,5 +42,32 @@
         android:background="@color/transparenz"
         android:clickable="true"
         android:focusable="false" />
+
+    <View
+        android:id="@+id/lineMain"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:layout_alignTop="@+id/listViewCostgroup"
+        android:background="@color/Black" />
+
+    <TextView
+        android:id="@+id/textViewTitleCostgroupDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lineMain"
+        android:layout_alignLeft="@+id/listViewCostgroup"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewTitleCostgroupCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewTitleCostgroupDesc"
+        android:layout_alignBottom="@+id/textViewTitleCostgroupDesc"
+        android:layout_alignRight="@+id/listViewCostgroup"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/OrangeDark" />
     
 </RelativeLayout>
