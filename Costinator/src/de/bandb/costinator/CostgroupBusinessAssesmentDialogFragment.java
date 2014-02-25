@@ -1,6 +1,8 @@
 package de.bandb.costinator;
 
 
+
+import de.bandb.costinator.database.entities.TCostelement;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -17,6 +19,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
+	private static final String LOGTAG = "CostgroupBusinessAssesmentDialogFragment";
 	
 	private RadioGroup	 periods;
 	private RadioButton  period;
@@ -28,7 +31,7 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 	public CostgroupBusinessAssesmentDialogFragment() {}
 	
 	interface onSubmitListenerCostgroupBusinessAssesment {  
-		  void setOnSubmitListenerCostgroupBusinessAssesment(String periode, int value);  
+		  void setOnSubmitListenerCostgroupBusinessAssesment(int periode, int value);  
 		 }  
 	
 	public onSubmitListenerCostgroupBusinessAssesment mListener;
@@ -138,8 +141,22 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 			
 			int value = amountPeriods.getProgress();
 			Log.v("amountPeriods", ""+value);
-			
-		    mListener.setOnSubmitListenerCostgroupBusinessAssesment(period.getText().toString(), value); 
+			int periodValue = -1;
+			if(period.getText().toString().equals(getString(R.string.dailyAssesmentSpinner)))
+				periodValue = TCostelement.DAYLY;
+			if(period.getText().toString().equals(getString(R.string.weeklyAssesmentSpinner)))
+				periodValue = TCostelement.WEEKLY;
+			if(period.getText().toString().equals(getString(R.string.monthlyAssesmentSpinner)))
+				periodValue = TCostelement.MONTHLY;
+			if(period.getText().toString().equals(getString(R.string.quartalAssesmentSpinner)))
+				periodValue = TCostelement.QUART;
+			if(period.getText().toString().equals(getString(R.string.yearlyAssesmentSpinner)))
+				periodValue = TCostelement.YEARLY;
+			if(periodValue < 1) {
+				Log.e(LOGTAG, BusinessAssesment.WRONGPERIOD);
+				throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
+			}
+		    mListener.setOnSubmitListenerCostgroupBusinessAssesment(periodValue, value); 
 		   
 		    
 		    dismiss();  

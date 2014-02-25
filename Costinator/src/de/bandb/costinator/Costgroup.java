@@ -82,11 +82,11 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(wartung);
 		items.add(finanzierungsrate);
 		TCostelement[] array = new TCostelement[5];
-		array[0] = new TCostelement(steuer, 4);
-		array[1] = new TCostelement(kraftstoff, 2, 20);
-		array[2] = new TCostelement(versicherung, 4);
-		array[3] = new TCostelement(wartung, 4, 100);
-		array[4] = new TCostelement(finanzierungsrate, 2);
+		array[0] = new TCostelement(steuer, 5);
+		array[1] = new TCostelement(kraftstoff, 3, 20);
+		array[2] = new TCostelement(versicherung, 5);
+		array[3] = new TCostelement(wartung, 5, 100);
+		array[4] = new TCostelement(finanzierungsrate, 3);
 		group = new TCostgroup();
 		group.setElements(array);
 		group.setDescription((String) costgroupDesc.getText());
@@ -273,10 +273,11 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	}
 
 	@Override
-	public void setOnSubmitListenerCostgroupBusinessAssesment(String periode,
+	public void setOnSubmitListenerCostgroupBusinessAssesment(int periode,
 			int amountPeriods) {
 		Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
 		intent.putExtra(BusinessAssesment.COSTGROUPTAG, group);
+		intent.putExtra(BusinessAssesment.DAYSTAG, amountPeriods * periode);
 		startActivity(intent);
 	}
 }
