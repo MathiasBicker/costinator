@@ -69,11 +69,11 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//----
 		
 		//dummy car
-		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[4]);
-		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[1], tolerancetxt + "20" + percent);
-		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[4]);
-		CostelementListViewItem wartung 			= new CostelementListViewItem("Wartung", "Reperaturen, Reifen, etc.", 1500.0, currency, periods[4], tolerancetxt + "100" + percent);
-		CostelementListViewItem finanzierungsrate 	= new CostelementListViewItem("Finanzierungsrate", "Darlehen Sparkasse 6% Zinsen pa.", 628.3, currency, periods[1]);
+		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[5]);
+		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[3], tolerancetxt + "20" + percent);
+		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[5]);
+		CostelementListViewItem wartung 			= new CostelementListViewItem("Wartung", "Reperaturen, Reifen, etc.", 1500.0, currency, periods[5], tolerancetxt + "100" + percent);
+		CostelementListViewItem finanzierungsrate 	= new CostelementListViewItem("Finanzierungsrate", "Darlehen Sparkasse 6% Zinsen pa.", 628.3, currency, periods[3]);
 		items.add(steuer);
 		items.add(kraftstoff);
 		items.add(versicherung);
@@ -82,11 +82,11 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//-------
 		//dummy flat
 		/*
-		CostelementListViewItem miete 		= new CostelementListViewItem("Miete", "Kaltmiete", 450.0, currency, periods[1]);
-		CostelementListViewItem wasser 		= new CostelementListViewItem("Wasser", "Heizung, Wasser", 50.0, currency, periods[1], tolerancetxt + "10" + percent);
-		CostelementListViewItem stellplatz 	= new CostelementListViewItem("Stellplatz", "Miete Stellplatz Auto", 25.0, currency, periods[1]);
-		CostelementListViewItem internet 	= new CostelementListViewItem("Internet", "1&1 Internet, Telefon", 34.99, currency, periods[1]);
-		CostelementListViewItem strom		= new CostelementListViewItem("Strom", "Strom Hitenergie", 47.86, currency, periods[1], tolerancetxt + "5" + percent);
+		CostelementListViewItem miete 		= new CostelementListViewItem("Miete", "Kaltmiete", 450.0, currency, periods[3]);
+		CostelementListViewItem wasser 		= new CostelementListViewItem("Wasser", "Heizung, Wasser", 50.0, currency, periods[3], tolerancetxt + "10" + percent);
+		CostelementListViewItem stellplatz 	= new CostelementListViewItem("Stellplatz", "Miete Stellplatz Auto", 25.0, currency, periods[3]);
+		CostelementListViewItem internet 	= new CostelementListViewItem("Internet", "1&1 Internet, Telefon", 34.99, currency, periods[3]);
+		CostelementListViewItem strom		= new CostelementListViewItem("Strom", "Strom Hitenergie", 47.86, currency, periods[3], tolerancetxt + "5" + percent);
 		items.add(miete);
 		items.add(wasser);
 		items.add(stellplatz);
