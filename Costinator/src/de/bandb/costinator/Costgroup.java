@@ -69,6 +69,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//----
 		
 		//dummy car
+		/*
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[5]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[3], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[5]);
@@ -79,6 +80,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(versicherung);
 		items.add(wartung);
 		items.add(finanzierungsrate);
+		*/
 		//-------
 		//dummy flat
 		/*
@@ -93,6 +95,20 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(internet);
 		items.add(strom);
 		*/
+		//--
+		//dummy master
+		CostelementListViewItem miete 			= new CostelementListViewItem("Miete", "WG-Zimmer", 300.0, currency, periods[3], tolerancetxt + "5" + percent);
+		CostelementListViewItem versicherung	= new CostelementListViewItem("Versicherung", "Krankenversicherung Debeka", 120.0, currency, periods[3]);
+		CostelementListViewItem handy 			= new CostelementListViewItem("Handyvertrag", "Vodafone Vertragsnr: 239203", 40.0, currency, periods[3]);
+		CostelementListViewItem lebensmittel	= new CostelementListViewItem("Lebensmittel", "", 180.0, currency, periods[3], tolerancetxt + "20" + percent);
+		CostelementListViewItem freizeit 		= new CostelementListViewItem("Freizeit", "Feiern, Kino etc.", 50.0, currency, periods[2], tolerancetxt + "25" + percent);
+		CostelementListViewItem kleidung		= new CostelementListViewItem("Kleidung", "", 100.0, currency, periods[3], tolerancetxt + "30" + percent);
+		items.add(miete);
+		items.add(versicherung);
+		items.add(handy);
+		items.add(lebensmittel);
+		items.add(freizeit);
+		items.add(kleidung);
 		//--
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		

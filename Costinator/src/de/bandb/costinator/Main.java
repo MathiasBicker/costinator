@@ -70,10 +70,12 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		items.add(costgroup2);
 		*/
 		//__
-		CostgroupListViewItem car = new CostgroupListViewItem("Auto","BMW 120d, weiss", "961.28" + currency + getResources().getString(R.string.monthly));
-		CostgroupListViewItem flat = new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "607.85" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem car 		= new CostgroupListViewItem("Auto","BMW 120d, weiss", "961.28" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem flat 		= new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "607.85" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem master	= new CostgroupListViewItem("Master-Studium","Lebensunterhalt Master-Studium", "954.29" + currency + getResources().getString(R.string.monthly));
 		items.add(car);
 		items.add(flat);
+		items.add(master);
 		//dummy car
 		
 		//--
