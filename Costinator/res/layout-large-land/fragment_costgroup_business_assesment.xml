@@ -87,10 +87,10 @@
     
     <Button
         android:id="@+id/button_costgroup_business_assesment_evaluate"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
+        android:layout_width="@dimen/button_large_width"
+        android:layout_height="@dimen/button_large_height"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:background="@color/OrangeDark"
         android:text="@string/ButtonEvaluate" />
 

@@ -96,8 +96,8 @@
         
         <Button
             android:id="@+id/buttonSaveCostelement"
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/button_height"
+            android:layout_width="@dimen/button_large_width"
+            android:layout_height="@dimen/button_large_height"
             android:layout_below="@+id/spinnerCostelementPeriodical"
             android:background="@color/OrangeDark"
             android:layout_centerHorizontal="true"
