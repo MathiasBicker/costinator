@@ -70,14 +70,23 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		items.add(costgroup2);
 		*/
 		//__
+		//dummy data
 		CostgroupListViewItem car 		= new CostgroupListViewItem("Auto","BMW 120d, weiss", "961.28" + currency + getResources().getString(R.string.monthly));
 		CostgroupListViewItem flat 		= new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "607.85" + currency + getResources().getString(R.string.monthly));
 		CostgroupListViewItem master	= new CostgroupListViewItem("Master-Studium","Lebensunterhalt", "954.29" + currency + getResources().getString(R.string.monthly));
 		items.add(car);
 		items.add(flat);
 		items.add(master);
-		//dummy car
-		
+		//--
+		//dummy data english
+		/*
+		CostgroupListViewItem car 		= new CostgroupListViewItem("Auto","BMW 120d, weiss", "1321.66" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem flat 		= new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "835.73" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem master	= new CostgroupListViewItem("Master-Studium","Lebensunterhalt", "1312.05" + currency + getResources().getString(R.string.monthly));
+		items.add(car);
+		items.add(flat);
+		items.add(master);
+		*/
 		//--
 		
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
