@@ -28,6 +28,8 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	private ListView 							costelementList;
 	private ArrayList<CostelementListViewItem> 	items;
 	private TextView 							costgroupTitle;
+	private TextView							costgroupDesc;
+	private TextView							costgroupTotalCost;
 	private ImageButton 						addCostelement;
 	private OnClickListener addCostelementListener = new OnClickListener() {
 		@Override
@@ -42,9 +44,11 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_costgroup);
 		
-		costgroupTitle 	= (TextView) findViewById(R.id.textViewTitleCostgroup);
-		addCostelement 	= (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
-		costelementList = (ListView) findViewById(R.id.listViewCostgroup);
+		costgroupTitle 		= (TextView) findViewById(R.id.textViewTitleCostgroup);
+		addCostelement 		= (ImageButton) findViewById(R.id.imageButtonAddNewCostelement);
+		costelementList 	= (ListView) findViewById(R.id.listViewCostgroup);
+		costgroupDesc		= (TextView) findViewById(R.id.textViewTitleCostgroupDesc);
+		costgroupTotalCost  = (TextView) findViewById(R.id.textViewCostgroupTotalCost);
 
 		items = new ArrayList<CostelementListViewItem>();
 		String[] periods 	= getResources().getStringArray(R.array.periods);
@@ -151,12 +155,15 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//--
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
-		//showing name of costgroup as title
+		//showing name,desc, totalCost of costgroup as title
 		Intent intent 		= getIntent();
 		String title		= intent.getStringExtra(Main.COSTGROUP_TITLE);
 		String desc			= intent.getStringExtra(Main.COSTGROUP_DESC);
 		String totalCost	= intent.getStringExtra(Main.COSTGROUP_TOTAL_COAST);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
+		costgroupDesc.setText(desc);
+		costgroupTotalCost.setText(totalCost);
+		
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 	}
