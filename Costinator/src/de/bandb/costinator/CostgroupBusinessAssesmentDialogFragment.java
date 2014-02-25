@@ -51,8 +51,11 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 
 		@Override
 		public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-			// TODO Auto-generated method stub
-			progressInfo.setText(""+arg1);
+			
+			int selectedId= periods.getCheckedRadioButtonId();
+			period = (RadioButton) dialog.findViewById(selectedId);
+			
+			progressInfo.setText(period.getText().toString()+""+arg1);
 		}
 
 		@Override
