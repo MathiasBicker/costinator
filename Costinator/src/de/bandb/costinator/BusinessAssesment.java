@@ -5,6 +5,7 @@ package de.bandb.costinator;
  * version: 1.0
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.achartengine.ChartFactory;
@@ -35,11 +36,11 @@ public class BusinessAssesment extends Activity {
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
 	
-	private List<TCostelement> 	elementList;
-	private TCostgroup 			costgroup;
-	private int					days;
-	private double				sum = 0.0;
-	private OnClickListener 	chartButtonListener = new OnClickListener() {
+	private ArrayList<TCostelement> 	elementList;
+	private TCostgroup 					costgroup;
+	private int							days;
+	private double						sum	= 0.0;
+	private OnClickListener 			chartButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			openChart();
@@ -62,7 +63,7 @@ public class BusinessAssesment extends Activity {
 		Intent 		intent 			= getIntent();
 		Bundle 		bundle 			= intent.getExtras();
 		if(bundle != null) {
-			elementList = (List<TCostelement>) bundle.get(ELEMENTLISTTAG);
+			elementList = (ArrayList<TCostelement>) bundle.get(ELEMENTLISTTAG);
 			costgroup 	= (TCostgroup) bundle.get(COSTGROUPTAG);
 			days 		= bundle.getInt(DAYSTAG);
 			//displaying name of costgroup
