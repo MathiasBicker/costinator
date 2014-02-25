@@ -1,5 +1,9 @@
 package de.bandb.costinator;
 
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ */
 
 import android.app.Dialog;
 import android.os.Bundle;

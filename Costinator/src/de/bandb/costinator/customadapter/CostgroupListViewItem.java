@@ -1,5 +1,10 @@
 package de.bandb.costinator.customadapter;
 
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ */
+
 public class CostgroupListViewItem {
 	
 	private String costgroupTitle;
@@ -7,7 +12,6 @@ public class CostgroupListViewItem {
 	private String totalCost;
 	
 	public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
-		
 		this.costgroupTitle= costgroupTitle;
 		this.costgroupDesc= costgroupDesc;
 		this.totalCost= totalCost;
@@ -42,7 +46,4 @@ public class CostgroupListViewItem {
 	public void setTotalCost(String totalCost) {
 		this.totalCost = totalCost;
 	}
-
-	
-	
 }

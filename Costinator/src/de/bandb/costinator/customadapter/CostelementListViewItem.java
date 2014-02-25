@@ -1,7 +1,9 @@
 package de.bandb.costinator.customadapter;
 
-
-
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ */
 
 public class CostelementListViewItem {	
 	private String name;
@@ -70,9 +72,5 @@ public class CostelementListViewItem {
 
 	public void setPeriode(String periode) {
 		this.periode = periode;
-	}
-	
-	
-	
-	
+	}	
 }

@@ -1,5 +1,10 @@
 package de.bandb.costinator.customadapter;
 
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ */
+
 import java.util.ArrayList;
 
 import de.bandb.costinator.R;
