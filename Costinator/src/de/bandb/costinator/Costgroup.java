@@ -70,10 +70,10 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		
 		//Dummy car
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[4]);
-		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[2], tolerancetxt + "20" + percent);
+		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[1], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[4]);
 		CostelementListViewItem wartung 			= new CostelementListViewItem("Wartung", "Reperaturen, Reifen, etc.", 1500.0, currency, periods[4], tolerancetxt + "100" + percent);
-		CostelementListViewItem finanzierungsrate 	= new CostelementListViewItem("Finanzierungsrate", "Darlehen Sparkasse 6% Zinsen pa.", 628.3, currency, periods[2]);
+		CostelementListViewItem finanzierungsrate 	= new CostelementListViewItem("Finanzierungsrate", "Darlehen Sparkasse 6% Zinsen pa.", 628.3, currency, periods[1]);
 		items.add(steuer);
 		items.add(kraftstoff);
 		items.add(versicherung);
