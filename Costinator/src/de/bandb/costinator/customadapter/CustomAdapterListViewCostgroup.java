@@ -63,6 +63,8 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
           desc.setText(item.getDesc());
           
           String valueString = String.valueOf(item.getValue());
+          if(valueString.charAt(valueString.length()-2) == '.')
+        	  valueString+="0";
           value.setText(valueString);
           
           periode.setText(item.getPeriode());
