@@ -68,7 +68,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		*/
 		//----
 		
-		//Dummy car
+		//dummy car
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[4]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[1], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[4]);
@@ -80,6 +80,20 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(wartung);
 		items.add(finanzierungsrate);
 		//-------
+		//dummy flat
+		/*
+		CostelementListViewItem miete 		= new CostelementListViewItem("Miete", "Kaltmiete", 450.0, currency, periods[1]);
+		CostelementListViewItem wasser 		= new CostelementListViewItem("Wasser", "Heizung, Wasser", 50.0, currency, periods[1], tolerancetxt + "10" + percent);
+		CostelementListViewItem stellplatz 	= new CostelementListViewItem("Stellplatz", "Miete Stellplatz Auto", 25.0, currency, periods[1]);
+		CostelementListViewItem internet 	= new CostelementListViewItem("Internet", "1&1 Internet, Telefon", 34.99, currency, periods[1]);
+		CostelementListViewItem strom		= new CostelementListViewItem("Strom", "Strom Hitenergie", 47.86, currency, periods[1], tolerancetxt + "5" + percent);
+		items.add(miete);
+		items.add(wasser);
+		items.add(stellplatz);
+		items.add(internet);
+		items.add(strom);
+		*/
+		//--
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
 		//showing name of costgroup as title

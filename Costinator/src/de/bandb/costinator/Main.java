@@ -14,12 +14,12 @@ import java.util.ArrayList;
 
 
 
+
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
 import android.app.AlertDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -59,16 +59,24 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		delCostgroup = 			(ImageButton) findViewById(R.id.imageButtonCostgroupDelete);
 		costgroupList = 		(ListView) findViewById(R.id.listViewMain);
 
+		String currency 	= getResources().getString(R.string.currency);
 		items = new ArrayList<CostgroupListViewItem>();
 
-		/**
-		 * Dummy Data
-		 */
+		//dummy data
+		/*
 		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month");
 		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3", "-45,15/month");
 		items.add(costgroup1);
 		items.add(costgroup2);
-
+		*/
+		//__
+		CostgroupListViewItem car = new CostgroupListViewItem("Auto","BMW 120d, weiss", "961.28" + currency + getResources().getString(R.string.monthly));
+		CostgroupListViewItem flat = new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "607.85" + currency + getResources().getString(R.string.monthly));
+		items.add(car);
+		items.add(flat);
+		//dummy car
+		
+		//--
 		
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 
