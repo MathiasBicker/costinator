@@ -5,6 +5,9 @@ import java.io.Serializable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import de.bandb.costinator.BusinessAssesment;
+import de.bandb.costinator.customadapter.CostelementListViewItem;
+
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
@@ -24,11 +27,12 @@ public class TCostelement implements Serializable {
 
 	private static final long 	serialVersionUID = 3725841290753976725L;
 	
-	public static final int	DAYLY 	= 1;
-	public static final int	WEEKLY 	= 2;
-	public static final int	MONTHLY = 3;
-	public static final int	QUART 	= 4;
-	public static final int	YEARLY 	= 5;
+	public static final String 	BADTOLERANCE 	= "tolerance must be between 1 and 100";
+	public static final int		DAYLY 			= 1;
+	public static final int		WEEKLY 			= 2;
+	public static final int		MONTHLY 		= 3;
+	public static final int		QUART 			= 4;
+	public static final int		YEARLY 			= 5;
 	
 	@DatabaseField(columnName="C_ID", generatedId=true)
 	private int id;
@@ -45,7 +49,28 @@ public class TCostelement implements Serializable {
 	@DatabaseField(columnName="C_COSTGROUP", foreign=true)
 	private TCostgroup costgroup;
 	
+	public TCostelement(CostelementListViewItem c, int period, int tolerance) {
+		this(c, period);
+		setTolerance(tolerance);
+	}
 	
+	public TCostelement(CostelementListViewItem c, int period) {
+		name = c.getName();
+		description = c.getDesc();
+		value = Double.valueOf(c.getValue());
+		setPeriod(period);
+	}
+	
+	public int getTolerance() {
+		return tolerance;
+	}
+
+	public void setTolerance(int tolerance) {
+		if(tolerance > 100 || tolerance < 1)
+			throw new RuntimeException(BADTOLERANCE);
+		this.tolerance = tolerance;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -74,6 +99,8 @@ public class TCostelement implements Serializable {
 		return period;
 	}
 	public void setPeriod(int period) {
+		if(period > YEARLY || period < DAYLY)
+			throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
 		this.period = period;
 	}
 	public TCostgroup getCostgroup() {

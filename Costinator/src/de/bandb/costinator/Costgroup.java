@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
+import de.bandb.costinator.database.entities.TCostelement;
+import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
@@ -31,6 +33,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	private TextView							costgroupDesc;
 	private TextView							costgroupTotalCost;
 	private ImageButton 						addCostelement;
+	private TCostgroup							group;
 	private OnClickListener addCostelementListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -78,6 +81,16 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(versicherung);
 		items.add(wartung);
 		items.add(finanzierungsrate);
+		TCostelement[] array = new TCostelement[5];
+		array[0] = new TCostelement(steuer, 4);
+		array[1] = new TCostelement(kraftstoff, 2, 20);
+		array[2] = new TCostelement(versicherung, 4);
+		array[3] = new TCostelement(wartung, 4, 100);
+		array[4] = new TCostelement(finanzierungsrate, 2);
+		group = new TCostgroup();
+		group.setElements(array);
+		group.setDescription((String) costgroupDesc.getText());
+		group.setName((String) costgroupTitle.getText());
 		//-------
 		//dummy car english
 		/*
@@ -262,6 +275,9 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	@Override
 	public void setOnSubmitListenerCostgroupBusinessAssesment(String periode,
 			int amountPeriods) {
+		Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
+		intent.putExtra(BusinessAssesment.COSTGROUPTAG, group);
+		startActivity(intent);
 	}
 }
 	
