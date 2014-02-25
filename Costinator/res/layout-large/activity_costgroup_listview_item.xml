@@ -12,25 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Werkstatt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-   <ImageButton
-       android:id="@+id/imageButtonCostelementDelete"
-       android:layout_width="40dp"
-       android:layout_height="40dp"
-       android:layout_alignBottom="@+id/textViewCostelementPeriode"
-       android:layout_marginRight="35dp"
-       android:layout_toLeftOf="@+id/imageButtonCostelementGoInside"
-       android:background="@color/transparenz"
-       android:clickable="true"
-       android:focusable="false"
-       android:focusableInTouchMode="false"
-       android:src="@drawable/ic_action_discard" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
    <ImageButton
        android:id="@+id/imageButtonCostelementGoInside"
-       android:layout_width="40dp"
-       android:layout_height="40dp"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
        android:layout_alignParentRight="true"
        android:layout_alignTop="@+id/imageButtonCostelementDelete"
        android:background="@color/transparenz"
@@ -46,7 +33,7 @@
        android:layout_alignParentLeft="true"
        android:layout_below="@+id/textViewCostelementToleranz"
        android:text="monatlich"
-       android:textAppearance="?android:attr/textAppearanceSmall" />
+       android:textAppearance="?android:attr/textAppearanceMedium" />
 
    <TextView
        android:id="@+id/textViewCostelementValue"
@@ -57,7 +44,7 @@
        android:layout_marginTop="19dp"
        android:text="133,78"
        android:textStyle="bold"
-       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:textAppearance="?android:attr/textAppearanceMedium"
        android:textColor="@color/OrangeDark" />
 
    <TextView
@@ -66,18 +53,8 @@
        android:layout_height="wrap_content"
        android:layout_alignParentLeft="true"
        android:layout_below="@+id/textViewCostelementName"
+       android:textAppearance="?android:attr/textAppearanceMedium"
        android:text="Stephanstr. 27 A" />
-
-   <TextView
-       android:id="@+id/textViewCostelementToleranz"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignBaseline="@+id/textViewCostelementValue"
-       android:layout_alignBottom="@+id/textViewCostelementValue"
-       android:layout_marginRight="26dp"
-       android:layout_toLeftOf="@+id/imageButtonCostelementDelete"
-       android:text="Toleranz: 10%"
-       android:textAppearance="?android:attr/textAppearanceSmall" />
 
    <TextView
        android:id="@+id/textViewCostelementCurrency"
@@ -88,5 +65,27 @@
        android:text="€"
        android:textColor="@color/OrangeDark"
        android:textStyle="bold" />
+
+   <TextView
+       android:id="@+id/textViewCostelementToleranz"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/textViewCostelementDesc"
+       android:layout_toRightOf="@+id/textViewCostelementDesc"
+       android:text="Toleranz: 10%"
+       android:textAppearance="?android:attr/textAppearanceMedium" />
+
+   <ImageButton
+       android:id="@+id/imageButtonCostelementDelete"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_alignTop="@+id/textViewCostelementDesc"
+       android:layout_marginLeft="22dp"
+       android:layout_toRightOf="@+id/textViewCostelementToleranz"
+       android:background="@color/transparenz"
+       android:clickable="true"
+       android:focusable="false"
+       android:focusableInTouchMode="false"
+       android:src="@drawable/ic_action_discard" />
 
 </RelativeLayout>

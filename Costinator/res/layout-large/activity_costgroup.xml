@@ -67,7 +67,7 @@
         android:layout_alignBottom="@+id/textViewTitleCostgroupDesc"
         android:layout_alignRight="@+id/listViewCostgroup"
         android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/OrangeDark" />
     
 </RelativeLayout>
