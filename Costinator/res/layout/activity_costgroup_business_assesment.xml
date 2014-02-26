@@ -43,7 +43,7 @@
         android:layout_alignBaseline="@+id/costgroup_business_assesment_elements_values"
         android:layout_alignBottom="@+id/costgroup_business_assesment_elements_values"
         android:layout_alignLeft="@+id/lineMain"
-        android:text="XX"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
