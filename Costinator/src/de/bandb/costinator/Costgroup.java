@@ -280,6 +280,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		intent.putExtra(BusinessAssesment.COSTGROUPTAG, group);
 		int days = -1;
 		System.out.println("periode: " + periode);
+		System.out.println("amount: " + amountPeriods);
 		switch(periode) {
 		case TCostelement.DAYLY:
 			days = amountPeriods;
