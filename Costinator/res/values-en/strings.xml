@@ -21,6 +21,7 @@
     <string name="quart">per quarter</string>
     <string name="yearly">per year</string>
     <string name="cost_allocation">cost allocation </string>
+    <string name="phase">(period: </string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
