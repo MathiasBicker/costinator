@@ -29,6 +29,8 @@
     <string name="quart">/Quartal</string>
     <string name="yearly">/Jahr</string>
     <string name="cost_allocation">Kostenverteilung </string>
+    <string name="phase">(Zeitraum: </string>
+    
     
 
     <!-- Costgroup -->
