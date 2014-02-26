@@ -96,4 +96,6 @@
     <string name="month">Month</string>
     <string name="quartal">Quarter</string>
     <string name="year">Year</string>
+    
+    <sring name="sum">Sum: \n</sring>
 </resources>
