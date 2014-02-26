@@ -10,14 +10,14 @@
 
     <!-- default layout activity costgroup business assesment -->
 
-    <Button
-        android:id="@+id/costgroup_business_assesment_costgroup_land"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:background="@color/OrangeDark"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/btn_pie_chart" />
+	<ScrollView
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent" 
+	    android:layout_above="@+id/btn_chart_new">
+
+	<RelativeLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
 
     <View
         android:id="@+id/lineMain"
@@ -53,8 +53,7 @@
         android:layout_below="@+id/lineMain"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="44dp"
-        android:layout_toRightOf="@+id/costgroup_business_assesment_costgroup"
-        android:text="Werte"
+        android:layout_toRightOf="@+id/costgroup_business_assesment_elements"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/OrangeDark" />
 
@@ -67,5 +66,16 @@
         android:layout_marginTop="136dp"
         android:text="@string/sum"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+    </ScrollView>
+    
+     <Button
+         android:id="@+id/btn_chart_new"
+         android:layout_width="@dimen/button_width"
+         android:layout_height="@dimen/button_height"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:background="@color/OrangeDark"
+         android:text="@string/btn_pie_chart" />
 
 </RelativeLayout>
