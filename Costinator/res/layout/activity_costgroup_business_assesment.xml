@@ -14,7 +14,17 @@
         android:id="@+id/costgroup_business_assesment_costgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/costgroup" />
+        android:layout_alignParentTop="true"
+        android:text="@string/costgroup"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/lineMain"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_alignLeft="@+id/business_assesment_elements"
+        android:layout_alignTop="@+id/business_assesment_elements"
+        android:background="@color/Black" />
 
     <TextView
         android:id="@+id/business_assesment_elements"
@@ -38,7 +48,7 @@
         android:layout_below="@+id/costgroup_business_assesment_elements" />
 
     <Button
-        android:id="@+id/costgroup_business_assesment_btn"
+        android:id="@+id/costgroup_business_assesment_costgroup_land"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

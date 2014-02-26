@@ -52,7 +52,7 @@
         android:background="@color/Black" />
 
     <TextView
-        android:id="@+id/textViewTitleCostgroupDesc"
+        android:id="@+id/business_assesment_textViewTitleCostgroupDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/lineMain"
@@ -63,8 +63,8 @@
         android:id="@+id/textViewTitleCostgroupCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewTitleCostgroupDesc"
-        android:layout_alignBottom="@+id/textViewTitleCostgroupDesc"
+        android:layout_alignBaseline="@+id/business_assesment_textViewTitleCostgroupDesc"
+        android:layout_alignBottom="@+id/business_assesment_textViewTitleCostgroupDesc"
         android:layout_alignRight="@+id/listViewCostgroup"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceMedium"

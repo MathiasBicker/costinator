@@ -54,7 +54,7 @@ public class BusinessAssesment extends Activity {
 		TextView 	elements 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements);
 		TextView 	costgroupView 	= (TextView) findViewById(R.id.costgroup_business_assesment_costgroup);
 		TextView 	sumView 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum);
-		Button 		chartButton		= (Button) findViewById(R.id.costgroup_business_assesment_btn);
+		Button 		chartButton		= (Button) findViewById(R.id.costgroup_business_assesment_costgroup_land);
 		chartButton.setOnClickListener(chartButtonListener);
 		//getting information from intent
 		Intent 		intent 			= getIntent();
@@ -86,6 +86,7 @@ public class BusinessAssesment extends Activity {
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
 		double perYear 	= Math.round(100.0 * sum/days*360) / 100.0;
+		sum				= Math.round(100.0 * sum) / 100.0;	
 		sumView.append(sum + currency + " (" + perDay + currency + getResources().getString(R.string.dayly) + "; " + perWeek + currency + getResources().getString(R.string.weekly)
 					   + "; " + perMonth + currency + getResources().getString(R.string.monthly) + "; " + perQuart + currency + getResources().getString(R.string.quart)
 					   + "; " + perYear + currency + getResources().getString(R.string.yearly) + ")");
