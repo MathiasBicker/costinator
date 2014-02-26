@@ -75,7 +75,7 @@
 	
 <!-- Costgroup Business Assesment DialogFragment -->
     <string name="title_dialog_costgroup_business_assesment">Evaluate Costgroup!</string>
-    <string name="title_dialog_costgroup_business_assesment_periode_spinner">Select Periodicity:</string>
+    <string name="title_dialog_costgroup_business_assesment_periode_spinner">Select Period:</string>
     <string name="title_dialog_costgroup_business_assesment_periode_tolerance">Select expectable Cost-Scenario:</string>
      <string name="title_dialog_costgroup_business_assesment_amount_period">Select Amount of Periods:</string>
     <string name="ButtonEvaluate">Evaluate</string>
