@@ -79,6 +79,7 @@ public class BusinessAssesment extends Activity {
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
 			elements.append(e.getName() + ": " + e.getEndvalue() + currency + " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
 		}
+		
 		//computing sums and displaying them
 		double perDay 	= Math.round(100.0 * sum/days) / 100.0;			//rounding values
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
@@ -148,7 +149,6 @@ public class BusinessAssesment extends Activity {
 			Log.e(LOGTAG, WRONGPERIOD);
 			throw new RuntimeException(WRONGPERIOD);
 		}
-		System.out.println("value = " + value + ", " + "endvalue = " + computedValue);
 		return computedValue;
 	}
 
