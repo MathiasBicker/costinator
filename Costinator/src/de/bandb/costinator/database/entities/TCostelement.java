@@ -49,6 +49,16 @@ public class TCostelement implements Serializable {
 	@DatabaseField(columnName="C_COSTGROUP", foreign=true)
 	private TCostgroup costgroup;
 	
+	private double endvalue; 
+	
+	public double getEndvalue() {
+		return endvalue;
+	}
+
+	public void setEndvalue(double endvalue) {
+		this.endvalue = endvalue;
+	}
+
 	public TCostelement(CostelementListViewItem c, int period, int tolerance) {
 		this(c, period);
 		setTolerance(tolerance);

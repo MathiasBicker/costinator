@@ -15,6 +15,7 @@ import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +26,8 @@ import android.widget.TextView;
 
 public class Costgroup extends FragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
 	
-	static final int NEW_COSTELEMENT_REQUEST = 10;
+	private static final int	NEW_COSTELEMENT_REQUEST = 10;
+	private static final String	LOGTAG 					= "Costgroup";
 	
 	private ListView 							costelementList;
 	private ArrayList<CostelementListViewItem> 	items;
@@ -277,7 +279,28 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 			int amountPeriods) {
 		Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
 		intent.putExtra(BusinessAssesment.COSTGROUPTAG, group);
-		intent.putExtra(BusinessAssesment.DAYSTAG, amountPeriods * periode);
+		int days = -1;
+		switch(periode) {
+		case TCostelement.DAYLY:
+			days = amountPeriods;
+			break;
+		case TCostelement.WEEKLY:
+			days = amountPeriods * 7;
+			break;
+		case TCostelement.MONTHLY:
+			days = amountPeriods * 30;
+			break;
+		case TCostelement.QUART:
+			days = amountPeriods * 90;
+			break;
+		case TCostelement.YEARLY:
+			days = amountPeriods * 360;
+			break;
+		default:
+			Log.e(LOGTAG, BusinessAssesment.WRONGPERIOD);
+			throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
+		}
+		intent.putExtra(BusinessAssesment.DAYSTAG, days);
 		startActivity(intent);
 	}
 }

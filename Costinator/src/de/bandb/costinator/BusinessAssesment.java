@@ -65,7 +65,7 @@ public class BusinessAssesment extends Activity {
 			//displaying name of costgroup
 			costgroupView.append(costgroup.getName());
 		}
-		
+		System.out.println("tage: " + days);
 		//checking if elementlist is empty
 		if(elementList.length == 0) {
 			Log.e(LOGTAG, EMPTYLIST);
@@ -75,8 +75,8 @@ public class BusinessAssesment extends Activity {
 		//displaying values for each element in list
 		for(TCostelement e : elementList) {
 			sum += computeValue(e.getValue(), e.getPeriod());
-			double endValue = Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0;	//rounding values
-			elements.append(e.getName() + ": " + endValue + " (" + e.getValue() + findPeriod(e.getPeriod()) + ")\n");
+			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
+			elements.append(e.getName() + ": " + e.getEndvalue() + " (" + e.getValue() + findPeriod(e.getPeriod()) + ")\n");
 		}
 		
 		//computing sums and displaying them
@@ -160,7 +160,7 @@ public class BusinessAssesment extends Activity {
         // Pie Chart Section Value
         double[] distribution = new double[elementList.length];
         for(int i = 0; i < distribution.length; i++)
-        	distribution[i] = elementList[i].getValue();
+        	distribution[i] = elementList[i].getEndvalue();
         
         // generating colors
         int[] colors = new int[elementList.length];
@@ -189,7 +189,7 @@ public class BusinessAssesment extends Activity {
         defaultRenderer.setZoomButtonsVisible(true);
  
         // Creating an intent to plot bar chart using dataset and multipleRenderer
-        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, "AChartEnginePieChartDemo");
+        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, getResources().getString(R.string.cost_allocation) + costgroup.getName());
  
         // Start Activity
         startActivity(intent);

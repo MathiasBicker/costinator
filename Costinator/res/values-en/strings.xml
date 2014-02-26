@@ -20,6 +20,7 @@
     <string name="monthly">per month</string>
     <string name="quart">per quarter</string>
     <string name="yearly">per year</string>
+    <string name="cost_allocation">cost allocation of costgroup </string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
