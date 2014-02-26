@@ -73,6 +73,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//----
 		
 		//dummy car
+		/*
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[5]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[3], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[5]);
@@ -90,9 +91,9 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		array[3] = new TCostelement(wartung, 5, 100);
 		array[4] = new TCostelement(finanzierungsrate, 3);
 		group.setElements(array);
+		*/
 		//-------
 		//dummy car english
-		/*
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 176.54, currency, periods[5]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 206.24, currency, periods[3], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 780.01, currency, periods[5]);
@@ -103,7 +104,13 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		items.add(versicherung);
 		items.add(wartung);
 		items.add(finanzierungsrate);
-		*/
+		TCostelement[] array = new TCostelement[5];
+		array[0] = new TCostelement(steuer, 5);
+		array[1] = new TCostelement(kraftstoff, 3, 20);
+		array[2] = new TCostelement(versicherung, 5);
+		array[3] = new TCostelement(wartung, 5, 100);
+		array[4] = new TCostelement(finanzierungsrate, 3);
+		group.setElements(array);
 		//-------
 		//dummy flat
 		/*
@@ -176,7 +183,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		group.setDescription(desc);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
 		costgroupDesc.setText(desc);
-		costgroupTotalCost.setText(totalCost);
+		//costgroupTotalCost.setText(totalCost);
 		
 		
 		addCostelement.setOnClickListener(addCostelementListener);
