@@ -184,12 +184,15 @@ public class BusinessAssesment extends Activity {
             defaultRenderer.addSeriesRenderer(seriesRenderer);
         }
  
-        defaultRenderer.setChartTitle(getResources().getString(R.string.categories) + costgroup.getName());
-        defaultRenderer.setChartTitleTextSize(20);
-        defaultRenderer.setZoomButtonsVisible(true);
+        defaultRenderer.setChartTitle(costgroup.getName());
+        defaultRenderer.setChartTitleTextSize(55);
+        defaultRenderer.setLabelsColor(Color.BLACK);
+        defaultRenderer.setLegendTextSize(50);
+        defaultRenderer.setFitLegend(true);
+        defaultRenderer.setZoomButtonsVisible(false);
  
         // Creating an intent to plot bar chart using dataset and multipleRenderer
-        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, getResources().getString(R.string.cost_allocation) + costgroup.getName());
+        Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, getResources().getString(R.string.cost_allocation) + " " +  costgroup.getName());
  
         // Start Activity
         startActivity(intent);

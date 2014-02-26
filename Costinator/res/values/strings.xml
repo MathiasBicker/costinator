@@ -28,7 +28,7 @@
     <string name="monthly">/Monat</string>
     <string name="quart">/Quartal</string>
     <string name="yearly">/Jahr</string>
-    <string name="cost_allocation">Kostenverteilung der Kostengruppe </string>
+    <string name="cost_allocation">Kostenverteilung </string>
     
 
     <!-- Costgroup -->

@@ -54,8 +54,8 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		costelementList 	= (ListView) findViewById(R.id.listViewCostgroup);
 		costgroupDesc		= (TextView) findViewById(R.id.textViewTitleCostgroupDesc);
 		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
-
-		items = new ArrayList<CostelementListViewItem>();
+		group 				= new TCostgroup();
+		items 				= new ArrayList<CostelementListViewItem>();
 		String[] periods 	= getResources().getStringArray(R.array.periods);
 		String currency 	= getResources().getString(R.string.currency);
 		String tolerancetxt = getResources().getString(R.string.tolerancetxt);
@@ -89,10 +89,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		array[2] = new TCostelement(versicherung, 5);
 		array[3] = new TCostelement(wartung, 5, 100);
 		array[4] = new TCostelement(finanzierungsrate, 3);
-		group = new TCostgroup();
 		group.setElements(array);
-		group.setDescription((String) costgroupDesc.getText());
-		group.setName((String) costgroupTitle.getText());
 		//-------
 		//dummy car english
 		/*
@@ -175,6 +172,8 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		String title		= intent.getStringExtra(Main.COSTGROUP_TITLE);
 		String desc			= intent.getStringExtra(Main.COSTGROUP_DESC);
 		String totalCost	= intent.getStringExtra(Main.COSTGROUP_TOTAL_COAST);
+		group.setName(title);
+		group.setDescription(desc);
 		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
 		costgroupDesc.setText(desc);
 		costgroupTotalCost.setText(totalCost);
