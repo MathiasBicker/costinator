@@ -109,5 +109,5 @@
     <string name="quartal">Quartal</string>
     <string name="year">Jahr</string>
     
-    <string name="sum">Summe: \n</string>
+    <string name="sum">Endbetrag: \n</string>
 </resources>
