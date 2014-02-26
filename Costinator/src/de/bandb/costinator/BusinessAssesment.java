@@ -53,6 +53,7 @@ public class BusinessAssesment extends Activity {
 		
 		//initializing widgets
 		TextView 	elements 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements);
+		TextView 	values	 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements_values);
 		TextView 	costgroupView 	= (TextView) findViewById(R.id.costgroup_business_assesment_costgroup);
 		TextView 	sumView 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum);
 		Button 		chartButton		= (Button) findViewById(R.id.costgroup_business_assesment_costgroup_land);
@@ -92,7 +93,8 @@ public class BusinessAssesment extends Activity {
 		for(TCostelement e : elementList) {
 			sum += computeValue(e.getValue(), e.getPeriod());
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
-			elements.append(e.getName() + ": " + e.getEndvalue() + currency + " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
+			elements.append(e.getName() + ": \n");
+			values.append(e.getEndvalue() + currency + " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
 		}
 		
 		//computing sums and displaying them
