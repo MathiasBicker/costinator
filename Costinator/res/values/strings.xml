@@ -22,7 +22,7 @@
     <string name="costgroup">Kostengruppe: </string>
     <string name="btn_pie_chart">Diagramm</string>
     <string name="categories">Kostenverteilung </string>
-    <string name="sum">Summe: </string>
+    
     <string name="dayly">/Tag</string>
     <string name="weekly">/Woche</string>
     <string name="monthly">/Monat</string>
@@ -109,5 +109,5 @@
     <string name="quartal">Quartal</string>
     <string name="year">Jahr</string>
     
-    <sring name="sum">Summe: \n</sring>
+    <string name="sum">Summe: </string>
 </resources>

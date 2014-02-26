@@ -89,6 +89,6 @@
     <string name="quartal">Quartal</string>
     <string name="year">Jahr</string>
   
-    <sring name="sum">Summe: \n</sring>
+    <string name="sum">Summe: </string>
 
 </resources>
