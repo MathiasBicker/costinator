@@ -70,17 +70,17 @@ public class BusinessAssesment extends Activity {
 		}
 		
 		if(days % 360 == 0 && days / 360 > 0)
-			phase = String.valueOf(days / 360) + getResources().getString(R.string.years);
+			phase = String.valueOf(days / 360) + " " + getResources().getString(R.string.years);
 		else if(days % 90 == 0 && days / 90 > 0)
-			phase = String.valueOf(days / 90) + getResources().getString(R.string.quartals);
+			phase = String.valueOf(days / 90) + " " + getResources().getString(R.string.quartals);
 		else if(days % 30 == 0 && days / 30 > 0)
-			phase = String.valueOf(days / 30) + getResources().getString(R.string.months);
+			phase = String.valueOf(days / 30) + " " + getResources().getString(R.string.months);
 		else if(days % 7 == 0 && days / 7 > 0)
-			phase = String.valueOf(days / 7) + getResources().getString(R.string.weeks);
+			phase = String.valueOf(days / 7) + " " + getResources().getString(R.string.weeks);
 		else 
-			phase = String.valueOf(days) + getResources().getString(R.string.days);
+			phase = String.valueOf(days) + " " + getResources().getString(R.string.days);
 		
-		costgroupView.append(getResources().getString(R.string.phase) + " " + phase + ")");
+		costgroupView.append(" " + getResources().getString(R.string.phase) + " " + phase + ")");
 		
 		//checking if elementlist is empty
 		if(elementList.length == 0) {
