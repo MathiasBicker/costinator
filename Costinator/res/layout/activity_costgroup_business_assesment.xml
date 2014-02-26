@@ -10,49 +10,61 @@
 
     <!-- default layout activity costgroup business assesment -->
 
-    <TextView
-        android:id="@+id/costgroup_business_assesment_costgroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="@string/costgroup"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <Button
+        android:id="@+id/costgroup_business_assesment_costgroup_land"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:background="@color/OrangeDark"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_pie_chart" />
 
     <View
         android:id="@+id/lineMain"
         android:layout_width="fill_parent"
         android:layout_height="3dp"
-        android:layout_alignLeft="@+id/business_assesment_elements"
-        android:layout_alignTop="@+id/business_assesment_elements"
+        android:layout_below="@+id/costgroup_business_assesment_costgroup"
+        android:layout_centerHorizontal="true"
         android:background="@color/Black" />
 
     <TextView
-        android:id="@+id/business_assesment_elements"
+        android:id="@+id/costgroup_business_assesment_costgroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/costgroup_business_assesment_costgroup"
-        android:layout_below="@+id/costgroup_business_assesment_costgroup" />
+        android:layout_alignLeft="@+id/lineMain"
+        android:layout_alignParentTop="true"
+        android:text="@string/costgroup"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/costgroup_business_assesment_elements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/business_assesment_elements"
-        android:layout_alignTop="@+id/business_assesment_elements" />
+        android:layout_alignBaseline="@+id/costgroup_business_assesment_elements_values"
+        android:layout_alignBottom="@+id/costgroup_business_assesment_elements_values"
+        android:layout_alignLeft="@+id/lineMain"
+        android:text="XX"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/costgroup_business_assesment_elements_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lineMain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:text="Werte"
+        android:textColor="@color/OrangeDark"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/costgroup_business_assesment_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/business_assesment_elements"
-        android:layout_below="@+id/costgroup_business_assesment_elements" />
-
-    <Button
-        android:id="@+id/costgroup_business_assesment_costgroup_land"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/btn_pie_chart" />
+        android:layout_alignLeft="@+id/costgroup_business_assesment_elements"
+        android:layout_below="@+id/costgroup_business_assesment_elements"
+        android:layout_marginTop="92dp"
+        android:text="SUM"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
