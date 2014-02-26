@@ -63,7 +63,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/costgroup_business_assesment_elements"
         android:layout_below="@+id/costgroup_business_assesment_elements"
-        android:layout_marginTop="92dp"
         android:text="SUM"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
