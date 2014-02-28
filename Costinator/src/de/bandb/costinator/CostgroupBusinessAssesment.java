@@ -19,7 +19,6 @@ import de.bandb.costinator.database.DatabaseHelper;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;

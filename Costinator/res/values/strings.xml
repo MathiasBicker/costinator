@@ -110,4 +110,7 @@
     <string name="year">Jahr</string>
     
     <string name="sum">Endbetrag: \n</string>
+    
+    <!-- error messages -->
+    <string name="err_no_items">Sie k&#246;nnen nur eine Auswertung machen, wenn Ihre Kostengruppe auch Kostenelemente enth&#228;lt</string>
 </resources>

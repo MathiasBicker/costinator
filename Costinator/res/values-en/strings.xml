@@ -99,4 +99,7 @@
     <string name="year">year</string>
     
     <string name="sum">total amount: </string>
+    
+    <!-- error messages -->
+    <string name="err_no_items">to create a business assessment your costgroup need to contain some costelements</string>
 </resources>

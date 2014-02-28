@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Toast;
 
 public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
 	
@@ -114,10 +115,13 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            //openSettings();
 	            return true;
 	        case R.id.action_assessCostgroup:
-	        	
-	        	CostgroupBusinessAssesmentDialogFragment fragment = new CostgroupBusinessAssesmentDialogFragment();
-				fragment.mListener = Costgroup.this;
-				fragment.show(getSupportFragmentManager(), "");
+	        	if(items.isEmpty())
+	        		Toast.makeText(this, getResources().getString(R.string.err_no_items), Toast.LENGTH_LONG);
+	        	else {
+		        	CostgroupBusinessAssesmentDialogFragment fragment = new CostgroupBusinessAssesmentDialogFragment();
+					fragment.mListener = Costgroup.this;
+					fragment.show(getSupportFragmentManager(), "");
+	        	}
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
