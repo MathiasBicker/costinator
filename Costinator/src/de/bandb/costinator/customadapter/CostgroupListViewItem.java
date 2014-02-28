@@ -1,5 +1,7 @@
 package de.bandb.costinator.customadapter;
 
+import de.bandb.costinator.database.entities.TCostgroup;
+
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
@@ -9,6 +11,7 @@ public class CostgroupListViewItem {
 	
 	private String costgroupTitle;
 	private String costgroupDesc;
+	private String currency;
 	private String totalCost;
 	
 	public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
@@ -17,6 +20,27 @@ public class CostgroupListViewItem {
 		this.totalCost= totalCost;
 	}
 	
+	public CostgroupListViewItem(TCostgroup c, String currency) {
+		costgroupTitle = c.getName();
+		if(c.getDescription() != null)
+			costgroupDesc = c.getDescription();
+		else
+			costgroupDesc = "";
+		if(c.getMonthlyCost() != 0.0)
+			totalCost = String.valueOf(c.getMonthlyCost());
+		else
+			costgroupDesc = "";
+		this.currency = currency;
+	}
+	
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
 	public String getCostgroupDesc() {
 		return costgroupDesc;
 	}
