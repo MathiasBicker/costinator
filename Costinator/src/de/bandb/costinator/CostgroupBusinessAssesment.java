@@ -36,11 +36,10 @@ import android.widget.TextView;
 
 public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelper> {
 
-	public static final String LOGTAG 			= "BusinessAssesment";
-	public static final String COSTGROUPTAG 	= "costgroup";
-	public static final String DAYSTAG 			= "days";
-	
-	private static final int SERIES_NR = 2;
+	public static final String 	LOGTAG 			= "BusinessAssesment";
+	public static final String 	COSTGROUPTAG 	= "costgroup";
+	public static final String 	DAYSTAG 		= "days";
+	public static final int		CASEAMOUNT		= 3;
 	//error messages
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
@@ -49,7 +48,10 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	private TCostgroup 					costgroup;
 	private String						phase;
 	private int							days;
-	private double						sum	= 0.0;
+	private double						sum			= 0.0;
+	private double						bestSum 	= 0.0;
+	private double						worstSum 	= 0.0;
+	private double						max;
 	private String						currency;
 	private OnClickListener 			chartButtonListener = new OnClickListener() {
 		@Override
@@ -107,13 +109,27 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		for(TCostelement e : elementList) {
 			//sum += computeValue(e.getValue(), e.getPeriod());
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
+			if(e.getTolerance() == 0) {
+				e.setBestValue(e.getEndvalue());
+				e.setWorstValue(e.getEndvalue());
+			}else {
+				e.setBestValue(e.getEndvalue() - e.getEndvalue() * e.getTolerance() / 100);
+				e.setWorstValue(e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100);
+			}
 			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
 			values.append(e.getEndvalue() + currency + "\n\n");
 		}
 		
+		max = elementList.get(0).getWorstValue();
 		//computing sums and displaying them
-		for(TCostelement c : elementList)
-			sum += c.getEndvalue();
+		for(TCostelement c : elementList) {
+			if(c.getWorstValue() > max)
+				max = c.getWorstValue();
+			sum 		+= c.getEndvalue();
+			bestSum 	+= c.getBestValue();
+			worstSum 	+= c.getWorstValue();
+		}
+		
 		double perDay 	= Math.round(100.0 * sum/days) / 100.0;			//rounding values
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
@@ -190,7 +206,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	private void openBarChart() {
 		XYMultipleSeriesRenderer renderer = getTruitonBarRenderer();
         myChartSettings(renderer);
-        Intent intent = ChartFactory.getBarChartIntent(this, getTruitonBarDataset(), renderer, Type.DEFAULT);
+        Intent intent = ChartFactory.getBarChartIntent(this, getTruitonBarDataset(), renderer, Type.DEFAULT, getResources().getString(R.string.barchart_title));
         startActivity(intent);
 	}
 
@@ -245,32 +261,46 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	
 	private XYMultipleSeriesDataset getTruitonBarDataset() {
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-        final int nr = 4;
-        Random r = new Random();
         ArrayList<String> legendTitles = new ArrayList<String>();
-        legendTitles.add("Best Case");
-        legendTitles.add("Worst Case");
-        legendTitles.add("Average Case");
-        for (int i = 0; i < SERIES_NR; i++) {
-            CategorySeries series = new CategorySeries(legendTitles.get(i));
-            for(TCostelement e : elementList)
-            	series.add(e.getEndvalue());
-            for (int k = 0; k < elementList.size(); k++) {
-                series.add(100 + r.nextInt() % 100);
-            }
-            dataset.addSeries(series.toXYSeries());
+        legendTitles.add(getResources().getString(R.string.best_case));
+        legendTitles.add(getResources().getString(R.string.avg_case));
+        legendTitles.add(getResources().getString(R.string.worst_case));
+        for (int i = 0; i < CASEAMOUNT; i++) {
+        	switch(i) {
+        	case 0:
+	            CategorySeries worstSeries = new CategorySeries(legendTitles.get(i));
+	            for(TCostelement e : elementList)
+	            	worstSeries.add(e.getWorstValue());
+	            dataset.addSeries(worstSeries.toXYSeries());
+	            break;
+        	case 1:
+        		CategorySeries avgSeries = new CategorySeries(legendTitles.get(i));
+	            for(TCostelement e : elementList)
+	            	avgSeries.add(e.getEndvalue());
+	            dataset.addSeries(avgSeries.toXYSeries());
+	            break;
+        	case 2:
+        		CategorySeries bestSeries = new CategorySeries(legendTitles.get(i));
+	            for(TCostelement e : elementList)
+	            	bestSeries.add(e.getBestValue());
+	            dataset.addSeries(bestSeries.toXYSeries());
+	            break;
+        	}
         }
         return dataset;
     }
  
     public XYMultipleSeriesRenderer getTruitonBarRenderer() {
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
-        renderer.setAxisTitleTextSize(16);
-        renderer.setChartTitleTextSize(20);
-        renderer.setLabelsTextSize(15);
-        renderer.setLegendTextSize(15);
-        renderer.setMargins(new int[] { 30, 40, 15, 0 });
+        renderer.setAxisTitleTextSize(30);
+        renderer.setChartTitleTextSize(50);
+        renderer.setLabelsTextSize(30);
+        renderer.setLegendTextSize(30);
+        renderer.setMargins(new int[] { 10, 40, 80, 0 });
         SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+        r.setColor(Color.GREEN);
+        renderer.addSeriesRenderer(r);
+        r = new SimpleSeriesRenderer();
         r.setColor(Color.BLUE);
         renderer.addSeriesRenderer(r);
         r = new SimpleSeriesRenderer();
@@ -280,19 +310,16 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
     }
  
     private void myChartSettings(XYMultipleSeriesRenderer renderer) {
-        renderer.setChartTitle(getResources().getString(R.string.barchart_title));
         renderer.setXAxisMin(0.5);
-        renderer.setXAxisMax(10.5);
+        renderer.setXAxisMax(elementList.size() + 0.5);
         renderer.setYAxisMin(0);
-        renderer.setYAxisMax(210);
-        renderer.addXTextLabel(1, "2010");
-        renderer.addXTextLabel(2, "2011");
-        renderer.addXTextLabel(3, "2012");
-        renderer.addXTextLabel(4, "2013");
+        renderer.setYAxisMax(max + max*0.1);
+        for(int i = 0; i < elementList.size(); i++)
+        	renderer.addXTextLabel(i+1, elementList.get(i).getName());
         renderer.setYLabelsAlign(Align.RIGHT);
         renderer.setBarSpacing(0.5);
-        renderer.setXTitle("Years");
-        renderer.setYTitle("Performance");
+        renderer.setXTitle(getResources().getString(R.string.x_axis));
+        renderer.setYTitle(getResources().getString(R.string.y_axis));
         renderer.setShowGrid(true);
         renderer.setGridColor(Color.GRAY);
         renderer.setXLabels(0); // sets the number of integer labels to appear

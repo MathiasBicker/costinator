@@ -30,6 +30,11 @@
     <string name="yearly">/Jahr</string>
     <string name="cost_allocation">Kostenverteilung </string>
     <string name="phase">(Zeitraum: </string>
+    <string name="best_case">bester Fall</string>
+    <string name="avg_case">durchschnittlicher Fall</string>
+    <string name="worst_case">schlechtester Fall</string>
+    <string name="x_axis">Kostenelement</string>
+    <string name="y_axis">Betrag</string>
     
     
 

@@ -24,6 +24,11 @@
     <string name="phase">(period: </string>
     <string name="costgroup">costgroup: </string>
     <string name="barchart_title">Comparison costelements with tolerance</string>
+    <string name="best_case">best case</string>
+    <string name="avg_case">average case</string>
+    <string name="worst_case">worst case</string>
+    <string name="x_axis">costelement</string>
+    <string name="y_axis">value</string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
