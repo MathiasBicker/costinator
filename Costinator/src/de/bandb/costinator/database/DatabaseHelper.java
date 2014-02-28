@@ -65,14 +65,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			car.setMonthlyCost(0.0);
 			create(car);
 			TCostgroup flat = new TCostgroup();
-			car.setName("Wohnung");
-			car.setDescription("Mainzer Str. 197, 66121");
-			car.setMonthlyCost(0.0);
+			flat.setName("Wohnung");
+			flat.setDescription("Mainzer Str. 197, 66121");
+			flat.setMonthlyCost(0.0);
 			create(flat);
 			TCostgroup master = new TCostgroup();
-			car.setName("Master-Studium");
-			car.setDescription("Lebensunterhalt");
-			car.setMonthlyCost(0.0);
+			master.setName("Master-Studium");
+			master.setDescription("Lebensunterhalt");
+			master.setMonthlyCost(0.0);
 			create(master);
 		}catch(SQLException e) {
 			Log.e(TAG, "Can't create database", e);

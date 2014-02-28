@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class CustomAdapterListViewMain extends BaseAdapter {
@@ -23,6 +24,7 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 		 
 	    private ArrayList<CostgroupListViewItem> 	data;
 	    private Context 							c;
+	    private ListView							parent;
 	    
 	    
 	    public CustomAdapterListViewMain (ArrayList<CostgroupListViewItem> data, Context c) {
@@ -55,24 +57,32 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	         TextView 				totalCost 	= (TextView) v.findViewById(R.id.textViewCostgroupTotalCost);
 	         ImageButton			delete		= (ImageButton) v.findViewById(R.id.imageButtonCostgroupDelete);
 	         
-	         CostgroupListViewItem 	item 		= data.get(position);
-	         
-	         delete.setOnClickListener(new OnClickListener()
-	         {
-	        	  @Override
-	        	  public void onClick(View v)
-	        	   {	
-	        
-	        		  	data.remove(position);
-	        		  	notifyDataSetChanged();
-	        	   }
-	        	});
-	         
-	         title.setText(item.getCostgroupTitle());
-	         desc.setText(item.getCostgroupDesc());
-	         if(!(item.getTotalCost().equals(""))) 
-	        	 totalCost.setText(item.getTotalCost() + item.getCurrency());             
+	         this.parent = (ListView) parent;
+	         if(!(data.isEmpty())) {
+		         CostgroupListViewItem 	item 		= data.get(position);
+		         
+		         delete.setOnClickListener(new OnClickListener()
+		         {
+		        	  @Override
+		        	  public void onClick(View v)
+		        	   {	
+		        		  	delete(position);
+		        		  	notifyDataSetChanged();
+		        	   }
+		        	});
+		         
+		         title.setText(item.getCostgroupTitle());
+		         System.out.println("bla " + item.getCostgroupTitle());
+		         desc.setText(item.getCostgroupDesc());
+		         if(item.getTotalCost() != null)
+			         if(!(item.getTotalCost().equals(""))) 
+			        	 totalCost.setText(item.getTotalCost() + item.getCurrency());             
+	         }
 	         return v;
+	    }
+	    
+	    public void delete(int position) {
+	    	parent.getOnItemLongClickListener().onItemLongClick(null, null, position, 0);
 	    }
 }
 	

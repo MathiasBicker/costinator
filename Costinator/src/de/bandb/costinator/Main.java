@@ -84,10 +84,10 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		addCostgroup 	= (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
-		costgroupList 	= (ListView) findViewById(R.id.listViewMain);
-		items 			= new ArrayList<CostgroupListViewItem>();
-		List<TCostgroup> list= getHelper().queryAllCostgroups();
+		addCostgroup 			= (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
+		costgroupList 			= (ListView) findViewById(R.id.listViewMain);
+		items 					= new ArrayList<CostgroupListViewItem>();
+		List<TCostgroup> list	= getHelper().queryAllCostgroups();
 		if(list != null)
 			for(TCostgroup c : list)
 				items.add(new CostgroupListViewItem(c, getResources().getString(R.string.currency)));
@@ -100,8 +100,8 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		items.add(costgroup2);
 		*/
 		//__
+		
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
-
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);

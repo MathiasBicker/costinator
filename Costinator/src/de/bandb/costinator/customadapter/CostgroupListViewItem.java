@@ -30,7 +30,7 @@ public class CostgroupListViewItem {
 		if(c.getMonthlyCost() != 0.0)
 			totalCost = String.valueOf(c.getMonthlyCost());
 		else
-			costgroupDesc = "";
+			totalCost = "";
 		this.currency = currency;
 		id = c.getId();
 	}
