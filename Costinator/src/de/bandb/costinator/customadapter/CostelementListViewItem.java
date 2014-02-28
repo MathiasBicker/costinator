@@ -24,10 +24,12 @@ public class CostelementListViewItem implements Serializable {
 
 	public CostelementListViewItem(String name, String desc, String value, String currency, String periode, String tolerance) {
 		this(name, desc, value, currency, periode);
-		if(tolerance.substring(tolerance.length()-2).equals("--"))
-			this.tolerance = "";
+		if(tolerance == null)
+			this.tolerance = "0%";
+		else if(tolerance.substring(tolerance.length()-2).equals("--"))
+			this.tolerance = "0%";
 		else
-			this.tolerance = tolerance + "%";
+			this.tolerance = tolerance;
 	}
 	
 	public CostelementListViewItem(String name, String desc, String value, String currency, String periode) {
@@ -46,6 +48,8 @@ public class CostelementListViewItem implements Serializable {
 			desc = "";
 		if(c.getValue() * 10 % 1.0 == 0)
 			value = String.valueOf(c.getValue()) + "0";
+		else if (c.getValue() * 100 % 1.0 == 0)
+			value = String.valueOf(c.getValue()) + ".00";
 		else
 			value = String.valueOf(c.getValue());
 		tolerance = String.valueOf(c.getTolerance()) + "%";

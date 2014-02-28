@@ -91,8 +91,8 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costgroupTitle.append(" "+ costgroup.getCostgroupTitle());
 		costgroupDesc.setText(costgroup.getCostgroupDesc());
 		costgroupTotalCost.setText(costgroup.getTotalCost());
-		TCostgroup c = getHelper().queryCostgroup(costgroup.getId());
-		List<TCostelement> list = getHelper().queryAllCostelements(c);
+		group = getHelper().queryCostgroup(costgroup.getId());
+		List<TCostelement> list = getHelper().queryAllCostelements(group);
 		if(list != null && !(list.isEmpty()))
 			for(TCostelement e : list)
 				items.add(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency)));
@@ -147,8 +147,9 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	
 	public void addCostelement (CostelementListViewItem costelement) {
 		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
+		element.setCostgroup(group);
 		getHelper().create(element);
-		items.add(costelement);
+		items.add(new CostelementListViewItem(element, findPeriod(element.getPeriod()), getResources().getString(R.string.currency)));
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 
