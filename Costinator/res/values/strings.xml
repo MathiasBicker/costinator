@@ -10,6 +10,8 @@
     <string name="hello_world">Hallo Welt!</string>
     <string name="currency">&#8364;</string>
     <string name="percent">&#37;</string>
+    <string name="exchange_rate">1.3807</string>
+    
     
 
     <!-- Main -->

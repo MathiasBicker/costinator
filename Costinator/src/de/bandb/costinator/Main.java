@@ -7,6 +7,7 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
@@ -78,7 +79,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		List<TCostgroup> list	= getHelper().queryAllCostgroups();
 		if(list != null)
 			for(TCostgroup c : list)
-				items.add(new CostgroupListViewItem(c, getResources().getString(R.string.currency)));
+				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
 			
 		//dummy data
 		/*
@@ -127,6 +128,15 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		getHelper().create(group);
 		addCostgroup(group);
 	}
+	
+	private CostgroupListViewItem checkCurrency(CostgroupListViewItem c) {
+		if(getResources().getConfiguration().locale.equals(Locale.US)) {
+			double value = Double.valueOf(c.getTotalCost().substring(0, c.getTotalCost().length() - 2));
+			double exchangeRate = Double.valueOf(getResources().getString(R.string.exchange_rate));
+			c.setTotalCost(String.valueOf(Math.round(100.0 * value * exchangeRate) / 100.0));
+		}
+		return c;
+	}
 
 	/**
 	 * adding new CostgroupListViewItem to ArrayList and
@@ -134,7 +144,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	 */
 	public void addCostgroup(TCostgroup group) {
 		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(group, getResources().getString(R.string.currency));
-		items.add(newCostgroup);
+		items.add(checkCurrency(newCostgroup));
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
 
