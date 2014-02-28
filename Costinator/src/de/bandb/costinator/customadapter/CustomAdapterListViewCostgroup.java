@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class CustomAdapterListViewCostgroup extends BaseAdapter {
 	
 	private ArrayList<CostelementListViewItem> data;
 	private Context c;
+	private ListView parent;
 
 	public CustomAdapterListViewCostgroup (ArrayList<CostelementListViewItem> data, Context c){
 		this.data 	= data;
@@ -50,6 +52,8 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
             LayoutInflater vi = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.activity_costgroup_listview_item, null);
          }
+         
+         this.parent = (ListView) parent;
  
           TextView name = 		(TextView) v.findViewById(R.id.textViewCostelementName);
           TextView desc  = 		(TextView) v.findViewById(R.id.textViewCostelementDesc);
@@ -69,4 +73,8 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
           currency.setText(item.getCurrency());              
         return v;	
 	}
+	
+	public void delete(int position) {
+    	parent.getOnItemLongClickListener().onItemLongClick(null, null, position, 0);
+    }
 }

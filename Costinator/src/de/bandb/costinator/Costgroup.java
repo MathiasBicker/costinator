@@ -59,7 +59,6 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		String[] periods 	= getResources().getStringArray(R.array.periods);
 		String currency 	= getResources().getString(R.string.currency);
 		String tolerancetxt = getResources().getString(R.string.tolerancetxt);
-		String percent 		= getResources().getString(R.string.percent);
 		
 		//Dummy Data
 		/*

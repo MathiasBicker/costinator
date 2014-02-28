@@ -1,5 +1,7 @@
 package de.bandb.costinator.customadapter;
 
+import java.io.Serializable;
+
 import de.bandb.costinator.database.entities.TCostgroup;
 
 /**
@@ -7,8 +9,12 @@ import de.bandb.costinator.database.entities.TCostgroup;
  * version: 1.0
  */
 
-public class CostgroupListViewItem {
+public class CostgroupListViewItem implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2666373981192978326L;
 	private String 	costgroupTitle;
 	private String 	costgroupDesc;
 	private String 	currency;

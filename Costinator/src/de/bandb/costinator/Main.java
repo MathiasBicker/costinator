@@ -32,9 +32,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	
 	private static final String LOGTAG = "Main";
 	
-	public static final String COSTGROUP_TITLE	 		 = "de.bandb.costinator.COSTGROUP_TITLE";
-	public static final String COSTGROUP_DESC	 		 = "de.bandb.costinator.COSTGROUP_DESC";
-	public static final String COSTGROUP_TOTAL_COAST	 = "de.bandb.costinator.COSTGROUP_TOTALCOAST";
+	public static final String COSTGROUPTAG	 		 = "costgroup";
 	
 	private ListView 							costgroupList;
 	private ArrayList<CostgroupListViewItem> 	items;
@@ -61,20 +59,14 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		}
 
 	};
-	private OnItemClickListener 				costgroupListListener = new OnItemClickListener() {
+	private OnItemClickListener costgroupListListener = new OnItemClickListener() {
 		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 				long arg3) {
 			//telling new activity the name of the costgroup
 			Intent intent = new Intent(Main.this, Costgroup.class);
-			CostgroupListViewItem aktuelleCostgroup = (CostgroupListViewItem) items.get(arg2);
-			String costgroupTitle 		= aktuelleCostgroup.getCostgroupTitle();
-			String costgroupDesc		= aktuelleCostgroup.getCostgroupDesc();
-			String costgroupTotalValue  = aktuelleCostgroup.getTotalCost();
-			Log.v(LOGTAG, costgroupTitle);
-			intent.putExtra(COSTGROUP_TITLE, costgroupTitle);
-			intent.putExtra(COSTGROUP_DESC, costgroupDesc);
-			intent.putExtra(COSTGROUP_TOTAL_COAST, costgroupTotalValue);
+			CostgroupListViewItem group = (CostgroupListViewItem) items.get(position);
+			intent.putExtra(COSTGROUPTAG, group);
 			startActivity(intent);
 		}
 	};
