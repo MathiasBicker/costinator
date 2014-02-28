@@ -72,7 +72,6 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 		        	});
 		         
 		         title.setText(item.getCostgroupTitle());
-		         System.out.println("bla " + item.getCostgroupTitle());
 		         desc.setText(item.getCostgroupDesc());
 		         if(item.getTotalCost() != null)
 			         if(!(item.getTotalCost().equals(""))) 

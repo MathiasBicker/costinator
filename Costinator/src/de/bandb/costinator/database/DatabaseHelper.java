@@ -64,6 +64,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			car.setDescription("BMW 118d, weiss");
 			car.setMonthlyCost(0.0);
 			create(car);
+			TCostelement steuer = new TCostelement();
+			steuer.setCostgroup(car);
+			steuer.setName("Steuer");
+			steuer.setDescription("KFZ-Steuer");
+			steuer.setPeriod(1);
+			steuer.setValue(120.0);
+			create(steuer);
 			TCostgroup flat = new TCostgroup();
 			flat.setName("Wohnung");
 			flat.setDescription("Mainzer Str. 197, 66121");
