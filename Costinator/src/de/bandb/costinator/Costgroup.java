@@ -6,10 +6,13 @@ package de.bandb.costinator;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
+import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
+import de.bandb.costinator.database.OrmLiteFragmentActivity;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
@@ -24,7 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Costgroup extends FragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
+public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
 	
 	private static final int	NEW_COSTELEMENT_REQUEST = 10;
 	private static final String	LOGTAG 					= "Costgroup";
@@ -54,7 +57,6 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		costelementList 	= (ListView) findViewById(R.id.listViewCostgroup);
 		costgroupDesc		= (TextView) findViewById(R.id.business_assesment_textViewTitleCostgroupDesc);
 		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
-		group 				= new TCostgroup();
 		items 				= new ArrayList<CostelementListViewItem>();
 		String[] periods 	= getResources().getStringArray(R.array.periods);
 		String currency 	= getResources().getString(R.string.currency);
@@ -72,17 +74,18 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//----
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
-		//showing name,desc, totalCost of costgroup as title
+		//showing name, describtion and computed total cost of costgroup as title
 		Intent intent 		= getIntent();
-		String title		= intent.getStringExtra(Main.COSTGROUP_TITLE);
-		String desc			= intent.getStringExtra(Main.COSTGROUP_DESC);
-		String totalCost	= intent.getStringExtra(Main.COSTGROUP_TOTAL_COAST);
-		group.setName(title);
-		group.setDescription(desc);
-		costgroupTitle.setText(costgroupTitle.getText().toString() +" "+ title);
-		costgroupDesc.setText(desc);
-		//costgroupTotalCost.setText(totalCost);
-		
+		Bundle b = intent.getExtras();
+		CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+		costgroupTitle.append(" "+ costgroup.getCostgroupTitle());
+		costgroupDesc.setText(costgroup.getCostgroupDesc());
+		costgroupTotalCost.setText(costgroup.getTotalCost());
+		TCostgroup c = getHelper().queryCostgroup(costgroup.getId());
+		List<TCostelement> list = getHelper().queryAllCostelements(c);
+		if(list != null && !(list.isEmpty()))
+			for(TCostelement e : list)
+				items.add(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency)));
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 	}
@@ -175,6 +178,35 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		}
 		intent.putExtra(CostgroupBusinessAssesment.DAYSTAG, days);
 		startActivity(intent);
+	}
+	
+	/**
+	 * @param period period constant form TCostelement
+	 * @return string containing e.g. '/dayly'
+	 */
+	public String findPeriod(int period) {
+		String type = null;
+		switch(period) {
+		case TCostelement.DAYLY:
+			type = getResources().getString(R.string.dayly);
+			break;
+		case TCostelement.WEEKLY:
+			type = getResources().getString(R.string.weekly);
+			break;
+		case TCostelement.MONTHLY:
+			type = getResources().getString(R.string.monthly);
+			break;
+		case TCostelement.QUART:
+			type = getResources().getString(R.string.quart);
+			break;
+		case TCostelement.YEARLY:
+			type = getResources().getString(R.string.yearly);
+			break;
+		default:
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
+			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
+		}
+		return type;
 	}
 }
 	
