@@ -71,7 +71,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 			String costgroupDesc		= aktuelleCostgroup.getCostgroupDesc();
 			String costgroupTotalValue  = aktuelleCostgroup.getTotalCost();
 			Log.v(LOGTAG, costgroupTitle);
-			Log.v("CustomAdapterListViewMain",""+ CustomAdapterListViewMain.position);
+			
 			intent.putExtra(COSTGROUP_TITLE, costgroupTitle);
 			intent.putExtra(COSTGROUP_DESC, costgroupDesc);
 			intent.putExtra(COSTGROUP_TOTAL_COAST, costgroupTotalValue);
@@ -120,25 +120,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
 		
-		//Delete Dialog
-		AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
-		builder.setTitle("Hallo");
-		// Add the buttons
-		builder.setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		        	   deleteCostgroup(CustomAdapterListViewMain.position);
-		           }
-		       });
-		builder.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		               // User cancelled the dialog
-		           }
-		       });
-		// Set other dialog properties
-	
-
-		// Create the AlertDialog
-		AlertDialog dialog = builder.create();
+		
 		
 	}
 
