@@ -49,7 +49,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String DELETEELEMENT 			= "failed database access deleting costelements";
 	
 	
-	public DatabaseHelper(Context context, String databaseName, CursorFactory factory, int databaseVersion) {
+	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 

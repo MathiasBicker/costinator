@@ -9,14 +9,13 @@ public class OrmLiteFragmentActivity extends FragmentActivity {
 
     protected DatabaseHelper getHelper() {
         if (databaseHelper == null) {
-            databaseHelper =
-                OpenHelperManager.getHelper(this, DatabaseHelper.class);
+            databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
         }
         return databaseHelper;
     }
 
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         if (databaseHelper != null) {
             OpenHelperManager.releaseHelper();
