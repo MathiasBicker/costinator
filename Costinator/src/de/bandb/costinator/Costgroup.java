@@ -111,37 +111,6 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	        	CostgroupBusinessAssesmentDialogFragment fragment = new CostgroupBusinessAssesmentDialogFragment();
 				fragment.mListener = Costgroup.this;
 				fragment.show(getSupportFragmentManager(), "");
-				
-//	        	Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
-//	        	
-//	        	TCostgroup costgroup = new TCostgroup();
-//	        	costgroup.setDescription("Stephanstr. 27A");
-//	        	costgroup.setId(1);
-//	        	costgroup.setName("Haus");
-//	        	
-//	        	TCostelement costelement1 = new TCostelement();
-//	        	costelement1.setCostgroup(costgroup);
-//	        	costelement1.setDescription("Frau Schmitt");
-//	        	costelement1.setName("Putzfrau");
-//	        	costelement1.setPeriod(2);
-//	        	costelement1.setValue(100);
-//	        	costelement1.setId(1);
-//	        	
-//	        	TCostelement costelement2 = new TCostelement();
-//	        	costelement2.setCostgroup(costgroup);
-//	        	costelement2.setDescription("Sch�ferhund");
-//	        	costelement2.setName("Wachhund");
-//	        	costelement2.setPeriod(3);
-//	        	costelement2.setValue(1000);
-//	        	costelement2.setId(2);
-//	        	
-//	        	elementList = new ArrayList<TCostelement>();
-//	        	elementList.add(costelement1);
-//	        	elementList.add(costelement2);
-//	        	
-//	        	int days = 180;
-//	        	intent.putExtra(BusinessAssesment.DAYSTAG, days);
-//	        	startActivity(intent);
 	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
