@@ -15,12 +15,12 @@ public class CostgroupListViewItem {
 	private String 	totalCost;
 	private int 	id;
 	
-	public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
+	/*public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
 		this.costgroupTitle= costgroupTitle;
 		this.costgroupDesc= costgroupDesc;
 		this.totalCost= totalCost;
 	}
-	
+	*/
 	public CostgroupListViewItem(TCostgroup c, String currency) {
 		costgroupTitle = c.getName();
 		if(c.getDescription() != null)

@@ -26,6 +26,9 @@ public class TCostgroup implements Serializable{
 	@DatabaseField(columnName="C_MONTHLYCOST", canBeNull=true)
 	private double monthlyCost;
 	
+	public TCostgroup() {
+	}
+	
 	public double getMonthlyCost() {
 		return monthlyCost;
 	}
@@ -57,5 +60,9 @@ public class TCostgroup implements Serializable{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String toString() {
+		return "id: " + id + "; name: " + name + "; cost: " + monthlyCost;
 	}
 }

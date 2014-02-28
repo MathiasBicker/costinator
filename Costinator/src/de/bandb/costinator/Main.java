@@ -88,8 +88,9 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		costgroupList 	= (ListView) findViewById(R.id.listViewMain);
 		items 			= new ArrayList<CostgroupListViewItem>();
 		List<TCostgroup> list= getHelper().queryAllCostgroups();
-		for(TCostgroup c : list)
-			items.add(new CostgroupListViewItem(c, getResources().getString(R.string.currency)));
+		if(list != null)
+			for(TCostgroup c : list)
+				items.add(new CostgroupListViewItem(c, getResources().getString(R.string.currency)));
 			
 		//dummy data
 		/*

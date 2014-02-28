@@ -30,11 +30,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final int	DATABASE_VERSION 	= 1;
 	private static final String TAG 				= DatabaseHelper.class.getName();
 	private static final String GROUPDELETED		= "deleted group: ";
-	private static final String ELEMENTDELETED 		= "failed database access querying costelements";
-	private static final String GROUPUPDATED		= "failed database access querying costgroups";
-	private static final String ELEMENTUPDATED		= "failed database access querying costelements";
-	private static final String GROUPCREATED		= "failed database access querying costgroups";
-	private static final String ELEMENTCREATED 		= "failed database access querying costelements";
+	private static final String ELEMENTDELETED 		= "deleted element: ";
+	private static final String GROUPUPDATED		= "updated group: ";
+	private static final String ELEMENTUPDATED		= "updated element: ";
+	private static final String GROUPCREATED		= "created group: ";
+	private static final String ELEMENTCREATED 		= "created element: ";
 	
 	//exception error messages
 	private static final String QUERYALLCOSTGROUP		= "failed database access querying costgroups";
@@ -59,6 +59,21 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			Log.i(TAG, "onCreate");
 			TableUtils.createTable(connectionSource, TCostgroup.class);
 			TableUtils.createTable(connectionSource, TCostelement.class);
+			TCostgroup car = new TCostgroup();
+			car.setName("Auto");
+			car.setDescription("BMW 118d, weiss");
+			car.setMonthlyCost(0.0);
+			create(car);
+			TCostgroup flat = new TCostgroup();
+			car.setName("Wohnung");
+			car.setDescription("Mainzer Str. 197, 66121");
+			car.setMonthlyCost(0.0);
+			create(flat);
+			TCostgroup master = new TCostgroup();
+			car.setName("Master-Studium");
+			car.setDescription("Lebensunterhalt");
+			car.setMonthlyCost(0.0);
+			create(master);
 		}catch(SQLException e) {
 			Log.e(TAG, "Can't create database", e);
 			throw new RuntimeException(e.getMessage());

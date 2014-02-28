@@ -47,10 +47,13 @@ public class TCostelement implements Serializable {
 	private int period;
 	@DatabaseField(columnName="C_TOLERANCE", canBeNull=true)
 	private int tolerance;
-	@DatabaseField(columnName=COSTGROUP, foreign=true)
+	@DatabaseField(columnName=COSTGROUP, canBeNull=false, foreign=true)
 	private TCostgroup costgroup;
 	
 	private double endvalue; 
+	
+	public TCostelement() {
+	}
 	
 	public double getEndvalue() {
 		return endvalue;
@@ -119,5 +122,10 @@ public class TCostelement implements Serializable {
 	}
 	public void setCostgroup(TCostgroup costgroup) {
 		this.costgroup = costgroup;
+	}
+	
+	public String toString() {
+		return "id: " + id + "; name: " + name + "; value: " + value + "; period: " + period + 
+				"; tolerance: " + tolerance + "; group: " + costgroup.getId();
 	}
 }
