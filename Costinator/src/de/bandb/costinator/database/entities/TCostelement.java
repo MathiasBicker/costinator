@@ -27,6 +27,7 @@ public class TCostelement implements Serializable {
 
 	private static final long 	serialVersionUID = 3725841290753976725L;
 	
+	public static final String 	COSTGROUP 		= "C_COSTGROUP";
 	public static final String 	BADTOLERANCE 	= "tolerance must be between 1 and 100";
 	public static final int		DAYLY 			= 1;
 	public static final int		WEEKLY 			= 2;
@@ -46,7 +47,7 @@ public class TCostelement implements Serializable {
 	private int period;
 	@DatabaseField(columnName="C_TOLERANCE", canBeNull=true)
 	private int tolerance;
-	@DatabaseField(columnName="C_COSTGROUP", foreign=true)
+	@DatabaseField(columnName=COSTGROUP, foreign=true)
 	private TCostgroup costgroup;
 	
 	private double endvalue; 

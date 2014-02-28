@@ -1,5 +1,7 @@
 package de.bandb.costinator.customadapter;
 
+import de.bandb.costinator.database.entities.TCostelement;
+
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
@@ -8,22 +10,37 @@ package de.bandb.costinator.customadapter;
 public class CostelementListViewItem {	
 	private String name;
 	private String desc;
-	private double value;
+	private String value;
 	private String tolerance;
 	private String periode;
 	private String currency;
 
-	public CostelementListViewItem(String name, String desc, double value, String currency, String periode, String tolerance) {
+	public CostelementListViewItem(String name, String desc, String value, String currency, String periode, String tolerance) {
 		this(name, desc, value, currency, periode);
 		this.tolerance = tolerance;
 	}
 	
-	public CostelementListViewItem(String name, String desc, double value, String currency, String periode) {
+	public CostelementListViewItem(String name, String desc, String value, String currency, String periode) {
 		this.name = name;
 		this.desc = desc;
 		this.value = value;
 		this.currency = currency;
 		this.periode = periode;
+	}
+	
+	public CostelementListViewItem (TCostelement c, String period, String currency) {
+		name = c.getName();
+		if(c.getDescription() != null)
+			desc = c.getDescription();
+		else
+			desc = "";
+		if(c.getValue() * 10 % 1.0 == 0)
+			value = String.valueOf(c.getValue()) + "0";
+		else
+			value = String.valueOf(c.getValue());
+		tolerance = String.valueOf(c.getTolerance()) + "%";
+		periode 		= period;
+		this.currency  	= currency;
 	}
 
 	public String getCurrency() {
@@ -50,11 +67,11 @@ public class CostelementListViewItem {
 		this.desc = desc;
 	}
 
-	public double getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
