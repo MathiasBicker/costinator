@@ -102,4 +102,7 @@
     
     <!-- error messages -->
     <string name="err_no_items">to create a business assessment your costgroup need to contain some costelements</string>
+    <string name="err_no_costgroup_name">please type in a name for the costgroup you want to create</string>
+    <string name="err_missing_costelement_data">please fill in the recommended fields name, value and periodity</string>
+    
 </resources>

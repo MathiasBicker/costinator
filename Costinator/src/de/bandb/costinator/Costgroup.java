@@ -116,7 +116,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            return true;
 	        case R.id.action_assessCostgroup:
 	        	if(items.isEmpty())
-	        		Toast.makeText(this, getResources().getString(R.string.err_no_items), Toast.LENGTH_LONG);
+	        		Toast.makeText(this, getResources().getString(R.string.err_no_items), Toast.LENGTH_LONG).show();
 	        	else {
 		        	CostgroupBusinessAssesmentDialogFragment fragment = new CostgroupBusinessAssesmentDialogFragment();
 					fragment.mListener = Costgroup.this;

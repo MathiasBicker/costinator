@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class NewCostelement extends Activity  {
 	public static final String COSTELEMENTTAG = "costelement";
@@ -50,15 +51,20 @@ public class NewCostelement extends Activity  {
 	OnClickListener saveListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-
-			CostelementListViewItem element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
-												value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
-												tolerance.getSelectedItem().toString());
-			Intent returnIntent 	= new Intent();
-			returnIntent.putExtra(COSTELEMENTTAG, element);
+			if(!(name.getText().toString().equals("") || name.getText().toString().trim().equals(" ") ||
+			   Double.valueOf(value.getText().toString()) <= 0.0 || periode.getSelectedItemId() == 0)) {
 			
-			setResult(RESULT_OK, returnIntent);     
-			finish();
+				CostelementListViewItem element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
+													value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
+													tolerance.getSelectedItem().toString());
+				Intent returnIntent 	= new Intent();
+				returnIntent.putExtra(COSTELEMENTTAG, element);
+				
+				setResult(RESULT_OK, returnIntent);     
+				finish();
+			}
+			else
+				Toast.makeText(NewCostelement.this, getResources().getString(R.string.err_missing_costelement_data), Toast.LENGTH_LONG).show();
 		}
 	};
 }

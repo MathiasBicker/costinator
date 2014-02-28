@@ -8,13 +8,13 @@ package de.bandb.costinator;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 
@@ -47,9 +47,13 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	
  	saveButton.setOnClickListener(new OnClickListener() {    
 		@Override  
-		public void onClick(View v) {  
-		    mListener.setOnSubmitListener(costgroupName.getText().toString(), costgroupDescription.getText().toString()); 
-		    dismiss();  
+		public void onClick(View v) { 
+			if(costgroupName.getText().toString().equals("") || costgroupName.getText().toString().trim().equals(" "))
+				Toast.makeText(getActivity(), getResources().getString(R.string.err_no_costgroup_name), Toast.LENGTH_LONG).show();
+			else {
+			    mListener.setOnSubmitListener(costgroupName.getText().toString(), costgroupDescription.getText().toString()); 
+			    dismiss(); 
+			}
 		}  
 	});  
 	return dialog;    
