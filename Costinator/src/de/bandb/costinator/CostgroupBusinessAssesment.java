@@ -6,12 +6,17 @@ package de.bandb.costinator;
  */
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.achartengine.ChartFactory;
+import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
+import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
+import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
@@ -21,6 +26,7 @@ import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint.Align;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -33,6 +39,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	public static final String LOGTAG 			= "BusinessAssesment";
 	public static final String COSTGROUPTAG 	= "costgroup";
 	public static final String DAYSTAG 			= "days";
+	
+	private static final int SERIES_NR = 2;
 	//error messages
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
@@ -46,7 +54,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	private OnClickListener 			chartButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			openChart();
+			openBarChart();
+			//openChart();
 		}
 	};
 	
@@ -177,6 +186,13 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		}
 		return computedValue;
 	}
+	
+	private void openBarChart() {
+		XYMultipleSeriesRenderer renderer = getTruitonBarRenderer();
+        myChartSettings(renderer);
+        Intent intent = ChartFactory.getBarChartIntent(this, getTruitonBarDataset(), renderer, Type.DEFAULT);
+        startActivity(intent);
+	}
 
 	private void openChart(){
 		 
@@ -225,6 +241,61 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         // Start Activity
         startActivity(intent);
  
+    }
+	
+	private XYMultipleSeriesDataset getTruitonBarDataset() {
+        XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+        final int nr = 4;
+        Random r = new Random();
+        ArrayList<String> legendTitles = new ArrayList<String>();
+        legendTitles.add("Best Case");
+        legendTitles.add("Worst Case");
+        legendTitles.add("Average Case");
+        for (int i = 0; i < SERIES_NR; i++) {
+            CategorySeries series = new CategorySeries(legendTitles.get(i));
+            for(TCostelement e : elementList)
+            	series.add(e.getEndvalue());
+            for (int k = 0; k < elementList.size(); k++) {
+                series.add(100 + r.nextInt() % 100);
+            }
+            dataset.addSeries(series.toXYSeries());
+        }
+        return dataset;
+    }
+ 
+    public XYMultipleSeriesRenderer getTruitonBarRenderer() {
+        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
+        renderer.setAxisTitleTextSize(16);
+        renderer.setChartTitleTextSize(20);
+        renderer.setLabelsTextSize(15);
+        renderer.setLegendTextSize(15);
+        renderer.setMargins(new int[] { 30, 40, 15, 0 });
+        SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+        r.setColor(Color.BLUE);
+        renderer.addSeriesRenderer(r);
+        r = new SimpleSeriesRenderer();
+        r.setColor(Color.RED);
+        renderer.addSeriesRenderer(r);
+        return renderer;
+    }
+ 
+    private void myChartSettings(XYMultipleSeriesRenderer renderer) {
+        renderer.setChartTitle(getResources().getString(R.string.barchart_title));
+        renderer.setXAxisMin(0.5);
+        renderer.setXAxisMax(10.5);
+        renderer.setYAxisMin(0);
+        renderer.setYAxisMax(210);
+        renderer.addXTextLabel(1, "2010");
+        renderer.addXTextLabel(2, "2011");
+        renderer.addXTextLabel(3, "2012");
+        renderer.addXTextLabel(4, "2013");
+        renderer.setYLabelsAlign(Align.RIGHT);
+        renderer.setBarSpacing(0.5);
+        renderer.setXTitle("Years");
+        renderer.setYTitle("Performance");
+        renderer.setShowGrid(true);
+        renderer.setGridColor(Color.GRAY);
+        renderer.setXLabels(0); // sets the number of integer labels to appear
     }
 	
 	@Override

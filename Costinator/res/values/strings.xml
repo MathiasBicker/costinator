@@ -22,7 +22,7 @@
     <string name="costgroup">Kostengruppe: </string>
     <string name="btn_pie_chart">Diagramm</string>
     <string name="categories">Kostenverteilung </string>
-    
+    <string name="barchart_title">Vergleich Kostenelemente mit Toleranz</string>
     <string name="dayly">/Tag</string>
     <string name="weekly">/Woche</string>
     <string name="monthly">/Monat</string>

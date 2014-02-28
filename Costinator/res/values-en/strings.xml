@@ -23,6 +23,7 @@
     <string name="cost_allocation">cost allocation </string>
     <string name="phase">(period: </string>
     <string name="costgroup">costgroup: </string>
+    <string name="barchart_title">Comparison costelements with tolerance</string>
     
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>

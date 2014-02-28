@@ -51,7 +51,25 @@ public class TCostelement implements Serializable {
 	private TCostgroup costgroup;
 	
 	private double endvalue; 
+	private double worstValue;
+	private double bestValue;
 	
+	public double getWorstValue() {
+		return worstValue;
+	}
+
+	public void setWorstValue(double worstValue) {
+		this.worstValue = worstValue;
+	}
+
+	public double getBestValue() {
+		return bestValue;
+	}
+
+	public void setBestValue(double bestValue) {
+		this.bestValue = bestValue;
+	}
+
 	public TCostelement() {
 	}
 	
