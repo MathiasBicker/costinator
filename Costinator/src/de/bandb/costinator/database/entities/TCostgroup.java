@@ -23,7 +23,15 @@ public class TCostgroup implements Serializable{
 	private String name;
 	@DatabaseField(columnName="C_DESCRIPTION", canBeNull=true)
 	private String description;
+	@DatabaseField(columnName="C_MONTHLYCOST", canBeNull=true)
+	private double monthlyCost;
 	
+	public double getMonthlyCost() {
+		return monthlyCost;
+	}
+	public void setMonthlyCost(double monthlyCost) {
+		this.monthlyCost = monthlyCost;
+	}
 	private TCostelement[] elements;
 	
 	public TCostelement[] getElements() {
