@@ -57,7 +57,7 @@ public class NewCostelement extends Activity  {
 			Intent returnIntent 	= new Intent();
 			returnIntent.putExtra(COSTELEMENTTAG, element);
 			
-			setResult(RESULT_OK,returnIntent);     
+			setResult(RESULT_OK, returnIntent);     
 			finish();
 		}
 	};
