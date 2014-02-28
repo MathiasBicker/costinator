@@ -32,7 +32,7 @@
         </activity>
         
         <activity
-            android:name="de.bandb.costinator.BusinessAssesment"
+            android:name="de.bandb.costinator.CostgroupBusinessAssesment"
             android:label="@string/title_activity_business_assesment" >
         </activity>
         <activity

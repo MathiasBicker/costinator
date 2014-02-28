@@ -285,8 +285,8 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 	@Override
 	public void setOnSubmitListenerCostgroupBusinessAssesment(int periode,
 			int amountPeriods) {
-		Intent intent = new Intent(Costgroup.this, BusinessAssesment.class);
-		intent.putExtra(BusinessAssesment.COSTGROUPTAG, group);
+		Intent intent = new Intent(Costgroup.this, CostgroupBusinessAssesment.class);
+		intent.putExtra(CostgroupBusinessAssesment.COSTGROUPTAG, group);
 		int days = -1;
 		switch(periode) {
 		case TCostelement.DAYLY:
@@ -305,10 +305,10 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 			days = amountPeriods * 360;
 			break;
 		default:
-			Log.e(LOGTAG, BusinessAssesment.WRONGPERIOD);
-			throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
+			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
-		intent.putExtra(BusinessAssesment.DAYSTAG, days);
+		intent.putExtra(CostgroupBusinessAssesment.DAYSTAG, days);
 		startActivity(intent);
 	}
 }

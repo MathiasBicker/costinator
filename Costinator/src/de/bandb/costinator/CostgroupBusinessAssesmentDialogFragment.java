@@ -153,8 +153,8 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 			if(period.getText().toString().equals(getString(R.string.yearlyAssesmentSpinner)))
 				periodValue = TCostelement.YEARLY;
 			if(periodValue < 1) {
-				Log.e(LOGTAG, BusinessAssesment.WRONGPERIOD);
-				throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
+				Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
+				throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 			}
 		    mListener.setOnSubmitListenerCostgroupBusinessAssesment(periodValue, value); 
 		   

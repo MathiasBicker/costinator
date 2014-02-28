@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import de.bandb.costinator.BusinessAssesment;
+import de.bandb.costinator.CostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 
 /**
@@ -111,7 +111,7 @@ public class TCostelement implements Serializable {
 	}
 	public void setPeriod(int period) {
 		if(period > YEARLY || period < DAYLY)
-			throw new RuntimeException(BusinessAssesment.WRONGPERIOD);
+			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		this.period = period;
 	}
 	public TCostgroup getCostgroup() {
