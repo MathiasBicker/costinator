@@ -6,6 +6,7 @@ package de.bandb.costinator;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
@@ -86,7 +87,10 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		addCostgroup 	= (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
 		costgroupList 	= (ListView) findViewById(R.id.listViewMain);
 		items 			= new ArrayList<CostgroupListViewItem>();
-		String currency = getResources().getString(R.string.currency);
+		List<TCostgroup> list= getHelper().queryAllCostgroups();
+		for(TCostgroup c : list)
+			items.add(new CostgroupListViewItem(c, getResources().getString(R.string.currency)));
+			
 		//dummy data
 		/*
 		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month");
