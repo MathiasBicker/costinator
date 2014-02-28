@@ -8,7 +8,6 @@ package de.bandb.costinator;
 import java.util.ArrayList;
 import java.util.List;
 
-import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
@@ -16,7 +15,6 @@ import de.bandb.costinator.database.OrmLiteFragmentActivity;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,8 +27,6 @@ import android.widget.ListView;
 
 
 public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
-	
-	private static final String LOGTAG = "Main";
 	
 	public static final String COSTGROUPTAG	 		 = "costgroup";
 	

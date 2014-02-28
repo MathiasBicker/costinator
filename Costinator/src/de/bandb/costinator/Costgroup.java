@@ -12,13 +12,11 @@ import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitList
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
-import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
 import de.bandb.costinator.database.OrmLiteFragmentActivity;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,10 +66,6 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costgroupDesc		= (TextView) findViewById(R.id.business_assesment_textViewTitleCostgroupDesc);
 		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
 		items 				= new ArrayList<CostelementListViewItem>();
-		String[] periods 	= getResources().getStringArray(R.array.periods);
-		String currency 	= getResources().getString(R.string.currency);
-		String tolerancetxt = getResources().getString(R.string.tolerancetxt);
-		
 		//Dummy Data
 		/*
 		double value1 = 200.98;
