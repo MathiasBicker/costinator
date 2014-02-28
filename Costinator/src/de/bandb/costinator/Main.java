@@ -7,11 +7,12 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
-
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
+import de.bandb.costinator.database.OrmLiteFragmentActivity;
+import de.bandb.costinator.database.entities.TCostgroup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -26,7 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 
-public class Main extends FragmentActivity implements onSubmitListener {
+public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	
 	private static final String LOGTAG = "Main";
 	
@@ -126,21 +127,26 @@ public class Main extends FragmentActivity implements onSubmitListener {
 	}
 	
 	@Override
-	public void setOnSubmitListener(String arg, String arg1) {
-		addCostgroup(arg, arg1);
+	public void setOnSubmitListener(String name, String desc) {
+		TCostgroup group = new TCostgroup();
+		group.setName(name);
+		group.setDescription(desc);
+		getHelper().create(group);
+		addCostgroup(group);
 	}
 
 	/**
 	 * adding new CostgroupListViewItem to ArrayList and
 	 * creating new ListView with refreshed ArrayList
 	 */
-	public void addCostgroup(String name, String desc) {
-		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(name, desc, "");
+	public void addCostgroup(TCostgroup group) {
+		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(group, getResources().getString(R.string.currency));
 		items.add(newCostgroup);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
 
 	public void deleteCostgroup(int position) {
+		items.get(position);
 		items.remove(position);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
