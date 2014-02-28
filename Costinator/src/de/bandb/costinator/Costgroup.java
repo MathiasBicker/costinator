@@ -7,6 +7,7 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
@@ -90,7 +91,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		List<TCostelement> list = getHelper().queryAllCostelements(group);
 		if(list != null && !(list.isEmpty()))
 			for(TCostelement e : list)
-				items.add(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency)));
+				items.add(checkCurrency(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency))));
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 		costelementList.setOnItemLongClickListener(longListener);
@@ -138,7 +139,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            Bundle b = data.getExtras();
 	            CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
 	            
-	            addCostelement(element);   	
+	            addCostelement(checkCurrency(element));   	
         	} 
 	    } 	  
 	}
@@ -238,6 +239,15 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		getHelper().delete(element);
 		items.remove(position);
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
+	}
+	
+	private CostelementListViewItem checkCurrency(CostelementListViewItem c) {
+		if(getResources().getConfiguration().locale.equals(Locale.US)) {
+			double value = Double.valueOf(c.getValue().substring(0, c.getValue().length() - 2));
+			double exchangeRate = Double.valueOf(getResources().getString(R.string.exchange_rate));
+			c.setValue(String.valueOf(Math.round(100.0 * value * exchangeRate) / 100.0));
+		}
+		return c;
 	}
 }
 	

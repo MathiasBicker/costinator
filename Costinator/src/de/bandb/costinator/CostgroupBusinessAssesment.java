@@ -8,7 +8,7 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Locale;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
@@ -107,7 +107,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		
 		//displaying values for each element in list
 		for(TCostelement e : elementList) {
-			//sum += computeValue(e.getValue(), e.getPeriod());
+			checkCurrency(e);
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
 			if(e.getTolerance() == 0) {
 				e.setBestValue(e.getEndvalue());
@@ -134,7 +134,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
 		costgroup.setMonthlyCost(perMonth);
-		getHelper().update(costgroup);
+		getHelper().update(checkCurrency(costgroup));
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
 		double perYear 	= Math.round(100.0 * sum/days*360) / 100.0;
 		sum				= Math.round(100.0 * sum) / 100.0;	
@@ -332,6 +332,24 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.business_assesment, menu);
 		return true;
+	}
+	
+	private TCostelement checkCurrency(TCostelement c) {
+		if(getResources().getConfiguration().locale.equals(Locale.US)) {
+			double value = c.getValue();
+			double exchangeRate = Double.valueOf(getResources().getString(R.string.exchange_rate));
+			c.setValue(Math.round(100.0 * value * exchangeRate) / 100.0);
+		}
+		return c;
+	}
+	
+	private TCostgroup checkCurrency(TCostgroup c) {
+		if(getResources().getConfiguration().locale.equals(Locale.US)) {
+			double value = c.getMonthlyCost();
+			double exchangeRate = Double.valueOf(getResources().getString(R.string.exchange_rate));
+			c.setMonthlyCost((Math.round(100.0 * value / exchangeRate) / 100.0));
+		}
+		return c;
 	}
 
 }
