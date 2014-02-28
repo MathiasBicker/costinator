@@ -26,11 +26,21 @@ import de.bandb.costinator.database.entities.TCostgroup;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	
-	private static final String DATABASE_NAME 			= "costinator.db";
-	private static final int	DATABASE_VERSION 		= 1;
-	private static final String TAG 					= DatabaseHelper.class.getName();
+	private static final String DATABASE_NAME 		= "costinator.db";
+	private static final int	DATABASE_VERSION 	= 1;
+	private static final String TAG 				= DatabaseHelper.class.getName();
+	private static final String GROUPDELETED		= "deleted group: ";
+	private static final String ELEMENTDELETED 		= "failed database access querying costelements";
+	private static final String GROUPUPDATED		= "failed database access querying costgroups";
+	private static final String ELEMENTUPDATED		= "failed database access querying costelements";
+	private static final String GROUPCREATED		= "failed database access querying costgroups";
+	private static final String ELEMENTCREATED 		= "failed database access querying costelements";
+	
+	//exception error messages
 	private static final String QUERYALLCOSTGROUP		= "failed database access querying costgroups";
 	private static final String QUERYALLCOSTELEMENT 	= "failed database access querying costelements";
+	private static final String QUERYCOSTGROUP			= "failed database access querying costgroup";
+	private static final String QUERYCOSTELEMENT 		= "failed database access querying costelement";
 	private static final String UPDATEGROUP 			= "failed database access updating costgroups";
 	private static final String UPDATEELEMENT 			= "failed database access updating costelements";
 	private static final String CREATEGROUP 			= "failed database access creating costgroups";
@@ -96,6 +106,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			dao.update(group);
+			Log.i(TAG, GROUPUPDATED + group);
 		}catch (SQLException e) {
 			Log.e(TAG, UPDATEGROUP);
 		}
@@ -105,6 +116,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.update(element);
+			Log.i(TAG, ELEMENTUPDATED + element);
 		}catch (SQLException e) {
 			Log.e(TAG, UPDATEELEMENT);
 		}
@@ -114,6 +126,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			dao.create(group);
+			Log.i(TAG, GROUPCREATED + group);
 		}catch (SQLException e) {
 			Log.e(TAG, CREATEGROUP);
 		}
@@ -123,6 +136,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.create(element);
+			Log.i(TAG, ELEMENTCREATED + element);
 		}catch (SQLException e) {
 			Log.e(TAG, CREATEELEMENT);
 		}
@@ -135,6 +149,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			for(TCostelement c : elements)
 				delete(c);
 			dao.delete(group);
+			Log.i(TAG, GROUPDELETED + group);
 		}catch (SQLException e) {
 			Log.e(TAG, DELETEGROUP);
 		}
@@ -144,8 +159,31 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.delete(element);
+			Log.i(TAG, ELEMENTDELETED + element);
 		}catch (SQLException e) {
 			Log.e(TAG, DELETEELEMENT);
 		}
+	}
+	
+	public TCostgroup queryCostgroup(int id) {
+		TCostgroup group = null;
+		try {
+			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
+			group = dao.queryForId(id);
+		}catch (SQLException e) {
+			Log.e(TAG, QUERYCOSTGROUP);
+		}
+		return group;
+	}
+	
+	public TCostelement queryCostelement(int id) {
+		TCostelement element = null;
+		try {
+			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
+			element = dao.queryForId(id);
+		}catch (SQLException e) {
+			Log.e(TAG, QUERYCOSTELEMENT);
+		}
+		return element;
 	}
 }
