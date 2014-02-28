@@ -52,7 +52,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 				int arg2, long arg3) {
-
+			
 			int position = arg2;
 			deleteCostgroup(position);
 
@@ -146,7 +146,9 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	}
 
 	public void deleteCostgroup(int position) {
-		items.get(position);
+		CostgroupListViewItem item = items.get(position);
+		TCostgroup group = getHelper().queryCostgroup(item.getId());
+		getHelper().delete(group);
 		items.remove(position);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
