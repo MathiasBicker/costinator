@@ -35,14 +35,7 @@ public class TCostgroup implements Serializable{
 	public void setMonthlyCost(double monthlyCost) {
 		this.monthlyCost = monthlyCost;
 	}
-	private TCostelement[] elements;
 	
-	public TCostelement[] getElements() {
-		return elements;
-	}
-	public void setElements(TCostelement[] elements) {
-		this.elements = elements;
-	}
 	public int getId() {
 		return id;
 	}

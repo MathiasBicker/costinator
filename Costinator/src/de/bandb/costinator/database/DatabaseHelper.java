@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -116,8 +115,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		List<TCostelement> list = null;
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
-			list = dao.queryForAll();
-			dao.queryBuilder().where().eq(TCostelement.COSTGROUP, group.getId()).query();
+			list = dao.queryBuilder().where().eq(TCostelement.COSTGROUP, group.getId()).query();
 		}catch (SQLException e) {
 			Log.e(TAG, QUERYALLCOSTELEMENT);
 		}

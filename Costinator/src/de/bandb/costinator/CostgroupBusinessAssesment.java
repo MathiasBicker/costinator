@@ -6,11 +6,16 @@ package de.bandb.costinator;
  */
 
 
+import java.util.List;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+
+import de.bandb.costinator.database.DatabaseHelper;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
 import android.os.Bundle;
@@ -24,7 +29,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CostgroupBusinessAssesment extends Activity {
+public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelper> {
 
 	public static final String LOGTAG 			= "BusinessAssesment";
 	public static final String COSTGROUPTAG 	= "costgroup";
@@ -33,7 +38,7 @@ public class CostgroupBusinessAssesment extends Activity {
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
 	
-	private TCostelement[] 				elementList;
+	private List<TCostelement> 			elementList;
 	private TCostgroup 					costgroup;
 	private String						phase;
 	private int							days;
@@ -65,7 +70,7 @@ public class CostgroupBusinessAssesment extends Activity {
 		currency	 				= getResources().getString(R.string.currency);
 		if(bundle != null) {
 			costgroup 	= (TCostgroup) bundle.get(COSTGROUPTAG);
-			elementList = costgroup.getElements();
+			elementList = getHelper().queryAllCostelements(costgroup);
 			days 		= bundle.getInt(DAYSTAG);
 			//displaying name of costgroup
 			costgroupView.append(" " + costgroup.getName());
@@ -85,7 +90,7 @@ public class CostgroupBusinessAssesment extends Activity {
 		costgroupView.append(" " + getResources().getString(R.string.phase) + " " + phase + ")");
 		
 		//checking if elementlist is empty
-		if(elementList.length == 0) {
+		if(elementList.isEmpty()) {
 			Log.e(LOGTAG, EMPTYLIST);
 			throw new RuntimeException(EMPTYLIST);
 		}
@@ -177,17 +182,17 @@ public class CostgroupBusinessAssesment extends Activity {
 	private void openChart(){
 		 
         // Pie Chart Section Names
-        String[] code = new String[elementList.length];
+        String[] code = new String[elementList.size()];
         for(int i = 0; i < code.length; i++)
-        	code[i] = elementList[i].getName();
+        	code[i] = elementList.get(i).getName();
  
         // Pie Chart Section Value
-        double[] distribution = new double[elementList.length];
+        double[] distribution = new double[elementList.size()];
         for(int i = 0; i < distribution.length; i++)
-        	distribution[i] = elementList[i].getEndvalue();
+        	distribution[i] = elementList.get(i).getEndvalue();
         
         // generating colors
-        int[] colors = new int[elementList.length];
+        int[] colors = new int[elementList.size()];
         for(int i = 0; i < colors.length; i++)
         	colors[i] = Color.rgb((int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255, (int)(Math.random()*1000)%255);
  
