@@ -62,18 +62,10 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
           CostelementListViewItem item = data.get(position);
           
           name.setText(item.getName());
-         
           desc.setText(item.getDesc());
-          
-          String valueString = String.valueOf(item.getValue());
-          if(valueString.charAt(valueString.length()-2) == '.')
-        	  valueString+="0";
-          value.setText(valueString);
-          
+          value.setText(item.getValue() + item.getCurrency());
           periode.setText(item.getPeriode());
-        	  
           tolerance.setText(item.getTolerance());
-          
           currency.setText(item.getCurrency());              
         return v;	
 	}

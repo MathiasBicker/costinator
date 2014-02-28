@@ -68,8 +68,8 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	         
 	         title.setText(item.getCostgroupTitle());
 	         desc.setText(item.getCostgroupDesc());
-	         totalCost.setText(item.getTotalCost());
-	                        
+	         if(!(item.getTotalCost().equals(""))) 
+	        	 totalCost.setText(item.getTotalCost() + item.getCurrency());             
 	         return v;
 	    }
 }
