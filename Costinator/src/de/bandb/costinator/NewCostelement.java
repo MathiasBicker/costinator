@@ -52,7 +52,8 @@ public class NewCostelement extends Activity  {
 		@Override
 		public void onClick(View v) {
 			if(!(name.getText().toString().equals("") || name.getText().toString().trim().equals(" ") ||
-			   Double.valueOf(value.getText().toString()) <= 0.0 || periode.getSelectedItemId() == 0)) {
+				value.getText().toString().equals("") || Double.valueOf(value.getText().toString()) <= 0.0
+			   || periode.getSelectedItemId() == 0)) {
 			
 				CostelementListViewItem element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
 													value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),

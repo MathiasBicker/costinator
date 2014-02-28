@@ -48,7 +48,6 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 	progressInfo=		(TextView)	 dialog.findViewById(R.id.title_fragment_dialog_costgroup_business_assesment_seekbar_info_progress);
 	periods=			(RadioGroup) dialog.findViewById(R.id.radioGroupPeriods);
 	amountPeriods=		(SeekBar) 	 dialog.findViewById(R.id.seekBarAmountPeriods);
-	
 	progressInfo.setText("0"+" "+getString(R.string.days));
 	
 	amountPeriods.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -129,7 +128,7 @@ public class CostgroupBusinessAssesmentDialogFragment extends DialogFragment {
 		
 		
 	});
-	
+	amountPeriods.setProgress(1);
 	
  	save.setOnClickListener(new OnClickListener() {    
 		@Override  
