@@ -56,6 +56,7 @@ public class BusinessAssesment extends Activity {
 		TextView 	values	 		= (TextView) findViewById(R.id.costgroup_business_assesment_elements_values);
 		TextView 	costgroupView 	= (TextView) findViewById(R.id.costgroup_business_assesment_costgroup);
 		TextView 	sumView 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum);
+		TextView 	sumValues 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum_values);
 		Button 		chartButton		= (Button) findViewById(R.id.btn_chart_new);
 		chartButton.setOnClickListener(chartButtonListener);
 		//getting information from intent
@@ -91,22 +92,25 @@ public class BusinessAssesment extends Activity {
 		
 		//displaying values for each element in list
 		for(TCostelement e : elementList) {
-			sum += computeValue(e.getValue(), e.getPeriod());
+			//sum += computeValue(e.getValue(), e.getPeriod());
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
 			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
 			values.append(e.getEndvalue() + currency + "\n\n");
 		}
 		
 		//computing sums and displaying them
+		for(TCostelement c : elementList)
+			sum += c.getEndvalue();
 		double perDay 	= Math.round(100.0 * sum/days) / 100.0;			//rounding values
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
 		double perYear 	= Math.round(100.0 * sum/days*360) / 100.0;
 		sum				= Math.round(100.0 * sum) / 100.0;	
-		sumView.append(sum + currency + " (" + perDay + currency + getResources().getString(R.string.dayly) + "; " + perWeek + currency + getResources().getString(R.string.weekly)
-					   + "; " + perMonth + currency + getResources().getString(R.string.monthly) + "; " + perQuart + currency + getResources().getString(R.string.quart)
-					   + "; " + perYear + currency + getResources().getString(R.string.yearly) + ")");
+		sumView.append("\n" + perDay + currency + getResources().getString(R.string.dayly) + "\n" + perWeek + currency + getResources().getString(R.string.weekly)
+					   + "\n" + perMonth + currency + getResources().getString(R.string.monthly) + "\n" + perQuart + currency + getResources().getString(R.string.quart)
+					   + "\n" + perYear + currency + getResources().getString(R.string.yearly) + "");
+		sumValues.append(sum + currency);
 	}
 	
 	/**

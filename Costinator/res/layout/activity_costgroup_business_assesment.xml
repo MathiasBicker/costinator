@@ -66,6 +66,17 @@
         android:layout_marginTop="136dp"
         android:text="@string/sum"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/costgroup_business_assesment_sum_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/costgroup_business_assesment_sum"
+        android:layout_below="@+id/costgroup_business_assesment_elements"
+        android:layout_marginTop="136dp"
+        android:textColor="@color/OrangeDark"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     </RelativeLayout>
     </ScrollView>
     

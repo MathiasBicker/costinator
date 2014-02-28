@@ -73,7 +73,6 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		//----
 		
 		//dummy car
-		/*
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 128.4, currency, periods[5]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 150.0, currency, periods[3], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 567.32, currency, periods[5]);
@@ -91,9 +90,9 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		array[3] = new TCostelement(wartung, 5, 100);
 		array[4] = new TCostelement(finanzierungsrate, 3);
 		group.setElements(array);
-		*/
 		//-------
 		//dummy car english
+		/*
 		CostelementListViewItem steuer 				= new CostelementListViewItem("Steuer", "KFZ-Steuer", 176.54, currency, periods[5]);
 		CostelementListViewItem kraftstoff 			= new CostelementListViewItem("Kraftstoff", "Diesel", 206.24, currency, periods[3], tolerancetxt + "20" + percent);
 		CostelementListViewItem versicherung 		= new CostelementListViewItem("Versicherung", "Barmenia Versicherungsnr: 3584399", 780.01, currency, periods[5]);
@@ -111,6 +110,7 @@ public class Costgroup extends FragmentActivity implements onSubmitListenerCostg
 		array[3] = new TCostelement(wartung, 5, 100);
 		array[4] = new TCostelement(finanzierungsrate, 3);
 		group.setElements(array);
+		*/
 		//-------
 		//dummy flat
 		/*
