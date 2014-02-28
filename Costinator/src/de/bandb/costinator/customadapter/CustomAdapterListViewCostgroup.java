@@ -12,7 +12,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,7 +46,7 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
     }
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		
 		 View v = convertView;
@@ -61,7 +64,16 @@ public class CustomAdapterListViewCostgroup extends BaseAdapter {
           TextView periode =	(TextView) v.findViewById(R.id.textViewCostelementPeriode);
           TextView tolerance = 	(TextView) v.findViewById(R.id.textViewCostelementToleranz);
           TextView currency = 	(TextView) v.findViewById(R.id.textViewCostelementCurrency);
+          ImageButton delete  = (ImageButton) v.findViewById(R.id.imageButtonCostelementDelete);
           
+          delete.setOnClickListener(new OnClickListener() {
+        	  @Override
+        	  public void onClick(View v)
+        	   {	
+        		  	delete(position);
+        		  	notifyDataSetChanged();
+        	   }
+        	});
           
           CostelementListViewItem item = data.get(position);
           
