@@ -146,6 +146,8 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	}
 	
 	public void addCostelement (CostelementListViewItem costelement) {
+		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
+		getHelper().create(element);
 		items.add(costelement);
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
@@ -207,6 +209,27 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
 		return type;
+	}
+	
+	/**
+	 * @param period period string containing e.g. '/dayly'
+	 * @return string period constant form TCostelement
+	 */
+	public int findPeriodId(String period) {
+		if(period.equals(getResources().getString(R.string.dayly)))
+			return TCostelement.DAYLY;
+		else if(period.equals(getResources().getString(R.string.weekly)))
+			return TCostelement.WEEKLY;
+		else if(period.equals(getResources().getString(R.string.monthly)))
+			return TCostelement.MONTHLY;
+		else if(period.equals(getResources().getString(R.string.quart)))
+			return TCostelement.QUART;
+		else if(period.equals(getResources().getString(R.string.yearly)))
+			return TCostelement.YEARLY;
+		else {
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
+			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
+		}
 	}
 }
 	
