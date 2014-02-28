@@ -24,6 +24,7 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	    private ArrayList<CostgroupListViewItem> 	data;
 	    private Context 							c;
 	    
+	    
 	    public CustomAdapterListViewMain (ArrayList<CostgroupListViewItem> data, Context c) {
 	        this.data = data;
 	        this.c = c;
@@ -43,6 +44,7 @@ public class CustomAdapterListViewMain extends BaseAdapter {
 	   
 	    public View getView(final int position, View convertView, ViewGroup parent) {
 	         View v = convertView;
+	         
 	         if (v == null) {
 	            LayoutInflater vi = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	            v = vi.inflate(R.layout.activity_main_listview_item, null);

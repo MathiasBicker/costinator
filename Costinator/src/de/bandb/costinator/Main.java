@@ -7,11 +7,12 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
-
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -70,6 +71,7 @@ public class Main extends FragmentActivity implements onSubmitListener {
 			String costgroupDesc		= aktuelleCostgroup.getCostgroupDesc();
 			String costgroupTotalValue  = aktuelleCostgroup.getTotalCost();
 			Log.v(LOGTAG, costgroupTitle);
+			
 			intent.putExtra(COSTGROUP_TITLE, costgroupTitle);
 			intent.putExtra(COSTGROUP_DESC, costgroupDesc);
 			intent.putExtra(COSTGROUP_TOTAL_COAST, costgroupTotalValue);
@@ -119,6 +121,9 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
+		
+		
+		
 	}
 
 	@Override
