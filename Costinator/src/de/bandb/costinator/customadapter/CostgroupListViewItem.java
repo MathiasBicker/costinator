@@ -9,10 +9,11 @@ import de.bandb.costinator.database.entities.TCostgroup;
 
 public class CostgroupListViewItem {
 	
-	private String costgroupTitle;
-	private String costgroupDesc;
-	private String currency;
-	private String totalCost;
+	private String 	costgroupTitle;
+	private String 	costgroupDesc;
+	private String 	currency;
+	private String 	totalCost;
+	private int 	id;
 	
 	public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
 		this.costgroupTitle= costgroupTitle;
@@ -31,8 +32,17 @@ public class CostgroupListViewItem {
 		else
 			costgroupDesc = "";
 		this.currency = currency;
+		id = c.getId();
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getCurrency() {
 		return currency;
 	}

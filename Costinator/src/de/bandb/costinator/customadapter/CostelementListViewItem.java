@@ -8,12 +8,13 @@ import de.bandb.costinator.database.entities.TCostelement;
  */
 
 public class CostelementListViewItem {	
-	private String name;
-	private String desc;
-	private String value;
-	private String tolerance;
-	private String periode;
-	private String currency;
+	private String 	name;
+	private String 	desc;
+	private String 	value;
+	private String 	tolerance;
+	private String 	periode;
+	private String 	currency;
+	private int 	id;
 
 	public CostelementListViewItem(String name, String desc, String value, String currency, String periode, String tolerance) {
 		this(name, desc, value, currency, periode);
@@ -41,6 +42,15 @@ public class CostelementListViewItem {
 		tolerance = String.valueOf(c.getTolerance()) + "%";
 		periode 		= period;
 		this.currency  	= currency;
+		id = c.getId();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCurrency() {
