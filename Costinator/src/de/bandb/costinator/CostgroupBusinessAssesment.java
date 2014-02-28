@@ -133,6 +133,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		double perDay 	= Math.round(100.0 * sum/days) / 100.0;			//rounding values
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
+		costgroup.setMonthlyCost(perMonth);
+		getHelper().update(costgroup);
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
 		double perYear 	= Math.round(100.0 * sum/days*360) / 100.0;
 		sum				= Math.round(100.0 * sum) / 100.0;	
