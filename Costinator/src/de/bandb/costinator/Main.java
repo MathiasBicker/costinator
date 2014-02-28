@@ -7,12 +7,11 @@ package de.bandb.costinator;
 
 import java.util.ArrayList;
 
+
 import 	android.util.Log;
 import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -71,7 +70,6 @@ public class Main extends FragmentActivity implements onSubmitListener {
 			String costgroupDesc		= aktuelleCostgroup.getCostgroupDesc();
 			String costgroupTotalValue  = aktuelleCostgroup.getTotalCost();
 			Log.v(LOGTAG, costgroupTitle);
-			
 			intent.putExtra(COSTGROUP_TITLE, costgroupTitle);
 			intent.putExtra(COSTGROUP_DESC, costgroupDesc);
 			intent.putExtra(COSTGROUP_TOTAL_COAST, costgroupTotalValue);
@@ -96,34 +94,11 @@ public class Main extends FragmentActivity implements onSubmitListener {
 		items.add(costgroup2);
 		*/
 		//__
-		//dummy data
-		/*
-		CostgroupListViewItem car 		= new CostgroupListViewItem("Auto","BMW 120d, weiss", "961.28" + currency + getResources().getString(R.string.monthly));
-		CostgroupListViewItem flat 		= new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "607.85" + currency + getResources().getString(R.string.monthly));
-		CostgroupListViewItem master	= new CostgroupListViewItem("Master-Studium","Lebensunterhalt", "954.29" + currency + getResources().getString(R.string.monthly));
-		items.add(flat);
-		items.add(master);
-		items.add(car);
-		*/
-		//--
-		//dummy data english
-		/*
-		CostgroupListViewItem car 		= new CostgroupListViewItem("Auto","BMW 120d, weiss", "1321.66" + currency + " " + getResources().getString(R.string.monthly));
-		CostgroupListViewItem flat 		= new CostgroupListViewItem("Wohnung","Mainzer Str.197, 66121 SB", "835.73" + currency + " " + getResources().getString(R.string.monthly));
-		CostgroupListViewItem master	= new CostgroupListViewItem("Master-Studium","Lebensunterhalt", "1312.05" + currency + " " + getResources().getString(R.string.monthly));
-		items.add(flat);
-		items.add(master);
-		items.add(car);
-		*/
-		//--
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
-		
-		
-		
 	}
 
 	@Override
