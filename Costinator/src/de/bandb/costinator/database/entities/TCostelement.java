@@ -73,7 +73,7 @@ public class TCostelement implements Serializable {
 		description = c.getDesc();
 		value = Double.valueOf(c.getValue());
 		setPeriod(period);
-		tolerance = Integer.parseInt(c.getTolerance());
+		tolerance = Integer.parseInt(c.getTolerance().substring(0, c.getTolerance().length() - 1));
 	}
 	
 	public int getTolerance() {

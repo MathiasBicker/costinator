@@ -5,6 +5,7 @@ package de.bandb.costinator;
  * version: 1.0
  */
 
+import de.bandb.costinator.customadapter.CostelementListViewItem;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -16,11 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 public class NewCostelement extends Activity  {
-	public static final String PERIODICAL_COSTELEMENT_NAME = "CostelementName";
-	public static final String PERIODICAL_COSTELEMENT_VALUE = "CostelementValue";
-	public static final String PERIODICAL_COSTELEMENT_DESC = "CostelementDesc";
-	public static final String PERIODICAL_COSTELEMENT_TOLERANCE = "CostelementTolerance";
-	public static final String PERIODICAL_COSTELEMENT_PERIODE = "CostelementPeriode";
+	public static final String COSTELEMENTTAG = "costelement";
 	
 	private Button 		save;
 	private EditText 	name;
@@ -54,18 +51,11 @@ public class NewCostelement extends Activity  {
 		@Override
 		public void onClick(View v) {
 
-			String nameString 		= name.getText().toString();
-			String descString 		= desc.getText().toString();
-			double valueDouble 		= Double.parseDouble(value.getText().toString());
-			String periodeString 	= periode.getSelectedItem().toString();
-			String toleranceString 	= tolerance.getSelectedItem().toString();
+			CostelementListViewItem element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
+												value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
+												tolerance.getSelectedItem().toString());
 			Intent returnIntent 	= new Intent();
-			
-			returnIntent.putExtra(PERIODICAL_COSTELEMENT_NAME, nameString);
-			returnIntent.putExtra(PERIODICAL_COSTELEMENT_DESC, descString);
-			returnIntent.putExtra(PERIODICAL_COSTELEMENT_VALUE, valueDouble);
-			returnIntent.putExtra(PERIODICAL_COSTELEMENT_PERIODE, periodeString);
-			returnIntent.putExtra(PERIODICAL_COSTELEMENT_TOLERANCE, toleranceString);
+			returnIntent.putExtra(COSTELEMENTTAG, element);
 			
 			setResult(RESULT_OK,returnIntent);     
 			finish();

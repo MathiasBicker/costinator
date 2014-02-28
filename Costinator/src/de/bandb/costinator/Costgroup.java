@@ -136,22 +136,11 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	    if (requestCode == NEW_COSTELEMENT_REQUEST) {
 	        // Make sure the request was successful
 	        if (resultCode == RESULT_OK) {
-        		String name =		data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_NAME);
-	            String desc =		data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_DESC);
-	            double value = 		data.getDoubleExtra(NewCostelement.PERIODICAL_COSTELEMENT_VALUE, 0);
-	            String periode = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_PERIODE);
-	            String tolerance = 	data.getStringExtra(NewCostelement.PERIODICAL_COSTELEMENT_TOLERANCE);
 	            
-	            //Wenn User --opitonal-- bei Spinner tolerance ausw�hlt, dann darf dies nicht im Layout angezeigt werden
-	            String[] periodes = getResources().getStringArray(R.array.tolerances);
-	            //--opitonal-- wert
-	            String optionalString= periodes[0];
-	            	
-	            if(tolerance.equals(optionalString)) 
-	            tolerance = "";
+	            Bundle b = data.getExtras();
+	            CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
 	            
-	            //CostelementListViewItem newCostelement = new CostelementListViewItem(name, desc, value, getResources().getString(R.string.currency), periode, tolerance); 
-	            //addCostelement(newCostelement);   	
+	            addCostelement(element);   	
         	} 
 	    } 	  
 	}

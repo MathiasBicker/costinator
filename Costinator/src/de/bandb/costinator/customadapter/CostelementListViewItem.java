@@ -1,5 +1,7 @@
 package de.bandb.costinator.customadapter;
 
+import java.io.Serializable;
+
 import de.bandb.costinator.database.entities.TCostelement;
 
 /**
@@ -7,7 +9,11 @@ import de.bandb.costinator.database.entities.TCostelement;
  * version: 1.0
  */
 
-public class CostelementListViewItem {	
+public class CostelementListViewItem implements Serializable {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5570690110208248210L;
 	private String 	name;
 	private String 	desc;
 	private String 	value;
@@ -18,7 +24,10 @@ public class CostelementListViewItem {
 
 	public CostelementListViewItem(String name, String desc, String value, String currency, String periode, String tolerance) {
 		this(name, desc, value, currency, periode);
-		this.tolerance = tolerance;
+		if(tolerance.substring(tolerance.length()-2).equals("--"))
+			this.tolerance = "";
+		else
+			this.tolerance = tolerance + "%";
 	}
 	
 	public CostelementListViewItem(String name, String desc, String value, String currency, String periode) {
