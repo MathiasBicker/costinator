@@ -46,7 +46,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 			fragment.show(getSupportFragmentManager(), "");
 		}
 	};
-	private OnItemLongClickListener 			costgroupListLongListener = new OnItemLongClickListener() {
+	private OnItemLongClickListener costgroupListLongListener = new OnItemLongClickListener() {
 
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,

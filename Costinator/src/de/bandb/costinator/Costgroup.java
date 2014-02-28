@@ -12,6 +12,7 @@ import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitList
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewCostgroup;
+import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
 import de.bandb.costinator.database.OrmLiteFragmentActivity;
 import de.bandb.costinator.database.entities.TCostelement;
 import de.bandb.costinator.database.entities.TCostgroup;
@@ -23,9 +24,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
 	
@@ -44,6 +47,13 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		public void onClick(View v) {
 			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
 			startActivityForResult(intent, NEW_COSTELEMENT_REQUEST);
+		}
+	};
+	private OnItemLongClickListener longListener = new OnItemLongClickListener() {
+		@Override
+		public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+			delete(position);
+			return false;
 		}
 	};
 
@@ -88,6 +98,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 				items.add(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency)));
 		
 		addCostelement.setOnClickListener(addCostelementListener);
+		costelementList.setOnItemLongClickListener(longListener);
 	}
 
 	@Override
@@ -230,6 +241,14 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
+	}
+	
+	public void delete(int position) {
+		CostelementListViewItem item = items.get(position);
+		TCostelement element = getHelper().queryCostelement(item.getId());
+		getHelper().delete(element);
+		items.remove(position);
+		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 }
 	
