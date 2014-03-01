@@ -23,7 +23,8 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	private EditText 	costgroupName;
 	private EditText	costgroupDescription;
 	private Button 		saveButton;
-	
+	public static String costgroupNameforDialog;
+	public static String costgroupDescforDialog;
 	
 	public AddCostgroupDialogFragment() {}
 	
@@ -39,11 +40,17 @@ public class AddCostgroupDialogFragment extends DialogFragment  {
 	dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);  
 	dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	dialog.setContentView(R.layout.fragment_add_costgroup);
+	
 	dialog.show();
 		
 	saveButton 		= 		(Button) dialog.findViewById(R.id.buttonSaveCostgroup);
 	costgroupName 	= 		(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_name); 
 	costgroupDescription=	(EditText) dialog.findViewById(R.id.fragment_dialog_add_costgroup_description);
+	
+	costgroupName.setText(costgroupNameforDialog);
+	costgroupDescription.setText(costgroupDescforDialog);
+	costgroupNameforDialog = "";
+	costgroupDescforDialog = "";
 	
  	saveButton.setOnClickListener(new OnClickListener() {    
 		@Override  

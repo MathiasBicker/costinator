@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import de.bandb.costinator.AddCostgroupDialogFragment.onSubmitListener;
 import de.bandb.costinator.CostgroupBusinessAssesmentDialogFragment.onSubmitListenerCostgroupBusinessAssesment;
 import de.bandb.costinator.customadapter.CostelementListViewItem;
 import de.bandb.costinator.customadapter.CostgroupListViewItem;
@@ -32,7 +33,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
-public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment {
+public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment, onSubmitListener {
 	
 	private static final int	NEW_COSTELEMENT_REQUEST = 10;
 	private static final String	LOGTAG 					= "Costgroup";
@@ -151,6 +152,17 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 					fragment.show(getSupportFragmentManager(), "");
 	        	}
 	        	return true;
+	        	
+	        case R.id.action_editCosgroup:
+	        	AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
+				fragment.mListener = Costgroup.this;
+				Intent intent 		= getIntent();
+				Bundle b = intent.getExtras();
+				CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+				AddCostgroupDialogFragment.costgroupNameforDialog = costgroup.getCostgroupTitle();
+				AddCostgroupDialogFragment.costgroupDescforDialog = costgroup.getCostgroupDesc();
+				fragment.show(getSupportFragmentManager(), "");
+	        
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -275,6 +287,32 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 			c.setValue(String.valueOf(Math.round(100.0 * value * exchangeRate) / 100.0));
 		}
 		return c;
+	}
+
+	@Override
+	public void setOnSubmitListener(String title, String desc) {
+		Log.v("CostgroupUpdateCostgroupTitle†bergabe", ""+ title);
+		Log.v("CostgroupUpdateCostgroupDesc†bergabe", ""+ desc);
+		
+		//Update Costgroup
+		String titleappend = getString(R.string.title_activity_costgroup);
+		costgroupTitle.setText(titleappend+" "+title);
+		costgroupDesc.setText(desc);
+		
+		Intent intent 		= getIntent();
+		Bundle b = intent.getExtras();
+		CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+		
+		
+		TCostgroup element = getHelper().queryCostgroup(costgroup.getId());
+		element.setName(title);
+		element.setDescription(desc);
+		getHelper().update(element);
+		Log.v("CostgroupUpdateCostgroupTitleUpdated", ""+ element.getName());
+		Log.v("CostgroupUpdateCostgroupDescUpdated", ""+ element.getDescription());
+		
+
+		
 	}
 }
 	

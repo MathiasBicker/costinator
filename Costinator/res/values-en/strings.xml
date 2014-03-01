@@ -33,7 +33,8 @@
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
     <string name="assessCostgroup">Assess Costgroup</string>
-    <string name="title_costelement_delete_dialog">Delte Costelement?</string>
+    <string name="title_costelement_delete_dialog">Delete Costelement?</string>
+    <string name="action_title_edit_costgroup">Edit Costgroup</string>
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>

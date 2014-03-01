@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,12 +34,12 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	
 	public static final String COSTGROUPTAG	 		 = "costgroup";
 	
-	private ListView 							costgroupList;
-	private ArrayList<CostgroupListViewItem> 	items;
-	private ImageButton 						addCostgroup;
-	private AlertDialog							dialog;
-	private int 								position;
-	private OnClickListener 					addCostgroupListener = new OnClickListener() {
+	private ListView 								costgroupList;
+	public  ArrayList<CostgroupListViewItem> 		items;
+	private ImageButton 							addCostgroup;
+	private AlertDialog								dialog;
+	private int 									position;
+	private OnClickListener 						addCostgroupListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 
@@ -70,6 +71,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 			CostgroupListViewItem group = (CostgroupListViewItem) items.get(position);
 			intent.putExtra(COSTGROUPTAG, group);
 			startActivity(intent);
+			
 		}
 	};
 	
@@ -83,7 +85,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		items 					= new ArrayList<CostgroupListViewItem>();
 		List<TCostgroup> list	= getHelper().queryAllCostgroups();
 		if(list != null)
-			for(TCostgroup c : list)
+			for(TCostgroup c : list) 
 				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
 			
 		//dummy data
@@ -181,4 +183,17 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		items.remove(position);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
+	
+	@Override
+	public void onResume()
+	    {  // After a pause OR at startup
+	    super.onResume();
+	    items 					= new ArrayList<CostgroupListViewItem>();
+	    List<TCostgroup> list	= getHelper().queryAllCostgroups();
+		if(list != null)
+			for(TCostgroup c : list) 
+				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
+		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
+	     }
+	
 }

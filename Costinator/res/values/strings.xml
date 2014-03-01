@@ -46,6 +46,7 @@
     <string name="assessCostgroup">Kostengruppe auswerten</string>
     <string name="tolerancetxt">Toleranz: </string>
     <string name="title_costelement_delete_dialog">Kostenelement löschen?</string>
+    <string name="action_title_edit_costgroup">Kostengruppe bearbeiten</string>
     
 
     <!-- CostgroupBusinessAssesment -->
