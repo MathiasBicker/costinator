@@ -14,6 +14,8 @@ import de.bandb.costinator.customadapter.CostgroupListViewItem;
 import de.bandb.costinator.customadapter.CustomAdapterListViewMain;
 import de.bandb.costinator.database.OrmLiteFragmentActivity;
 import de.bandb.costinator.database.entities.TCostgroup;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +36,8 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	private ListView 							costgroupList;
 	private ArrayList<CostgroupListViewItem> 	items;
 	private ImageButton 						addCostgroup;
+	private AlertDialog							dialog;
+	private int 								position;
 	private OnClickListener 					addCostgroupListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -49,8 +53,9 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 				int arg2, long arg3) {
 			
-			int position = arg2;
-			deleteCostgroup(position);
+			position = arg2;
+			dialog.show();
+			dialog.getWindow().setLayout(600, 300);
 
 			return false;
 		}
@@ -94,6 +99,27 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
+		
+		//Delete Dialog
+				AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
+				String titlePart = getString(R.string.title_costgroup_delete_dialog);
+				builder.setTitle(titlePart);
+				// Add the buttons
+				builder.setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				        	   
+				        	   deleteCostgroup(position);
+				           }
+				       });
+				builder.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
+				           public void onClick(DialogInterface dialog, int id) {
+				               dialog.cancel();
+				           }
+				       });
+				
+				// Create the AlertDialog
+				dialog = builder.create();
+
 	}
 
 	@Override

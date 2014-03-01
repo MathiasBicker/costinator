@@ -12,7 +12,7 @@
     <string name="title_activity_main">Costgroups</string>
     <string name="positive">Yes</string>
     <string name="negative">No</string>
-    
+	<string name="title_costgroup_delete_dialog">Delete Costgroup and all containing Costelements?</string>    
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Business assesment</string>
     <string name="dayly">per day</string>
@@ -33,6 +33,7 @@
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Costgroup</string>
     <string name="assessCostgroup">Assess Costgroup</string>
+    <string name="title_costelement_delete_dialog">Delte Costelement?</string>
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>

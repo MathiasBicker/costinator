@@ -11,7 +11,7 @@
     <string name="title_activity_main">Kostengruppen</string>
     <string name="positive">Ja</string>
     <string name="negative">Nein</string>
-    
+	<string name="title_costgroup_delete_dialog">Kostengruppe und alle enthaltenen Kostenelemente löschen?</string>    
     
     <!-- BusinessAssesment -->
     <string name="title_activity_business_assesment">Auswertung</string>
@@ -19,6 +19,7 @@
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>
     <string name="assessCostgroup">Kostengruppe auswerten</string>
+    <string name="title_costelement_delete_dialog">Kostenelement löschen?</string>
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Kostengruppenauswertung</string>
