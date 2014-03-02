@@ -110,6 +110,7 @@ public class NewCostelement extends Activity  {
 				//sending new or altered element back to costgroup activity
 				Intent returnIntent 	= new Intent();
 				returnIntent.putExtra(COSTELEMENTTAG, element);
+				//element = null;
 				setResult(RESULT_OK, returnIntent);     
 				finish();
 			}
