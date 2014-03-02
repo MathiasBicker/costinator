@@ -212,6 +212,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	 * parsing CostelementListViewItem to TCostelement and updating it in the database
 	 */
 	private void updateCostelement (CostelementListViewItem costelement) {
+		System.out.println("update");
 		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
 		element.setCostgroup(group);
 		element.setId(costelement.getId());
@@ -286,18 +287,18 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	 */
 	public int findPeriodId(String period) {
 		String[] array = getResources().getStringArray(R.array.periods);
-		if(period.equals(array[0]))
+		if(period.equals(array[1]))
 			return TCostelement.DAYLY;
-		else if(period.equals(array[1]))
-			return TCostelement.WEEKLY;
 		else if(period.equals(array[2]))
-			return TCostelement.MONTHLY;
+			return TCostelement.WEEKLY;
 		else if(period.equals(array[3]))
-			return TCostelement.QUART;
+			return TCostelement.MONTHLY;
 		else if(period.equals(array[4]))
+			return TCostelement.QUART;
+		else if(period.equals(array[5]))
 			return TCostelement.YEARLY;
 		else {
-			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD + period + getResources().getString(R.string.monthly));
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
 	}
