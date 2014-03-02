@@ -302,13 +302,13 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         renderer.setLegendTextSize(30);
         renderer.setMargins(new int[] { 10, 40, 80, 0 });
         SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-        r.setColor(Color.GREEN);
+        r.setColor(Color.RED);
         renderer.addSeriesRenderer(r);
         r = new SimpleSeriesRenderer();
         r.setColor(Color.BLUE);
         renderer.addSeriesRenderer(r);
         r = new SimpleSeriesRenderer();
-        r.setColor(Color.RED);
+        r.setColor(Color.GREEN);
         renderer.addSeriesRenderer(r);
         return renderer;
     }
