@@ -135,7 +135,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	public void update(TCostelement element) {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
-			System.out.println("rows affected: " + dao.update(element));
+			dao.update(element);
 			Log.i(TAG, ELEMENTUPDATED + element);
 		}catch (SQLException e) {
 			Log.e(TAG, UPDATEELEMENT);

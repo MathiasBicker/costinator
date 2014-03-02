@@ -47,7 +47,7 @@ public class CostelementListViewItem implements Serializable {
 			value = String.valueOf(c.getValue()) + ".00";
 		else
 			value = String.valueOf(c.getValue());
-		 setTolerance(String.valueOf(c.getTolerance()));
+		tolerance = (String.valueOf(c.getTolerance()) + "%");
 		periode 		= period;
 		this.currency  	= currency;
 		id = c.getId();
