@@ -22,11 +22,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 
@@ -41,7 +39,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	private int 									position;
 	
 	private OnItemLongClickListener costgroupListLongListener = new OnItemLongClickListener() {
-
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 				int arg2, long arg3) {
@@ -69,7 +66,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		
 		costgroupList 			= (ListView) findViewById(R.id.listViewMain);
 		items 					= new ArrayList<CostgroupListViewItem>();
@@ -81,7 +77,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
-		
 		
 		//Delete Dialog
 		AlertDialog.Builder builder 	= new AlertDialog.Builder(Main.this);
@@ -98,8 +93,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
                dialog.cancel();
            }
         });
-		
-		// Create the AlertDialog
 		dialog = builder.create();
 	}
 
