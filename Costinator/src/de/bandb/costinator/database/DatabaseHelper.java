@@ -27,7 +27,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	
 	private static final String DATABASE_NAME 		= "costinator.db";
 	private static final int	DATABASE_VERSION 	= 1;
-	private static final String TAG 				= DatabaseHelper.class.getName();
+	private static final String LOGTAG 				= DatabaseHelper.class.getName();
+
+	//loggin messages
 	private static final String GROUPDELETED		= "deleted group: ";
 	private static final String ELEMENTDELETED 		= "deleted element: ";
 	private static final String GROUPUPDATED		= "updated group: ";
@@ -55,33 +57,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
-			Log.i(TAG, "onCreate");
+			Log.i(LOGTAG, "onCreate");
 			TableUtils.createTable(connectionSource, TCostgroup.class);
 			TableUtils.createTable(connectionSource, TCostelement.class);
-			TCostgroup car = new TCostgroup();
-			car.setName("Auto");
-			car.setDescription("BMW 118d, weiss");
-			car.setMonthlyCost(0.0);
-			create(car);
-			TCostelement steuer = new TCostelement();
-			steuer.setCostgroup(car);
-			steuer.setName("Steuer");
-			steuer.setDescription("KFZ-Steuer");
-			steuer.setPeriod(1);
-			steuer.setValue(120.0);
-			create(steuer);
-			TCostgroup flat = new TCostgroup();
-			flat.setName("Wohnung");
-			flat.setDescription("Mainzer Str. 197, 66121");
-			flat.setMonthlyCost(0.0);
-			create(flat);
-			TCostgroup master = new TCostgroup();
-			master.setName("Master-Studium");
-			master.setDescription("Lebensunterhalt");
-			master.setMonthlyCost(0.0);
-			create(master);
 		}catch(SQLException e) {
-			Log.e(TAG, "Can't create database", e);
+			Log.e(LOGTAG, "Can't create database", e);
 			throw new RuntimeException(e.getMessage());
 		}
 	}
@@ -89,79 +69,108 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource arg1, int oldVersion, int newVersion) {
 		try {
-			Log.i(TAG, "onUpgrade");
+			Log.i(LOGTAG, "onUpgrade");
 			TableUtils.dropTable(connectionSource, TCostgroup.class, true);
 			TableUtils.dropTable(connectionSource, TCostelement.class, true);
 			// after we drop the old databases, we create the new ones
 			onCreate(db, connectionSource);
 		}catch (SQLException e) {
-			Log.e(TAG, "Can't drop databases", e);
+			Log.e(LOGTAG, "Can't drop databases", e);
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 	
+	/**
+	 * querying for all costgroups
+	 * @return list of all costgroups in the database
+	 */
 	public List<TCostgroup> queryAllCostgroups() {
 		List<TCostgroup> list = null;
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			list = dao.queryForAll();
 		}catch (SQLException e) {
-			Log.e(TAG, QUERYALLCOSTGROUP);
+			Log.e(LOGTAG, QUERYALLCOSTGROUP);
 		}
 		return list;
 	}
 	
+	/**
+	 * querying for all costelements of a given costgroup
+	 * @param group costgroup which elements to query for
+	 * @return list of all costlements of the costgroup
+	 */
 	public List<TCostelement> queryAllCostelements(TCostgroup group) {
 		List<TCostelement> list = null;
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			list = dao.queryBuilder().where().eq(TCostelement.COSTGROUP, group.getId()).query();
 		}catch (SQLException e) {
-			Log.e(TAG, QUERYALLCOSTELEMENT);
+			Log.e(LOGTAG, QUERYALLCOSTELEMENT);
 		}
 		return list;
 	}
 	
+	/**
+	 * updating a costgroup in the database
+	 * @param group costgroup that needs to be updated
+	 */
 	public void update(TCostgroup group) {
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			dao.update(group);
-			Log.i(TAG, GROUPUPDATED + group);
+			Log.i(LOGTAG, GROUPUPDATED + group);
 		}catch (SQLException e) {
-			Log.e(TAG, UPDATEGROUP);
+			Log.e(LOGTAG, UPDATEGROUP);
 		}
 	}
 	
+	/**
+	 * updating a costelement in the database
+	 * @param element costelement that needs to be updated
+	 */
 	public void update(TCostelement element) {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.update(element);
-			Log.i(TAG, ELEMENTUPDATED + element);
+			Log.i(LOGTAG, ELEMENTUPDATED + element);
 		}catch (SQLException e) {
-			Log.e(TAG, UPDATEELEMENT);
+			Log.e(LOGTAG, UPDATEELEMENT);
 		}
 	}
 	
+	/**
+	 * adding a costgroup to the database
+	 * @param group new costgroup
+	 */
 	public void create(TCostgroup group) {
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			dao.create(group);
-			Log.i(TAG, GROUPCREATED + group);
+			Log.i(LOGTAG, GROUPCREATED + group);
 		}catch (SQLException e) {
-			Log.e(TAG, CREATEGROUP);
+			Log.e(LOGTAG, CREATEGROUP);
 		}
 	}
 	
+	/**
+	 * adding a costelement to the database
+	 * @param element new costelement
+	 */
 	public void create(TCostelement element) {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.create(element);
-			Log.i(TAG, ELEMENTCREATED + element);
+			Log.i(LOGTAG, ELEMENTCREATED + element);
 		}catch (SQLException e) {
-			Log.e(TAG, CREATEELEMENT);
+			Log.e(LOGTAG, CREATEELEMENT);
 		}
 	}
 	
+	/**
+	 * deleting a costgroup with all its costelements from the database
+	 * @param group costgroup that needs to be deleted
+	 */
 	public void delete(TCostgroup group) {
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
@@ -169,40 +178,54 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			for(TCostelement c : elements)
 				delete(c);
 			dao.delete(group);
-			Log.i(TAG, GROUPDELETED + group);
+			Log.i(LOGTAG, GROUPDELETED + group);
 		}catch (SQLException e) {
-			Log.e(TAG, DELETEGROUP);
+			Log.e(LOGTAG, DELETEGROUP);
 		}
 	}
 	
+	/**
+	 * deleting a costelement from the database
+	 * @param element costelement that needs to be deleted
+	 */
 	public void delete(TCostelement element) {
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			dao.delete(element);
-			Log.i(TAG, ELEMENTDELETED + element);
+			Log.i(LOGTAG, ELEMENTDELETED + element);
 		}catch (SQLException e) {
-			Log.e(TAG, DELETEELEMENT);
+			Log.e(LOGTAG, DELETEELEMENT);
 		}
 	}
 	
+	/**
+	 * query for a specific costgroup with given primary key
+	 * @param id primary key of the costgroup
+	 * @return costgroup with given primary key
+	 */
 	public TCostgroup queryCostgroup(int id) {
 		TCostgroup group = null;
 		try {
 			Dao<TCostgroup, Integer> dao = getDao(TCostgroup.class);
 			group = dao.queryForId(id);
 		}catch (SQLException e) {
-			Log.e(TAG, QUERYCOSTGROUP);
+			Log.e(LOGTAG, QUERYCOSTGROUP);
 		}
 		return group;
 	}
 	
+	/**
+	 * query for a specific costelement with given primary key
+	 * @param id primary key of the costelement
+	 * @return costelement with given primary key
+	 */
 	public TCostelement queryCostelement(int id) {
 		TCostelement element = null;
 		try {
 			Dao<TCostelement, Integer> dao = getDao(TCostelement.class);
 			element = dao.queryForId(id);
 		}catch (SQLException e) {
-			Log.e(TAG, QUERYCOSTELEMENT);
+			Log.e(LOGTAG, QUERYCOSTELEMENT);
 		}
 		return element;
 	}
