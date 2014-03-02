@@ -36,18 +36,10 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	
 	private ListView 								costgroupList;
 	public  ArrayList<CostgroupListViewItem> 		items;
-	private ImageButton 							addCostgroup;
+	
 	private AlertDialog								dialog;
 	private int 									position;
-	private OnClickListener addCostgroupListener = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			//adding new costgroup via dialog
-			AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
-			fragment.mListener = Main.this;
-			fragment.show(getSupportFragmentManager(), "");
-		}
-	};
+	
 	private OnItemLongClickListener costgroupListLongListener = new OnItemLongClickListener() {
 
 		@Override
@@ -78,7 +70,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		addCostgroup 			= (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
+		
 		costgroupList 			= (ListView) findViewById(R.id.listViewMain);
 		items 					= new ArrayList<CostgroupListViewItem>();
 		//querying all costgroups from database
@@ -89,7 +81,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
-		addCostgroup.setOnClickListener(addCostgroupListener);
+		
 		
 		//Delete Dialog
 		AlertDialog.Builder builder 	= new AlertDialog.Builder(Main.this);
