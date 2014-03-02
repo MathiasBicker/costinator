@@ -24,7 +24,7 @@
        android:layout_height="wrap_content"
        android:layout_above="@+id/textViewCostelementPeriode"
        android:layout_toRightOf="@+id/textViewCostelementValue"
-       android:text="€"
+       android:text=""
        android:textColor="@color/OrangeDark"
        android:textStyle="bold" />
 
@@ -34,7 +34,7 @@
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/textViewCostelementDesc"
        android:layout_alignParentTop="true"
-       android:text="Werkstatt"
+       android:text=""
        android:textAppearance="?android:attr/textAppearanceMedium" />
 
    <TextView
@@ -43,7 +43,7 @@
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/textViewCostelementPeriode"
        android:layout_below="@+id/textViewCostelementDesc"
-       android:text="133,78"
+       android:text=""
        android:textAppearance="?android:attr/textAppearanceSmall"
        android:textColor="@color/OrangeDark"
        android:textStyle="bold" />
@@ -54,7 +54,7 @@
        android:layout_height="wrap_content"
        android:layout_alignLeft="@+id/textViewCostelementValue"
        android:layout_below="@+id/textViewCostelementName"
-       android:text="Stephanstr. 27 A" />
+       android:text="" />
 
    <TextView
        android:id="@+id/textViewCostelementPeriode"
@@ -62,7 +62,7 @@
        android:layout_height="wrap_content"
        android:layout_below="@+id/textViewCostelementValue"
        android:layout_toRightOf="@+id/imageButtonCostelementDelete"
-       android:text="monatlich"
+       android:text=""
        android:textAppearance="?android:attr/textAppearanceSmall" />
 
    <ImageButton
@@ -83,7 +83,7 @@
        android:layout_height="wrap_content"
        android:layout_below="@+id/textViewCostelementPeriode"
        android:layout_toRightOf="@+id/imageButtonCostelementDelete"
-       android:text="Toleranz: 10%"
+       android:text=""
        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
