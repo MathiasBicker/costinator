@@ -11,8 +11,6 @@
     <string name="currency">&#8364;</string>
     <string name="percent">&#37;</string>
     <string name="exchange_rate">1.3807</string>
-    
-    
 
     <!-- Main -->
     <string name="title_activity_main">Kostengruppen</string>
@@ -38,8 +36,6 @@
     <string name="worst_case">schlechtester Fall</string>
     <string name="x_axis">Kostenelement</string>
     <string name="y_axis">Betrag</string>
-    
-    
 
     <!-- Costgroup -->
     <string name="title_activity_costgroup">Kostengruppe</string>
@@ -47,7 +43,6 @@
     <string name="tolerancetxt">Toleranz: </string>
     <string name="title_costelement_delete_dialog">Kostenelement löschen?</string>
     <string name="action_title_edit_costgroup">Kostengruppe bearbeiten</string>
-    
 
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Kostengruppenauswertung</string>
@@ -63,7 +58,7 @@
     <string name="title_datePicker_Start">Beginn Zahlung Datum ausw&#228;hlen:</string>
     <string name="title_datePicker_End">Ende Zahlung Datum auswählen:</string>
     <string name="title_save_costelement">Speichern</string>
-    
+
     <string-array name="periods">
         <item>--bitte auswählen--</item>
         <item>t&#228;glich</item>
@@ -72,7 +67,7 @@
         <item>Quartal</item>
         <item>j&#228;hrlich</item>
     </string-array>
-     <string-array name="tolerances">
+    <string-array name="tolerances">
         <item>--optional--</item>
         <item>5%</item>
         <item>10%</item>
@@ -95,10 +90,10 @@
         <item>95%</item>
         <item>100%</item>
     </string-array>
+
     <string name="title_period_spinner">Periode auswählen:</string>
     <string name="title_tolerance_spinner">Toleranz auswählen:</string>
-    
-    
+
     <!-- NewCostgroup -->
     <string name="title_activity_new_costgroup">Neue Kostengruppe erstellen</string>
 
@@ -120,23 +115,22 @@
     <string name="monthlyAssesmentSpinner">monatlich</string>
     <string name="quartalAssesmentSpinner">Quartal</string>
     <string name="yearlyAssesmentSpinner">j&#228;hrlich</string>
- 
     <string name="days">Tage</string>
     <string name="weeks">Wochen</string>
     <string name="months">Monate</string>
     <string name="quartals">Quartale</string>
     <string name="years">Jahre</string>
-    
     <string name="day">Tag</string>
     <string name="week">Woche</string>
     <string name="month">Monat</string>
     <string name="quartal">Quartal</string>
     <string name="year">Jahr</string>
-    
     <string name="sum">Endbetrag: \n</string>
-    
+
     <!-- error messages -->
     <string name="err_no_items">Sie k&#246;nnen nur eine Auswertung machen, wenn Ihre Kostengruppe auch Kostenelemente enth&#228;lt</string>
     <string name="err_no_costgroup_name">Bitte geben Sie einen Namen f&#252;r die neue Kostengruppe ein</string>
     <string name="err_missing_costelement_data">Bitte f&#252;llen Sie die Plichtfelder Name, Betrag und Periodizit&#228;t aus</string>
+    <string name="title_activity_edit_costelement">EditCostelement</string>
+
 </resources>

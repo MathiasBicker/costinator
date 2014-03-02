@@ -71,9 +71,10 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	
 	private OnItemClickListener costelementListListener = new OnItemClickListener() {
 		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			//Start NewCostelement for edit costelement
+			position = arg2;
 			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
 			CostelementListViewItem element = (CostelementListViewItem) items.get(position);
 			intent.putExtra(COSTELEMENT, element);
@@ -94,16 +95,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costgroupDesc		= (TextView) findViewById(R.id.business_assesment_textViewTitleCostgroupDesc);
 		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
 		items 				= new ArrayList<CostelementListViewItem>();
-		//Dummy Data
-		/*
-		double value1 = 200.98;
-		double value2 = 5057.56;
-		CostelementListViewItem costelement1 = new CostelementListViewItem("Hausmeister", "Herr Klaus", value1, getResources().getString(R.string.currency), periods[3], getResources().getString(R.string.tolerancetxt) + "15" + getResources().getString(R.string.percent));
-		CostelementListViewItem costelement2 = new CostelementListViewItem("Heizung", "Gas", value2, getResources().getString(R.string.currency) , periods[4]);
-		items.add(costelement1);
-		items.add(costelement2);
-		*/
-		//----
+	
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
 		//showing name, describtion and computed total cost of costgroup as title
@@ -232,8 +224,8 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		element.setTolerance(findToleranceIndex(costelement.getTolerance()));
 		
 		getHelper().update(element);
-		
-		items.add(position, new CostelementListViewItem(element, findPeriod(element.getPeriod()), getResources().getString(R.string.currency)));
+		items.remove(position);
+		items.add(position, new CostelementListViewItem(costelement.getName(), costelement.getDesc(), costelement.getValue(),getResources().getString(R.string.currency), costelement.getPeriode(), costelement.getTolerance() ));
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 
@@ -326,7 +318,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		
 			if(tolerances[i].equals(tolerance)) {
 				index = i;
-				
+				break;
 			}
 				
 		}
