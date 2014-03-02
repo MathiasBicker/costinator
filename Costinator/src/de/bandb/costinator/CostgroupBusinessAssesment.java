@@ -45,6 +45,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	public static final String EMPTYLIST 		= "elementlist is empty";
 	
 	private List<TCostelement> 			elementList;
+	private List<TCostelement> 			toleranceList;
 	private TCostgroup 					costgroup;
 	private String						phase;
 	private int							days;
@@ -113,6 +114,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 				e.setBestValue(e.getEndvalue());
 				e.setWorstValue(e.getEndvalue());
 			}else {
+				toleranceList.add(e);
 				e.setBestValue(e.getEndvalue() - e.getEndvalue() * e.getTolerance() / 100);
 				e.setWorstValue(e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100);
 			}
@@ -271,19 +273,19 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         	switch(i) {
         	case 0:
 	            CategorySeries worstSeries = new CategorySeries(legendTitles.get(i));
-	            for(TCostelement e : elementList)
+	            for(TCostelement e : toleranceList)
 	            	worstSeries.add(e.getWorstValue());
 	            dataset.addSeries(worstSeries.toXYSeries());
 	            break;
         	case 1:
         		CategorySeries avgSeries = new CategorySeries(legendTitles.get(i));
-	            for(TCostelement e : elementList)
+	            for(TCostelement e : toleranceList)
 	            	avgSeries.add(e.getEndvalue());
 	            dataset.addSeries(avgSeries.toXYSeries());
 	            break;
         	case 2:
         		CategorySeries bestSeries = new CategorySeries(legendTitles.get(i));
-	            for(TCostelement e : elementList)
+	            for(TCostelement e : toleranceList)
 	            	bestSeries.add(e.getBestValue());
 	            dataset.addSeries(bestSeries.toXYSeries());
 	            break;
@@ -313,11 +315,11 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
  
     private void myChartSettings(XYMultipleSeriesRenderer renderer) {
         renderer.setXAxisMin(0.5);
-        renderer.setXAxisMax(elementList.size() + 0.5);
+        renderer.setXAxisMax(toleranceList.size() + 0.5);
         renderer.setYAxisMin(0);
         renderer.setYAxisMax(max + max*0.1);
-        for(int i = 0; i < elementList.size(); i++)
-        	renderer.addXTextLabel(i+1, elementList.get(i).getName());
+        for(int i = 0; i < toleranceList.size(); i++)
+        	renderer.addXTextLabel(i+1, toleranceList.get(i).getName());
         renderer.setYLabelsAlign(Align.RIGHT);
         renderer.setBarSpacing(0.5);
         renderer.setXTitle(getResources().getString(R.string.x_axis));
