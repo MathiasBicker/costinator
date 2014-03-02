@@ -30,12 +30,17 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
 public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment, onSubmitListener {
 	
 	private static final int	NEW_COSTELEMENT_REQUEST = 10;
+	private static final int	EDIT_COSTELEMENT_REQUEST = 20;
+	
+	public static final String  EDIT_COSTELEMENT		= "Edit_Costelement";
+	public static final String	COSTELEMENT				= "Costelement";
 	private static final String	LOGTAG 					= "Costgroup";
 	
 	private ListView 							costelementList;
@@ -61,6 +66,20 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 			dialog.show();
 			dialog.getWindow().setLayout(600, 300);
 			return false;
+		}
+	};
+	
+	private OnItemClickListener costelementListListener = new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+				long arg3) {
+			//Start NewCostelement for edit costelement
+			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
+			CostelementListViewItem element = (CostelementListViewItem) items.get(position);
+			intent.putExtra(COSTELEMENT, element);
+			intent.putExtra(EDIT_COSTELEMENT, "edit");
+			startActivityForResult(intent, EDIT_COSTELEMENT_REQUEST);
+			
 		}
 	};
 
@@ -102,6 +121,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		
 		addCostelement.setOnClickListener(addCostelementListener);
 		costelementList.setOnItemLongClickListener(longListener);
+		costelementList.setOnItemClickListener(costelementListListener);
 		
 		//Delete Dialog
 		AlertDialog.Builder builder = new AlertDialog.Builder(Costgroup.this);
@@ -153,7 +173,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	        	}
 	        	return true;
 	        	
-	        case R.id.action_editCosgroup:
+	        case R.id.action_editCostgroup:
 	        	AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
 				fragment.mListener = Costgroup.this;
 				Intent intent 		= getIntent();
@@ -180,7 +200,16 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            
 	            addCostelement(checkCurrency(element));   	
         	} 
-	    } 	  
+	    } else if(requestCode == EDIT_COSTELEMENT_REQUEST) {
+	    	 if (resultCode == RESULT_OK) {
+	    	 
+	    		 Bundle b = data.getExtras();
+		         CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
+	    		 
+		         updateCostelement(checkCurrency(element));
+	    	 }
+	    }
+	    
 	}
 	
 	public void addCostelement (CostelementListViewItem costelement) {
@@ -188,6 +217,23 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		element.setCostgroup(group);
 		getHelper().create(element);
 		items.add(new CostelementListViewItem(element, findPeriod(element.getPeriod()), getResources().getString(R.string.currency)));
+		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
+	}
+	
+	public void updateCostelement (CostelementListViewItem costelement) {
+		
+		CostelementListViewItem item = items.get(position);
+		TCostelement element = getHelper().queryCostelement(item.getId());
+		element.setName(costelement.getName());
+		element.setDescription(costelement.getDesc());
+		double value = Double.parseDouble(costelement.getValue());
+		element.setValue(value);
+		element.setPeriod(findPeriodId(costelement.getPeriode()));
+		element.setTolerance(findToleranceIndex(costelement.getTolerance()));
+		
+		getHelper().update(element);
+		
+		items.add(position, new CostelementListViewItem(element, findPeriod(element.getPeriod()), getResources().getString(R.string.currency)));
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 
@@ -270,6 +316,21 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
+	}
+	
+	public int findToleranceIndex(String tolerance) {
+		
+		int index = 0;
+		String [] tolerances = getResources().getStringArray(R.array.tolerances);
+		for(int i =0; i < tolerances.length; i++){
+		
+			if(tolerances[i].equals(tolerance)) {
+				index = i;
+				
+			}
+				
+		}
+	  return index;
 	}
 	
 	public void delete(int position) {

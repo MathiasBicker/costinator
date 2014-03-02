@@ -6,9 +6,12 @@ package de.bandb.costinator;
  */
 
 import de.bandb.costinator.customadapter.CostelementListViewItem;
+import de.bandb.costinator.customadapter.CostgroupListViewItem;
+import de.bandb.costinator.database.entities.TCostelement;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +21,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class NewCostelement extends Activity  {
-	public static final String COSTELEMENTTAG = "costelement";
+	public static final String COSTELEMENTTAG 			= "costelement";
+	private static final String	LOGTAG 					= "Costgroup_NewCostelement";
 	
 	private Button 		save;
 	private EditText 	name;
@@ -39,7 +43,58 @@ public class NewCostelement extends Activity  {
 		periode 	= (Spinner) findViewById(R.id.spinnerCostelementPeriodical);
 		tolerance 	= (Spinner) findViewById(R.id.spinnerCostelementTolerance);
 		save.setOnClickListener(saveListener);
-	}
+		
+		
+		
+//		Intent intent 		= getIntent();
+//		
+//		if(intent.getStringExtra(Costgroup.EDIT_COSTELEMENT).equals("edit")) {
+//			
+//		Bundle b = intent.getExtras();
+//		CostelementListViewItem element = (CostelementListViewItem) b.get(Costgroup.COSTELEMENT);
+//		name.setText(element.getName());
+//		desc.setText(element.getDesc());
+//		value.setText(element.getValue());
+//		
+//		String tag 		= getString(R.string.dayly);
+//		String woche	= getString(R.string.weekly);
+//		String monat	= getString(R.string.monthly);
+//		String quartal	= getString(R.string.quart);
+//		String jahr		= getString(R.string.yearly);
+//		
+//		if		(tag.equals(element.getPeriode())) {
+//			periode.setSelection(1);
+//			
+//	} 	else if (woche.equals(element.getPeriode())) {
+//			periode.setSelection(2);
+//			
+//	}	else if (monat.equals(element.getPeriode())) {
+//			periode.setSelection(3);
+//		
+//	}	else if (quartal.equals(element.getPeriode())) {
+//			periode.setSelection(4);
+//		
+//	}	else if (jahr.equals(element.getPeriode())) {
+//			periode.setSelection(5);
+//	}	
+//		
+//		
+//		String selectedTolerance = element.getTolerance();
+//		String [] tolerances = getResources().getStringArray(R.array.tolerances);
+//		for(int i =0; i < tolerances.length; i++){
+//		
+//			if(tolerances[i].equals(selectedTolerance)) {
+//				tolerance.setSelection(i);
+//				
+//				}
+//				
+//			}
+//		}	
+	}	
+			
+
+		
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,4 +123,6 @@ public class NewCostelement extends Activity  {
 				Toast.makeText(NewCostelement.this, getResources().getString(R.string.err_missing_costelement_data), Toast.LENGTH_LONG).show();
 		}
 	};
+	
+	
 }

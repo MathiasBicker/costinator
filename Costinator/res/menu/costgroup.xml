@@ -8,7 +8,7 @@
         android:icon="@drawable/ic_action_settings"/>
      
      <item
-        android:id="@+id/action_editCosgroup"
+        android:id="@+id/action_editCostgroup"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="@string/action_title_edit_costgroup"
