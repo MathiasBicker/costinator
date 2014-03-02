@@ -122,16 +122,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 				dialog = builder.create();
 
 	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-		List<TCostgroup> list	= getHelper().queryAllCostgroups();
-		if(list != null)
-			for(TCostgroup c : list) 
-				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
-		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,8 +184,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	}
 	
 	@Override
-	public void onResume()
-	    {  // After a pause OR at startup
+	public void onResume() {  
 	    super.onResume();
 	    items 					= new ArrayList<CostgroupListViewItem>();
 	    List<TCostgroup> list	= getHelper().queryAllCostgroups();
@@ -203,6 +192,6 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 			for(TCostgroup c : list) 
 				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
-	     }
+	}
 	
 }

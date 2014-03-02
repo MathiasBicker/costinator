@@ -115,6 +115,14 @@ public class NewCostelement extends Activity  {
 					element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
 														value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
 														tolerance.getSelectedItem().toString());
+				else {
+					element.setName(name.getText().toString());
+					element.setDesc(desc.getText().toString());
+					element.setValue(value.getText().toString());
+					element.setPeriode(periode.getSelectedItem().toString());
+					element.setTolerance(tolerance.getSelectedItem().toString());
+				}
+				
 				Intent returnIntent 	= new Intent();
 				returnIntent.putExtra(COSTELEMENTTAG, element);
 				

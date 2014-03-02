@@ -87,7 +87,6 @@ public class TCostelement implements Serializable {
 	}
 	
 	public TCostelement(CostelementListViewItem c, int period) {
-		id = c.getId();
 		name = c.getName();
 		description = c.getDesc();
 		value = Double.valueOf(c.getValue());

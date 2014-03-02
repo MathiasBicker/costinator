@@ -215,19 +215,11 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	}
 	
 	public void updateCostelement (CostelementListViewItem costelement) {
-		
-		CostelementListViewItem item = items.get(position);
-		TCostelement element = getHelper().queryCostelement(item.getId());
-		element.setName(costelement.getName());
-		element.setDescription(costelement.getDesc());
-		double value = Double.parseDouble(costelement.getValue());
-		element.setValue(value);
-		element.setPeriod(findPeriodId(costelement.getPeriode()));
-		element.setTolerance(findToleranceIndex(costelement.getTolerance()));
-		
+		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
+		element.setCostgroup(group);
+		element.setId(costelement.getId());
 		getHelper().update(element);
-		items.remove(position);
-		items.add(position, new CostelementListViewItem(costelement.getName(), costelement.getDesc(), costelement.getValue(),getResources().getString(R.string.currency), costelement.getPeriode(), costelement.getTolerance() ));
+		items.set(position, costelement);
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 
@@ -295,16 +287,16 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	 * @return string period constant form TCostelement
 	 */
 	public int findPeriodId(String period) {
-		//String[] array = getResources().getStringArray(R.array.periods);
-		if(period.equals(getResources().getString(R.string.dayly)))
+		String[] array = getResources().getStringArray(R.array.periods);
+		if(period.equals(array[0]))
 			return TCostelement.DAYLY;
-		else if(period.equals(getResources().getString(R.string.weekly)))
+		else if(period.equals(array[1]))
 			return TCostelement.WEEKLY;
-		else if(period.equals(getResources().getString(R.string.monthly)))
+		else if(period.equals(array[2]))
 			return TCostelement.MONTHLY;
-		else if(period.equals(getResources().getString(R.string.quart)))
+		else if(period.equals(array[3]))
 			return TCostelement.QUART;
-		else if(period.equals(getResources().getString(R.string.yearly)))
+		else if(period.equals(array[4]))
 			return TCostelement.YEARLY;
 		else {
 			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD + period + getResources().getString(R.string.monthly));
