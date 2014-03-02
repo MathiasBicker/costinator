@@ -205,7 +205,9 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	}
 	
 	public void addCostelement (CostelementListViewItem costelement) {
-		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
+		TCostelement element;
+		if((element = getHelper().queryCostelement(costelement.getId())) == null)
+			element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
 		element.setCostgroup(group);
 		getHelper().create(element);
 		items.add(new CostelementListViewItem(element, findPeriod(element.getPeriod()), getResources().getString(R.string.currency)));
@@ -293,19 +295,19 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	 * @return string period constant form TCostelement
 	 */
 	public int findPeriodId(String period) {
-		String[] array = getResources().getStringArray(R.array.periods);
-		if(period.equals(array[1]))
+		//String[] array = getResources().getStringArray(R.array.periods);
+		if(period.equals(getResources().getString(R.string.dayly)))
 			return TCostelement.DAYLY;
-		else if(period.equals(array[2]))
+		else if(period.equals(getResources().getString(R.string.weekly)))
 			return TCostelement.WEEKLY;
-		else if(period.equals(array[3]))
+		else if(period.equals(getResources().getString(R.string.monthly)))
 			return TCostelement.MONTHLY;
-		else if(period.equals(array[4]))
+		else if(period.equals(getResources().getString(R.string.quart)))
 			return TCostelement.QUART;
-		else if(period.equals(array[5]))
+		else if(period.equals(getResources().getString(R.string.yearly)))
 			return TCostelement.YEARLY;
 		else {
-			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD);
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD + period + getResources().getString(R.string.monthly));
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
 	}
@@ -344,8 +346,8 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 
 	@Override
 	public void setOnSubmitListener(String title, String desc) {
-		Log.v("CostgroupUpdateCostgroupTitle†bergabe", ""+ title);
-		Log.v("CostgroupUpdateCostgroupDesc†bergabe", ""+ desc);
+		Log.v("CostgroupUpdateCostgroupTitleï¿½bergabe", ""+ title);
+		Log.v("CostgroupUpdateCostgroupDescï¿½bergabe", ""+ desc);
 		
 		//Update Costgroup
 		String titleappend = getString(R.string.title_activity_costgroup);

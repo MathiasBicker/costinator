@@ -30,6 +30,7 @@ public class NewCostelement extends Activity  {
 	private EditText 	value;
 	private Spinner 	periode;
 	private Spinner		tolerance;
+	private CostelementListViewItem element = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class NewCostelement extends Activity  {
 	   	Bundle b = intent.getExtras();
 	
 	   	if (b != null) {
-		CostelementListViewItem element = (CostelementListViewItem) b.get(Costgroup.COSTELEMENT);
+		element = (CostelementListViewItem) b.get(Costgroup.COSTELEMENT);
 		name.setText(element.getName());
 		desc.setText(element.getDesc());
 		value.setText(element.getValue());
@@ -110,9 +111,10 @@ public class NewCostelement extends Activity  {
 				value.getText().toString().equals("") || Double.valueOf(value.getText().toString()) <= 0.0
 			   || periode.getSelectedItemId() == 0)) {
 			
-				CostelementListViewItem element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
-													value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
-													tolerance.getSelectedItem().toString());
+				if(element == null)
+					element = new CostelementListViewItem(name.getText().toString(), desc.getText().toString(),
+														value.getText().toString(), getResources().getString(R.string.currency), periode.getSelectedItem().toString(),
+														tolerance.getSelectedItem().toString());
 				Intent returnIntent 	= new Intent();
 				returnIntent.putExtra(COSTELEMENTTAG, element);
 				

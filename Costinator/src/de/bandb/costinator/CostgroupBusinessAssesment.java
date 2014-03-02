@@ -41,6 +41,10 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	public static final String 	COSTGROUPTAG 	= "costgroup";
 	public static final String 	DAYSTAG 		= "days";
 	public static final int		CASEAMOUNT		= 3;
+	public static final int 	BEST			= 100;
+	public static final int 	AVG				= 101;
+	public static final int 	WORST			= 102;
+	
 	//error messages
 	public static final String WRONGPERIOD 		= "wrong period";
 	public static final String EMPTYLIST 		= "elementlist is empty";
@@ -216,7 +220,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	}
 
 	private void openChart(){
-		 
+		switch()
         // Pie Chart Section Names
         String[] code = new String[elementList.size()];
         for(int i = 0; i < code.length; i++)
