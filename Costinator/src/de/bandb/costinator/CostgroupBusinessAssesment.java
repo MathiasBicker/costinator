@@ -178,7 +178,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		sumView.append("\n" + perDay + currency + getResources().getString(R.string.dayly) + "\n" + perWeek + currency + getResources().getString(R.string.weekly)
 					   + "\n" + perMonth + currency + getResources().getString(R.string.monthly) + "\n" + perQuart + currency + getResources().getString(R.string.quart)
 					   + "\n" + perYear + currency + getResources().getString(R.string.yearly) + "");
-		sumValues.append(sum + currency);
+		sumValues.append(bestSum + currency + "\n" + sum + currency + "\n" + worstSum + currency);
 	}
 	
 	/**
