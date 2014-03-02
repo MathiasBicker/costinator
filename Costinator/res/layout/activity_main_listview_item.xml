@@ -25,7 +25,7 @@
         android:layout_alignBottom="@+id/imageButtonCostgroupDelete"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="35dp"
-        android:text="XX"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/OrangeDark"
         android:textStyle="bold" />
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewCostgroupTotalCost"
         android:layout_alignLeft="@+id/textViewCostgroupTotalCost"
-        android:text="XX"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ImageButton
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewCostgroupDesc"
         android:layout_alignParentTop="true"
-        android:text="XX"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
