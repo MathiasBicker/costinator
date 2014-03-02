@@ -101,6 +101,10 @@ public class CostelementListViewItem implements Serializable {
 	public void setTolerance(String tolerance) {
 		if(tolerance == null)
 			this.tolerance = "0%";
+		else if(tolerance.charAt(tolerance.length() - 1) == '%') {
+			this.tolerance = tolerance;
+			return;
+		}
 		else if(tolerance.substring(tolerance.length()-2).equals("--"))
 			this.tolerance = "0%";
 		else
