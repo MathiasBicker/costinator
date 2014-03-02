@@ -146,9 +146,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	        	Intent intentNew = new Intent(Costgroup.this, NewCostelement.class);
 				startActivityForResult(intentNew, NEW_COSTELEMENT_REQUEST);
 	            return true;
-	        case R.id.action_settings:
-	            //openSettings();
-	            return true;
+	      
 	        case R.id.action_assessCostgroup:
 	        	//issuing business assessment via CostgroupBusinessAssesment activity and CostgroupBusinessAssesmentDialogFragment dialog
 	        	if(items.isEmpty())
