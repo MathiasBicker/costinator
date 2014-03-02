@@ -12,81 +12,112 @@
 
 	<ScrollView
 	    android:layout_width="wrap_content"
-	    android:layout_height="match_parent" 
-	    android:layout_above="@+id/btn_chart_new">
+	    android:layout_height="match_parent" >
 
-	<RelativeLayout
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" >
+	    <RelativeLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
 
-    <View
-        android:id="@+id/lineMain"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/costgroup_business_assesment_costgroup"
-        android:layout_centerHorizontal="true"
-        android:background="@color/Black" />
+	        <View
+	            android:id="@+id/lineMain"
+	            android:layout_width="fill_parent"
+	            android:layout_height="3dp"
+	            android:layout_below="@+id/costgroup_business_assesment_costgroup"
+	            android:layout_centerHorizontal="true"
+	            android:background="@color/Black" />
 
-    <TextView
-        android:id="@+id/costgroup_business_assesment_costgroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lineMain"
-        android:layout_alignParentTop="true"
-        android:text="@string/costgroup"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+	        <TextView
+	            android:id="@+id/costgroup_business_assesment_costgroup"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/lineMain"
+	            android:layout_alignParentTop="true"
+	            android:text="@string/costgroup"
+	            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/costgroup_business_assesment_elements"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/costgroup_business_assesment_elements_values"
-        android:layout_alignBottom="@+id/costgroup_business_assesment_elements_values"
-        android:layout_alignLeft="@+id/lineMain"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+	        <TextView
+	            android:id="@+id/costgroup_business_assesment_elements"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBaseline="@+id/costgroup_business_assesment_elements_values"
+	            android:layout_alignBottom="@+id/costgroup_business_assesment_elements_values"
+	            android:layout_alignLeft="@+id/lineMain"
+	            android:text=""
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/costgroup_business_assesment_elements_values"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lineMain"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="44dp"
-        android:layout_toRightOf="@+id/costgroup_business_assesment_elements"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/OrangeDark" />
+	        <TextView
+	            android:id="@+id/costgroup_business_assesment_elements_values"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignRight="@+id/costgroup_business_assesment_sum"
+	            android:layout_below="@+id/lineMain"
+	            android:layout_marginLeft="35dp"
+	            android:layout_marginTop="130dp"
+	            android:layout_toRightOf="@+id/costgroup_business_assesment_elements"
+	            android:text=""
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/OrangeDark" />
 
-    <TextView
-        android:id="@+id/costgroup_business_assesment_sum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/costgroup_business_assesment_elements"
-        android:layout_below="@+id/costgroup_business_assesment_elements"
-        android:layout_marginTop="136dp"
-        android:text="@string/sum"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <TextView
-        android:id="@+id/costgroup_business_assesment_sum_values"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/costgroup_business_assesment_sum"
-        android:layout_below="@+id/costgroup_business_assesment_elements"
-        android:layout_marginTop="136dp"
-        android:textColor="@color/OrangeDark"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    </RelativeLayout>
-    </ScrollView>
-    
-     <Button
-         android:id="@+id/btn_chart_new"
-         android:layout_width="@dimen/button_width"
-         android:layout_height="@dimen/button_height"
-         android:layout_alignParentBottom="true"
-         android:layout_centerHorizontal="true"
-         android:background="@color/OrangeDark"
-         android:text="@string/btn_pie_chart" />
+	        <TextView
+	            android:id="@+id/costgroup_business_assesment_sum"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@+id/costgroup_business_assesment_elements"
+	            android:layout_below="@+id/costgroup_business_assesment_elements"
+	            android:layout_marginTop="136dp"
+	            android:text="@string/sum"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	        <TextView
+	            android:id="@+id/costgroup_business_assesment_sum_values"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@+id/costgroup_business_assesment_elements"
+	            android:layout_marginTop="136dp"
+	            android:layout_toRightOf="@+id/costgroup_business_assesment_sum"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/OrangeDark" />
+
+	        <Button
+	            android:id="@+id/btn_chart_new"
+	            android:layout_width="@dimen/button_width_tap"
+	            android:layout_height="@dimen/button_height_tab"
+	            android:layout_alignParentLeft="true"
+	            android:layout_margin="1dp"
+	            android:layout_below="@+id/lineMain"
+	            android:background="@color/OrangeDark"
+	            android:text="@string/button_chart_overall" />
+	        
+	        <Button
+	            android:id="@+id/btn_chart_avg"
+	            android:layout_width="@dimen/button_width_tap"
+	            android:layout_height="@dimen/button_height_tab"
+	            android:layout_alignParentRight="true"
+	            android:layout_margin="1dp"
+	            android:layout_below="@+id/lineMain"
+	            android:background="@color/OrangeDark"
+	            android:text="@string/button_chart_avg" />
+	        
+	         <Button
+	            android:id="@+id/btn_chart_best"
+	            android:layout_width="@dimen/button_width_tap"
+	            android:layout_height="@dimen/button_height_tab"
+	            android:layout_below="@+id/btn_chart_new"
+	            android:layout_margin="1dp"
+	            android:background="@color/OrangeDark"
+	            android:text="@string/button_chart_best" />
+
+	         <Button
+	             android:id="@+id/btn_chart_worst"
+	             android:layout_width="@dimen/button_width_tap"
+	             android:layout_height="@dimen/button_height_tab"
+	             android:layout_alignParentRight="true"
+	             android:layout_below="@+id/btn_chart_avg"
+	             android:layout_margin="1dp"
+	             android:background="@color/OrangeDark"
+	             android:text="@string/button_chart_worst" />
+	        
+	    </RelativeLayout>
+	</ScrollView>
 
 </RelativeLayout>

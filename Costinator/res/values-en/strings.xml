@@ -38,6 +38,10 @@
     
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Business assesment for Costgroup</string>
+    <string name="button_chart_avg">Diagram Average Case</string>
+    <string name="button_chart_best">Diagram Best Case</string>
+	<string name="button_chart_worst">Diagram Worst Case</string>
+	<string name="button_chart_overall">Diagram Overall</string>
     
     <!-- NewCostelement -->
     <string name="title_activity_new_costelement">Add new costelement</string>

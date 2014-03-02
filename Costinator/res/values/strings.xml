@@ -46,7 +46,11 @@
 
     <!-- CostgroupBusinessAssesment -->
     <string name="title_activity_costgroup_business_assesment">Kostengruppenauswertung</string>
-
+    <string name="button_chart_avg">Diagramm Average Case</string>
+    <string name="button_chart_best">Diagramm Best Case</string>
+	<string name="button_chart_worst">Diagramm Worst Case</string>
+	<string name="button_chart_overall">Diagramm Gesamt</string>
+    
     <!-- NewCostelement -->
     <string name="title_activity_new_costelement">Neues Kostenelement erstellen</string>
     <string name="title_activity_select_category">Wählen Sie bitte eine Kostenkategorie:</string>
