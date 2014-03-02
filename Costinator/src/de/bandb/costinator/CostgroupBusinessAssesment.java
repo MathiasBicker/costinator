@@ -65,26 +65,24 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		@Override
 		public void onClick(View v) {
 			openBarChart();
-			//openChart(AVG);
 		}
 	};
 	private OnClickListener chartBestButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			//openChart(AVG);
+			openChart(BEST);
 		}
 	};
 	private OnClickListener chartAvgButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			//openChart(AVG);
+			openChart(AVG);
 		}
 	};
 	private OnClickListener chartWorstButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			openBarChart();
-			//openChart(AVG);
+			openChart(WORST);
 		}
 	};
 	
@@ -100,6 +98,12 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		TextView 	sumView 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum);
 		TextView 	sumValues 		= (TextView) findViewById(R.id.costgroup_business_assesment_sum_values);
 		Button 		chartButton		= (Button) findViewById(R.id.btn_chart_new);
+		Button		bestButton		= (Button) findViewById(R.id.btn_chart_best);
+		Button		avgButton		= (Button) findViewById(R.id.btn_chart_avg);
+		Button		worstButton		= (Button) findViewById(R.id.btn_chart_worst);
+		bestButton.setOnClickListener(chartBestButtonListener);
+		avgButton.setOnClickListener(chartAvgButtonListener);
+		worstButton.setOnClickListener(chartWorstButtonListener);
 		chartButton.setOnClickListener(chartButtonListener);
 		//getting information from intent
 		Intent 		intent 			= getIntent();
