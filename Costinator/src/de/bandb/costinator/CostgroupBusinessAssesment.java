@@ -3,6 +3,8 @@ package de.bandb.costinator;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * activity to issue a business assesment for a given costgroup
+ * and displaying it via text and bar-/pie-charts
  */
 
 
@@ -36,8 +38,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelper> {
-
 	public static final String 	LOGTAG 			= "BusinessAssesment";
+	//tags for inter-activity-communication
 	public static final String 	COSTGROUPTAG 	= "costgroup";
 	public static final String 	DAYSTAG 		= "days";
 	public static final int		CASEAMOUNT		= 3;
@@ -59,7 +61,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	private double						worstSum 	= 0.0;
 	private double						max;
 	private String						currency;
-	private OnClickListener 			chartButtonListener = new OnClickListener() {
+	private OnClickListener chartButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			openBarChart();
@@ -83,7 +85,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		//getting information from intent
 		Intent 		intent 			= getIntent();
 		Bundle 		bundle 			= intent.getExtras();
-		currency	 				= getResources().getString(R.string.currency);
+		currency = getResources().getString(R.string.currency);
 		if(bundle != null) {
 			costgroup 	= (TCostgroup) bundle.get(COSTGROUPTAG);
 			elementList = getHelper().queryAllCostelements(costgroup);
@@ -92,6 +94,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 			costgroupView.append(" " + costgroup.getName());
 		}
 		
+		//displaying period of the business assesment
 		if(days % 360 == 0 && days / 360 > 0)
 			phase = String.valueOf(days / 360) + " " + getResources().getString(R.string.years);
 		else if(days % 90 == 0 && days / 90 > 0)
@@ -102,18 +105,16 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 			phase = String.valueOf(days / 7) + " " + getResources().getString(R.string.weeks);
 		else 
 			phase = String.valueOf(days) + " " + getResources().getString(R.string.days);
-		
 		costgroupView.append(" " + getResources().getString(R.string.phase) + " " + phase + ")");
 		
-		//checking if elementlist is empty
 		if(elementList.isEmpty()) {
 			Log.e(LOGTAG, EMPTYLIST);
 			throw new RuntimeException(EMPTYLIST);
 		}
 		
-		//displaying values for each element in list
+		//displaying values for each element in list and computing best-/worst-case values
 		for(TCostelement e : elementList) {
-			checkCurrency(e);
+			checkCurrency(e); //check if value needs to be computed depending on currency
 			e.setEndvalue(Math.round(100.0 * computeValue(e.getValue(), e.getPeriod())) / 100.0);	//rounding values
 			if(e.getTolerance() == 0) {
 				e.setBestValue(e.getEndvalue());
@@ -127,7 +128,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 			values.append(e.getEndvalue() + currency + "\n");
 		}
 		
-		max = toleranceList.get(0).getWorstValue();
+		max = toleranceList.get(0).getWorstValue(); //computing max value for bar-chart maximum value of y-axis
 		//computing sums and displaying them
 		for(TCostelement c : toleranceList) {
 			if(c.getWorstValue() > max)
@@ -140,6 +141,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		double perDay 	= Math.round(100.0 * sum/days) / 100.0;			//rounding values
 		double perWeek 	= Math.round(100.0 * sum/days*7) / 100.0;
 		double perMonth = Math.round(100.0 * sum/days*30) / 100.0;
+		//persisting monthly cost for costgroup
 		costgroup.setMonthlyCost(perMonth);
 		getHelper().update(checkCurrency(costgroup));
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
@@ -212,6 +214,10 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		return computedValue;
 	}
 	
+	/**
+	 * presenting bar chart copmaring all costelements with a tolerance
+	 * in a bar chart which is displayed in a new graphical activity
+	 */
 	private void openBarChart() {
 		XYMultipleSeriesRenderer renderer = getTruitonBarRenderer();
         myChartSettings(renderer);
@@ -219,8 +225,12 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         startActivity(intent);
 	}
 
-	private void openChart(int caseType){
-		
+	/**
+	 * showing the spreading of the costelements via a pie chart which is 
+	 * displayed in a new graphical activity
+	 * @param caseType best-, average-, worst- case
+	 */
+	private void openChart(int caseType) {
         // Pie Chart Section Names
         String[] code = new String[elementList.size()];
         for(int i = 0; i < code.length; i++)
@@ -248,14 +258,14 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
  
         // Instantiating CategorySeries to plot Pie Chart
         CategorySeries distributionSeries = new CategorySeries(getResources().getString(R.string.categories) + costgroup.getName());
-        for(int i=0 ;i < distribution.length;i++){
+        for(int i=0 ; i < distribution.length; i++) {
             // Adding a slice with its values and name to the Pie Chart
             distributionSeries.add(code[i], distribution[i]);
         }
  
         // Instantiating a renderer for the Pie Chart
         DefaultRenderer defaultRenderer  = new DefaultRenderer();
-        for(int i = 0 ;i<distribution.length;i++){
+        for(int i = 0 ; i < distribution.length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
             seriesRenderer.setColor(colors[i]);
             seriesRenderer.setDisplayChartValues(true);
@@ -263,6 +273,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
             defaultRenderer.addSeriesRenderer(seriesRenderer);
         }
  
+        //settings
         defaultRenderer.setChartTitle(costgroup.getName());
         defaultRenderer.setChartTitleTextSize(55);
         defaultRenderer.setLabelsColor(Color.BLACK);
@@ -270,14 +281,13 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         defaultRenderer.setFitLegend(true);
         defaultRenderer.setZoomButtonsVisible(false);
  
-        // Creating an intent to plot bar chart using dataset and multipleRenderer
         Intent intent = ChartFactory.getPieChartIntent(getBaseContext(), distributionSeries , defaultRenderer, getResources().getString(R.string.cost_allocation) + " " +  costgroup.getName());
- 
-        // Start Activity
         startActivity(intent);
- 
     }
 	
+	/**
+	 * creating datasets for the bar chart
+	 */
 	private XYMultipleSeriesDataset getTruitonBarDataset() {
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         ArrayList<String> legendTitles = new ArrayList<String>();
@@ -309,6 +319,9 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         return dataset;
     }
  
+	/**
+	 * creating a renderer containg a renderer for each case for the bar chart
+	 */
     public XYMultipleSeriesRenderer getTruitonBarRenderer() {
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
         renderer.setAxisTitleTextSize(30);
@@ -343,6 +356,9 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         return renderer;
     }
  
+    /**
+     * settings for the optics of the bar chart
+     */
     private void myChartSettings(XYMultipleSeriesRenderer renderer) {
         renderer.setXAxisMin(0.5);
         renderer.setXAxisMax(toleranceList.size() + 0.5);
@@ -368,6 +384,9 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		return true;
 	}
 	
+	/**
+	 * check if currency needs to be calculated, and doing so if nessesary
+	 */
 	private TCostelement checkCurrency(TCostelement c) {
 		if(getResources().getConfiguration().locale.equals(Locale.US)) {
 			double value = c.getValue();
@@ -377,6 +396,9 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		return c;
 	}
 	
+	/**
+	 * check if currency needs to be calculated, and doing so if nessesary
+	 */
 	private TCostgroup checkCurrency(TCostgroup c) {
 		if(getResources().getConfiguration().locale.equals(Locale.US)) {
 			double value = c.getMonthlyCost();
@@ -385,5 +407,4 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		}
 		return c;
 	}
-
 }
