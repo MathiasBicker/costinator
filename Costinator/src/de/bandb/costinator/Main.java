@@ -3,6 +3,7 @@ package de.bandb.costinator;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * activity start on start of the app. shows a list of all costgroups
  */
 
 import java.util.ArrayList;
@@ -38,10 +39,10 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	private ImageButton 							addCostgroup;
 	private AlertDialog								dialog;
 	private int 									position;
-	private OnClickListener 						addCostgroupListener = new OnClickListener() {
+	private OnClickListener addCostgroupListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-
+			//adding new costgroup via dialog
 			AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
 			fragment.mListener = Main.this;
 			fragment.show(getSupportFragmentManager(), "");
@@ -52,11 +53,10 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 				int arg2, long arg3) {
-			
+			//deleting costgroup via dialog
 			position = arg2;
 			dialog.show();
 			dialog.getWindow().setLayout(600, 300);
-
 			return false;
 		}
 
@@ -65,12 +65,11 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 				long arg3) {
-			//telling new activity the name of the costgroup
+			//starting detail activity for costgroup
 			Intent intent = new Intent(Main.this, Costgroup.class);
 			CostgroupListViewItem group = (CostgroupListViewItem) items.get(position);
 			intent.putExtra(COSTGROUPTAG, group);
 			startActivity(intent);
-			
 		}
 	};
 	
@@ -82,45 +81,34 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 		addCostgroup 			= (ImageButton) findViewById(R.id.imageButtonAddNewCostgroup);
 		costgroupList 			= (ListView) findViewById(R.id.listViewMain);
 		items 					= new ArrayList<CostgroupListViewItem>();
+		//querying all costgroups from database
 		List<TCostgroup> list	= getHelper().queryAllCostgroups();
 		if(list != null)
 			for(TCostgroup c : list) 
 				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
-			
-		//dummy data
-		/*
-		CostgroupListViewItem costgroup1 = new CostgroupListViewItem("Haus","XX", "6634,61/month");
-		CostgroupListViewItem costgroup2 = new CostgroupListViewItem("Auto","BMW ALPINA 3", "-45,15/month");
-		items.add(costgroup1);
-		items.add(costgroup2);
-		*/
-		//__
-		
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 		costgroupList.setOnItemClickListener(costgroupListListener);
 		costgroupList.setOnItemLongClickListener(costgroupListLongListener);
 		addCostgroup.setOnClickListener(addCostgroupListener);
 		
 		//Delete Dialog
-				AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
-				String titlePart = getString(R.string.title_costgroup_delete_dialog);
-				builder.setTitle(titlePart);
-				// Add the buttons
-				builder.setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-				           public void onClick(DialogInterface dialog, int id) {
-				        	   
-				        	   deleteCostgroup(position);
-				           }
-				       });
-				builder.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-				           public void onClick(DialogInterface dialog, int id) {
-				               dialog.cancel();
-				           }
-				       });
-				
-				// Create the AlertDialog
-				dialog = builder.create();
-
+		AlertDialog.Builder builder 	= new AlertDialog.Builder(Main.this);
+		String 				titlePart 	= getString(R.string.title_costgroup_delete_dialog);
+		builder.setTitle(titlePart);
+		// Add the buttons
+		builder.setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   deleteCostgroup(position);
+           }
+		});
+		builder.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               dialog.cancel();
+           }
+        });
+		
+		// Create the AlertDialog
+		dialog = builder.create();
 	}
 
 	@Override
@@ -135,6 +123,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
 	        case R.id.action_addCostgroup:
+	        	//adding a new costgroup via dialog
 	        	AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
 				fragment.mListener = Main.this;
 				fragment.show(getSupportFragmentManager(), "");
@@ -169,15 +158,19 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	 * adding new CostgroupListViewItem to ArrayList and
 	 * creating new ListView with refreshed ArrayList
 	 */
-	public void addCostgroup(TCostgroup group) {
+	private void addCostgroup(TCostgroup group) {
 		CostgroupListViewItem newCostgroup = new CostgroupListViewItem(group, getResources().getString(R.string.currency));
 		items.add(checkCurrency(newCostgroup));
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
 
-	public void deleteCostgroup(int position) {
-		CostgroupListViewItem item = items.get(position);
-		TCostgroup group = getHelper().queryCostgroup(item.getId());
+	/**
+	 * deleting costgroup at given position from database and
+	 * listview
+	 */
+	private void deleteCostgroup(int position) {
+		CostgroupListViewItem 	item 	= items.get(position);
+		TCostgroup 				group 	= getHelper().queryCostgroup(item.getId());
 		getHelper().delete(group);
 		items.remove(position);
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
@@ -186,12 +179,12 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 	@Override
 	public void onResume() {  
 	    super.onResume();
-	    items 					= new ArrayList<CostgroupListViewItem>();
-	    List<TCostgroup> list	= getHelper().queryAllCostgroups();
+	    //refreshing listview content for altered data
+	    items = new ArrayList<CostgroupListViewItem>();
+	    List<TCostgroup> list = getHelper().queryAllCostgroups();
 		if(list != null)
 			for(TCostgroup c : list) 
 				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
 		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
-	
 }
