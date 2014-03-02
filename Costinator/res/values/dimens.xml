@@ -17,4 +17,5 @@
     <!-- popup size AddCostgroupDialogFrament -->
     <dimen name="addCostgroupDialog_width">300dp</dimen>
     <dimen name="addCostgroupDialog_height">500dp</dimen>
+    
 </resources>

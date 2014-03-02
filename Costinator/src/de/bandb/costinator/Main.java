@@ -18,7 +18,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -122,6 +121,16 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 				// Create the AlertDialog
 				dialog = builder.create();
 
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		List<TCostgroup> list	= getHelper().queryAllCostgroups();
+		if(list != null)
+			for(TCostgroup c : list) 
+				items.add(checkCurrency(new CostgroupListViewItem(c, getResources().getString(R.string.currency))));
+		costgroupList.setAdapter(new CustomAdapterListViewMain(items, this));
 	}
 
 	@Override

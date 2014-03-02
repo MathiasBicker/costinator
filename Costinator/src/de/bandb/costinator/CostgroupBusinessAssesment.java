@@ -6,6 +6,7 @@ package de.bandb.costinator;
  */
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +46,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	public static final String EMPTYLIST 		= "elementlist is empty";
 	
 	private List<TCostelement> 			elementList;
-	private List<TCostelement> 			toleranceList;
+	private List<TCostelement> 			toleranceList = new ArrayList<TCostelement>();
 	private TCostgroup 					costgroup;
 	private String						phase;
 	private int							days;
@@ -114,17 +115,17 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 				e.setBestValue(e.getEndvalue());
 				e.setWorstValue(e.getEndvalue());
 			}else {
+				e.setBestValue(Math.round(100.0 * (e.getEndvalue() - e.getEndvalue() * e.getTolerance() / 100.0)) / 100.0);
+				e.setWorstValue(Math.round(100.0 * (e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100.0)) / 100.0);
 				toleranceList.add(e);
-				e.setBestValue(e.getEndvalue() - e.getEndvalue() * e.getTolerance() / 100);
-				e.setWorstValue(e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100);
 			}
 			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
 			values.append(e.getEndvalue() + currency + "\n\n");
 		}
 		
-		max = elementList.get(0).getWorstValue();
+		max = toleranceList.get(0).getWorstValue();
 		//computing sums and displaying them
-		for(TCostelement c : elementList) {
+		for(TCostelement c : toleranceList) {
 			if(c.getWorstValue() > max)
 				max = c.getWorstValue();
 			sum 		+= c.getEndvalue();
@@ -303,12 +304,27 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         renderer.setMargins(new int[] { 10, 40, 80, 0 });
         SimpleSeriesRenderer r = new SimpleSeriesRenderer();
         r.setColor(Color.RED);
+        r.setDisplayChartValues(true);
+        r.setChartValuesTextSize(30);
+        r.setChartValuesTextAlign(Align.CENTER);
+        r.setChartValuesFormat(NumberFormat.getCurrencyInstance());
+        r.setChartValuesSpacing(75);
         renderer.addSeriesRenderer(r);
         r = new SimpleSeriesRenderer();
         r.setColor(Color.BLUE);
+        r.setDisplayChartValues(true);
+        r.setChartValuesTextSize(30);
+        r.setChartValuesTextAlign(Align.CENTER);
+        r.setChartValuesFormat(NumberFormat.getCurrencyInstance());
+        r.setChartValuesSpacing(40);
         renderer.addSeriesRenderer(r);
         r = new SimpleSeriesRenderer();
         r.setColor(Color.GREEN);
+        r.setDisplayChartValues(true);
+        r.setChartValuesTextSize(30);
+        r.setChartValuesTextAlign(Align.CENTER);
+        r.setChartValuesFormat(NumberFormat.getCurrencyInstance());
+        r.setChartValuesSpacing(5);
         renderer.addSeriesRenderer(r);
         return renderer;
     }
@@ -322,6 +338,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         	renderer.addXTextLabel(i+1, toleranceList.get(i).getName());
         renderer.setYLabelsAlign(Align.RIGHT);
         renderer.setBarSpacing(0.5);
+        renderer.setBarWidth(40);
+        renderer.setDisplayValues(true);
         renderer.setXTitle(getResources().getString(R.string.x_axis));
         renderer.setYTitle(getResources().getString(R.string.y_axis));
         renderer.setShowGrid(true);
