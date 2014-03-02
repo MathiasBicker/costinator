@@ -110,5 +110,8 @@
     <string name="year">Jahr</string>
   
     <string name="sum">Summe: </string>
+    
+    <!-- error messages -->
+    <string name="err_no_tolerance_items">Im Balkendiagramm werden nur Kostenelmente angeziegt, die eine Toleranz haben. Ihre Kostengruppe besitzt keine solchen Kostenelemente</string>
 
 </resources>

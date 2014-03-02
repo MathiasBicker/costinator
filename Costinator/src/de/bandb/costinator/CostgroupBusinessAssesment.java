@@ -175,6 +175,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		double perQuart = Math.round(100.0 * sum/days*90) / 100.0;
 		double perYear 	= Math.round(100.0 * sum/days*360) / 100.0;
 		sum				= Math.round(100.0 * sum) / 100.0;	
+		bestSum = Math.round(100 * bestSum) / 100;
+		worstSum = Math.round(100 * worstSum) / 100;
 		sumView.append("\n" + perDay + currency + getResources().getString(R.string.dayly) + "\n" + perWeek + currency + getResources().getString(R.string.weekly)
 					   + "\n" + perMonth + currency + getResources().getString(R.string.monthly) + "\n" + perQuart + currency + getResources().getString(R.string.quart)
 					   + "\n" + perYear + currency + getResources().getString(R.string.yearly) + "");
