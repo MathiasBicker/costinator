@@ -128,9 +128,7 @@ public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
 				fragment.mListener = Main.this;
 				fragment.show(getSupportFragmentManager(), "");
 	            return true;
-	        case R.id.action_settings:
-	            //openSettings();
-	            return true;
+	        
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
