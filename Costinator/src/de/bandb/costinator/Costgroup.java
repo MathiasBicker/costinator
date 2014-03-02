@@ -178,7 +178,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request we're responding to
-	    if(requestCode == NEW_COSTELEMENT_REQUEST)
+	    if(requestCode == NEW_COSTELEMENT_REQUEST) {
 	        // Make sure the request was successful
 	        if(resultCode == RESULT_OK){
 	        	//adding new costelement to database
@@ -186,13 +186,16 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
 	            addCostelement(checkCurrency(element));   	
         	} 
-	    else if(requestCode == EDIT_COSTELEMENT_REQUEST)
+	    }
+	    else if(requestCode == EDIT_COSTELEMENT_REQUEST) {
 	    	 if(resultCode == RESULT_OK) {
 	    		 //updating altered costelement in database
+	    		 System.out.println("popo");
 	    		 Bundle 					b 		= data.getExtras();
 		         CostelementListViewItem 	element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
 		         updateCostelement(checkCurrency(element));
 	    	 }
+	    }
 	}
 	
 	/**

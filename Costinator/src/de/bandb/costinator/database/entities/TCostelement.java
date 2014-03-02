@@ -93,10 +93,13 @@ public class TCostelement implements Serializable {
 		description = c.getDesc();
 		value = Double.valueOf(c.getValue());
 		setPeriod(period);
-		if(c.getTolerance().substring(c.getTolerance().length()-2).equals("--"))
+		if(c.getTolerance() != null) {
+			if(c.getTolerance().substring(c.getTolerance().length()-2).equals("--"))
+				tolerance = 0;
+			else
+				tolerance = Integer.parseInt(c.getTolerance().substring(0, c.getTolerance().length() - 2));
+		}else
 			tolerance = 0;
-		else
-			tolerance = Integer.parseInt(c.getTolerance().substring(0, c.getTolerance().length() - 2));
 	}
 	
 	public int getTolerance() {
