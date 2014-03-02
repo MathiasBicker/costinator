@@ -297,7 +297,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		else if(period.equals(array[4]))
 			return TCostelement.YEARLY;
 		else {
-			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD + period + getResources().getString(R.string.monthly));
+			Log.e(LOGTAG, CostgroupBusinessAssesment.WRONGPERIOD + period + array[4]);
 			throw new RuntimeException(CostgroupBusinessAssesment.WRONGPERIOD);
 		}
 	}
