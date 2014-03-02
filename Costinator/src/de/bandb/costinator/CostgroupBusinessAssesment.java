@@ -66,7 +66,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		@Override
 		public void onClick(View v) {
 			if(toleranceList.isEmpty())
-				Toast.makeText(getParent(), getResources().getString(R.string.err_no_tolerance_items), Toast.LENGTH_LONG).show();
+				Toast.makeText(CostgroupBusinessAssesment.this, getResources().getString(R.string.err_no_tolerance_items), Toast.LENGTH_LONG).show();
 			else
 				openBarChart();
 		}
