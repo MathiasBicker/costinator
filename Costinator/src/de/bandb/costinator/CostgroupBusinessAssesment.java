@@ -63,7 +63,7 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 		@Override
 		public void onClick(View v) {
 			openBarChart();
-			//openChart();
+			//openChart(AVG);
 		}
 	};
 	
@@ -219,8 +219,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         startActivity(intent);
 	}
 
-	private void openChart(){
-		switch()
+	private void openChart(int caseType){
+		
         // Pie Chart Section Names
         String[] code = new String[elementList.size()];
         for(int i = 0; i < code.length; i++)
@@ -229,7 +229,17 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
         // Pie Chart Section Value
         double[] distribution = new double[elementList.size()];
         for(int i = 0; i < distribution.length; i++)
-        	distribution[i] = elementList.get(i).getEndvalue();
+        	switch(caseType) {
+        	case BEST:
+        		distribution[i] = elementList.get(i).getBestValue();
+        		break;
+        	case AVG:
+        		distribution[i] = elementList.get(i).getEndvalue();
+        		break;
+        	case WORST:
+        		distribution[i] = elementList.get(i).getWorstValue();
+        		break;
+        	}
         
         // generating colors
         int[] colors = new int[elementList.size()];
