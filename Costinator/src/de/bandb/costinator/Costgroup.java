@@ -3,6 +3,7 @@ package de.bandb.costinator;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * activity that displays all costelements of a given costgroup in a list
  */
 
 import java.util.ArrayList;
@@ -35,13 +36,12 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
 public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListenerCostgroupBusinessAssesment, onSubmitListener {
-	
-	private static final int	NEW_COSTELEMENT_REQUEST = 10;
-	private static final int	EDIT_COSTELEMENT_REQUEST = 20;
-	
-	public static final String  EDIT_COSTELEMENT		= "Edit_Costelement";
+	//constants for inter-activity-communication
 	public static final String	COSTELEMENT				= "Costelement";
+	
 	private static final String	LOGTAG 					= "Costgroup";
+	private static final int	NEW_COSTELEMENT_REQUEST 	= 10;
+	private static final int	EDIT_COSTELEMENT_REQUEST 	= 20;
 	
 	private ListView 							costelementList;
 	private ArrayList<CostelementListViewItem> 	items;
@@ -55,6 +55,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	private OnClickListener addCostelementListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
+			//adding a new costelement via NewCostelement activity
 			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
 			startActivityForResult(intent, NEW_COSTELEMENT_REQUEST);
 		}
@@ -62,25 +63,23 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	private OnItemLongClickListener longListener = new OnItemLongClickListener() {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			//deleting costelemnt via dialog
 			position = arg2;
 			dialog.show();
 			dialog.getWindow().setLayout(600, 300);
 			return false;
 		}
 	};
-	
 	private OnItemClickListener costelementListListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
-			//Start NewCostelement for edit costelement
+			//Start NewCostelement for altering costelement
 			position = arg2;
-			Intent intent = new Intent(Costgroup.this, NewCostelement.class);
+			Intent 					intent 	= new Intent(Costgroup.this, NewCostelement.class);
 			CostelementListViewItem element = (CostelementListViewItem) items.get(position);
 			intent.putExtra(COSTELEMENT, element);
-			intent.putExtra(EDIT_COSTELEMENT, "edit");
 			startActivityForResult(intent, EDIT_COSTELEMENT_REQUEST);
-			
 		}
 	};
 
@@ -95,22 +94,21 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costgroupDesc		= (TextView) findViewById(R.id.business_assesment_textViewTitleCostgroupDesc);
 		costgroupTotalCost  = (TextView) findViewById(R.id.textViewTitleCostgroupCost);
 		items 				= new ArrayList<CostelementListViewItem>();
-	
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 		
-		//showing name, describtion and computed total cost of costgroup as title
-		Intent intent 		= getIntent();
-		Bundle b = intent.getExtras();
-		CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
-		costgroupTitle.append(" "+ costgroup.getCostgroupTitle());
+		//showing name, description and computed total cost of costgroup as title
+		Intent 					intent 		= getIntent();
+		Bundle 					b 			= intent.getExtras();
+		CostgroupListViewItem 	costgroup 	= (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+		costgroupTitle.append(" " + costgroup.getCostgroupTitle());
 		costgroupDesc.setText(costgroup.getCostgroupDesc());
 		costgroupTotalCost.setText(costgroup.getTotalCost());
+		//querying for all costelements from the database and displaying them in listview
 		group = getHelper().queryCostgroup(costgroup.getId());
 		List<TCostelement> list = getHelper().queryAllCostelements(group);
 		if(list != null && !(list.isEmpty()))
 			for(TCostelement e : list)
 				items.add(checkCurrency(new CostelementListViewItem(e, findPeriod(e.getPeriod()), getResources().getString(R.string.currency))));
-		
 		addCostelement.setOnClickListener(addCostelementListener);
 		costelementList.setOnItemLongClickListener(longListener);
 		costelementList.setOnItemClickListener(costelementListListener);
@@ -121,20 +119,16 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		builder.setTitle(titlePart);
 		// Add the buttons
 		builder.setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		        	   
-		        	   delete(position);
-		           }
-		       });
+           public void onClick(DialogInterface dialog, int id) {
+        	   delete(position);
+           }
+        });
 		builder.setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		               dialog.cancel();
-		           }
-		       });
-		
-		// Create the AlertDialog
+           public void onClick(DialogInterface dialog, int id) {
+               dialog.cancel();
+           }
+        });
 		dialog = builder.create();
-		
 	}
 
 	@Override
@@ -156,6 +150,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	            //openSettings();
 	            return true;
 	        case R.id.action_assessCostgroup:
+	        	//issuing business assessment via CostgroupBusinessAssesment activity and CostgroupBusinessAssesmentDialogFragment dialog
 	        	if(items.isEmpty())
 	        		Toast.makeText(this, getResources().getString(R.string.err_no_items), Toast.LENGTH_LONG).show();
 	        	else {
@@ -164,17 +159,17 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 					fragment.show(getSupportFragmentManager(), "");
 	        	}
 	        	return true;
-	        	
 	        case R.id.action_editCostgroup:
+	        	//altering costgroup information
 	        	AddCostgroupDialogFragment fragment = new AddCostgroupDialogFragment();
 				fragment.mListener = Costgroup.this;
-				Intent intent 		= getIntent();
-				Bundle b = intent.getExtras();
-				CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+				Intent 					intent 		= getIntent();
+				Bundle 					b 			= intent.getExtras();
+				CostgroupListViewItem 	costgroup 	= (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
 				AddCostgroupDialogFragment.costgroupNameforDialog = costgroup.getCostgroupTitle();
 				AddCostgroupDialogFragment.costgroupDescforDialog = costgroup.getCostgroupDesc();
 				fragment.show(getSupportFragmentManager(), "");
-	        
+				return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -183,28 +178,27 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request we're responding to
-	    if (requestCode == NEW_COSTELEMENT_REQUEST) {
+	    if(requestCode == NEW_COSTELEMENT_REQUEST)
 	        // Make sure the request was successful
-	        if (resultCode == RESULT_OK) {
-	            
-	            Bundle b = data.getExtras();
+	        if(resultCode == RESULT_OK){
+	        	//adding new costelement to database
+	            Bundle 					b 		= data.getExtras();
 	            CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
-	            
 	            addCostelement(checkCurrency(element));   	
         	} 
-	    } else if(requestCode == EDIT_COSTELEMENT_REQUEST) {
-	    	 if (resultCode == RESULT_OK) {
-	    	 
-	    		 Bundle b = data.getExtras();
-		         CostelementListViewItem element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
-	    		 
+	    else if(requestCode == EDIT_COSTELEMENT_REQUEST)
+	    	 if(resultCode == RESULT_OK) {
+	    		 //updating altered costelement in database
+	    		 Bundle 					b 		= data.getExtras();
+		         CostelementListViewItem 	element = (CostelementListViewItem) b.get(NewCostelement.COSTELEMENTTAG);
 		         updateCostelement(checkCurrency(element));
 	    	 }
-	    }
-	    
 	}
 	
-	public void addCostelement (CostelementListViewItem costelement) {
+	/**
+	 * parsing CostelementListViewItem to TCostelement and adding it to database
+	 */
+	private void addCostelement (CostelementListViewItem costelement) {
 		TCostelement element;
 		if((element = getHelper().queryCostelement(costelement.getId())) == null)
 			element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
@@ -214,7 +208,10 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 	
-	public void updateCostelement (CostelementListViewItem costelement) {
+	/**
+	 * parsing CostelementListViewItem to TCostelement and updating it in the database
+	 */
+	private void updateCostelement (CostelementListViewItem costelement) {
 		TCostelement element = new TCostelement(costelement, findPeriodId(costelement.getPeriode()));
 		element.setCostgroup(group);
 		element.setId(costelement.getId());
@@ -226,6 +223,7 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 	@Override
 	public void setOnSubmitListenerCostgroupBusinessAssesment(int periode,
 			int amountPeriods) {
+		//checking return form CostgroupBusinessAssesmentDialogFragment dialog and starting activity CostgroupBusinessAssesment
 		Intent intent = new Intent(Costgroup.this, CostgroupBusinessAssesment.class);
 		intent.putExtra(CostgroupBusinessAssesment.COSTGROUPTAG, group);
 		int days = -1;
@@ -304,21 +302,9 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		}
 	}
 	
-	public int findToleranceIndex(String tolerance) {
-		
-		int index = 0;
-		String [] tolerances = getResources().getStringArray(R.array.tolerances);
-		for(int i =0; i < tolerances.length; i++){
-		
-			if(tolerances[i].equals(tolerance)) {
-				index = i;
-				break;
-			}
-				
-		}
-	  return index;
-	}
-	
+	/**
+	 * delete costelement on given position in the list and in the database
+	 */
 	public void delete(int position) {
 		CostelementListViewItem item = items.get(position);
 		TCostelement element = getHelper().queryCostelement(item.getId());
@@ -327,6 +313,9 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 		costelementList.setAdapter(new CustomAdapterListViewCostgroup(items, this));
 	}
 	
+	/**
+	 * check if currency needs to be calculated, and doing so if nessesary
+	 */
 	private CostelementListViewItem checkCurrency(CostelementListViewItem c) {
 		if(getResources().getConfiguration().locale.equals(Locale.US)) {
 			double value = Double.valueOf(c.getValue().substring(0, c.getValue().length() - 2));
@@ -338,28 +327,17 @@ public class Costgroup extends OrmLiteFragmentActivity implements onSubmitListen
 
 	@Override
 	public void setOnSubmitListener(String title, String desc) {
-		Log.v("CostgroupUpdateCostgroupTitle�bergabe", ""+ title);
-		Log.v("CostgroupUpdateCostgroupDesc�bergabe", ""+ desc);
-		
-		//Update Costgroup
-		String titleappend = getString(R.string.title_activity_costgroup);
-		costgroupTitle.setText(titleappend+" "+title);
+		//updating costgroup in the database and as shown in title
+		String 					titleappend = getString(R.string.title_activity_costgroup);
+		costgroupTitle.setText(titleappend + " " + title);
 		costgroupDesc.setText(desc);
-		
-		Intent intent 		= getIntent();
-		Bundle b = intent.getExtras();
-		CostgroupListViewItem costgroup = (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
-		
-		
-		TCostgroup element = getHelper().queryCostgroup(costgroup.getId());
+		Intent 					intent 		= getIntent();
+		Bundle 					b 			= intent.getExtras();
+		CostgroupListViewItem 	costgroup 	= (CostgroupListViewItem) b.get(Main.COSTGROUPTAG);
+		TCostgroup 				element 	= getHelper().queryCostgroup(costgroup.getId());
 		element.setName(title);
 		element.setDescription(desc);
 		getHelper().update(element);
-		Log.v("CostgroupUpdateCostgroupTitleUpdated", ""+ element.getName());
-		Log.v("CostgroupUpdateCostgroupDescUpdated", ""+ element.getDescription());
-		
-
-		
 	}
 }
 	
