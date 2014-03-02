@@ -68,6 +68,25 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 			//openChart(AVG);
 		}
 	};
+	private OnClickListener chartBestButtonListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			//openChart(AVG);
+		}
+	};
+	private OnClickListener chartAvgButtonListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			//openChart(AVG);
+		}
+	};
+	private OnClickListener chartWorstButtonListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			openBarChart();
+			//openChart(AVG);
+		}
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +147,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 			values.append(e.getBestValue() + currency + "\n" + e.getEndvalue() + currency + "\n" + e.getWorstValue() + currency + "\n\n");
 		}
 		
-		max = toleranceList.get(0).getWorstValue(); //computing max value for bar-chart maximum value of y-axis
+		if(!(toleranceList.isEmpty()))
+				max = toleranceList.get(0).getWorstValue(); //computing max value for bar-chart maximum value of y-axis
 		//computing sums and displaying them
 		for(TCostelement c : toleranceList) {
 			if(c.getWorstValue() > max)
