@@ -31,7 +31,7 @@ import android.widget.ListView;
 
 
 public class Main extends OrmLiteFragmentActivity implements onSubmitListener {
-	
+	//tags for inter-activity-communication
 	public static final String COSTGROUPTAG	 		 = "costgroup";
 	
 	private ListView 								costgroupList;
