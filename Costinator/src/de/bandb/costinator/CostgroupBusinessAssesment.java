@@ -123,8 +123,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 				e.setWorstValue(Math.round(100.0 * (e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100.0)) / 100.0);
 				toleranceList.add(e);
 			}
-			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n");
-			values.append(e.getEndvalue() + currency + "\n\n");
+			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n\n");
+			values.append(e.getEndvalue() + currency + "\n");
 		}
 		
 		max = toleranceList.get(0).getWorstValue();
