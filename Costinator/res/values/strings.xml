@@ -133,8 +133,10 @@
 
     <!-- error messages -->
     <string name="err_no_items">Sie k&#246;nnen nur eine Auswertung machen, wenn Ihre Kostengruppe auch Kostenelemente enth&#228;lt</string>
+    <string name="err_no_tolerance_items">Im Balkendiagramm werden nur Kostenelmente angeziegt, die eine Toleranz haben. Ihre Kostengruppe besitzt keine solchen Kostenelemente</string>
     <string name="err_no_costgroup_name">Bitte geben Sie einen Namen f&#252;r die neue Kostengruppe ein</string>
     <string name="err_missing_costelement_data">Bitte f&#252;llen Sie die Plichtfelder Name, Betrag und Periodizit&#228;t aus</string>
     <string name="title_activity_edit_costelement">EditCostelement</string>
+    
 
 </resources>

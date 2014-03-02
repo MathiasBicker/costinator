@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelper> {
 	public static final String 	LOGTAG 			= "BusinessAssesment";
@@ -64,7 +65,10 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 	private OnClickListener chartButtonListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			openBarChart();
+			if(toleranceList.isEmpty())
+				Toast.makeText(getParent(), getResources().getString(R.string.err_no_tolerance_items), Toast.LENGTH_LONG).show();
+			else
+				openBarChart();
 		}
 	};
 	private OnClickListener chartBestButtonListener = new OnClickListener() {
