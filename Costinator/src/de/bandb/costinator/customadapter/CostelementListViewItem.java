@@ -7,6 +7,7 @@ import de.bandb.costinator.database.entities.TCostelement;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * proxy class for TCostelement that only contains Strings that can be displayed plus the id
  */
 
 public class CostelementListViewItem implements Serializable {	

@@ -7,6 +7,7 @@ import de.bandb.costinator.database.entities.TCostgroup;
 /**
  * author: Mathias Bicker, Marc Brissier
  * version: 1.0
+ * proxy class for TCostgroup that only contains Strings that can be displayed plus the id
  */
 
 public class CostgroupListViewItem implements Serializable{
@@ -21,12 +22,6 @@ public class CostgroupListViewItem implements Serializable{
 	private String 	totalCost;
 	private int 	id;
 	
-	/*public CostgroupListViewItem (String costgroupTitle, String costgroupDesc , String totalCost) {
-		this.costgroupTitle= costgroupTitle;
-		this.costgroupDesc= costgroupDesc;
-		this.totalCost= totalCost;
-	}
-	*/
 	public CostgroupListViewItem(TCostgroup c, String currency) {
 		costgroupTitle = c.getName();
 		if(c.getDescription() != null)
