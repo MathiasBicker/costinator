@@ -124,8 +124,8 @@ public class CostgroupBusinessAssesment extends OrmLiteBaseActivity<DatabaseHelp
 				e.setWorstValue(Math.round(100.0 * (e.getEndvalue() + e.getEndvalue() * e.getTolerance() / 100.0)) / 100.0);
 				toleranceList.add(e);
 			}
-			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n\n");
-			values.append(e.getBestValue() + currency + "\n" + e.getEndvalue() + currency + "\n" + e.getWorstValue() + currency + "\n");
+			elements.append(e.getName() + ": \n"+ " (" + e.getValue() + currency + findPeriod(e.getPeriod()) + ")\n\n\n");
+			values.append(e.getBestValue() + currency + "\n" + e.getEndvalue() + currency + "\n" + e.getWorstValue() + currency + "\n\n");
 		}
 		
 		max = toleranceList.get(0).getWorstValue(); //computing max value for bar-chart maximum value of y-axis
