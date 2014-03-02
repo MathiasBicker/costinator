@@ -1,5 +1,11 @@
 package de.bandb.costinator.database;
 
+/**
+ * author: Mathias Bicker, Marc Brissier
+ * version: 1.0
+ * activity class that provides the helper-class for the database
+ */
+
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import android.support.v4.app.FragmentActivity;

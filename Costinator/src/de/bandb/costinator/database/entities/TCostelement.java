@@ -28,7 +28,9 @@ public class TCostelement implements Serializable {
 	private static final long 	serialVersionUID = 3725841290753976725L;
 	
 	public static final String 	COSTGROUP 		= "C_COSTGROUP";
+	//exception error message
 	public static final String 	BADTOLERANCE 	= "tolerance must be between 1 and 100";
+	
 	public static final int		DAYLY 			= 1;
 	public static final int		WEEKLY 			= 2;
 	public static final int		MONTHLY 		= 3;
