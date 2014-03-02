@@ -96,7 +96,7 @@ public class TCostelement implements Serializable {
 		if(c.getTolerance().substring(c.getTolerance().length()-2).equals("--"))
 			tolerance = 0;
 		else
-			tolerance = Integer.parseInt(c.getTolerance().substring(0, c.getTolerance().length() - 1));
+			tolerance = Integer.parseInt(c.getTolerance().substring(0, c.getTolerance().length() - 2));
 	}
 	
 	public int getTolerance() {

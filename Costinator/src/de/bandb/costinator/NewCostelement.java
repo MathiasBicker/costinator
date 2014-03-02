@@ -45,41 +45,41 @@ public class NewCostelement extends Activity  {
 		Intent intent 	= getIntent();
 	   	Bundle b 		= intent.getExtras();
 	   	if (b != null) {
-		element = (CostelementListViewItem) b.get(Costgroup.COSTELEMENT);
-		name.setText(element.getName());
-		desc.setText(element.getDesc());
-		value.setText(element.getValue());
-		
-		String tag 		= getString(R.string.dayly);
-		String woche	= getString(R.string.weekly);
-		String monat	= getString(R.string.monthly);
-		String quartal	= getString(R.string.quart);
-		String jahr		= getString(R.string.yearly);
-		
-		if(tag.equals(element.getPeriode())) {
-			periode.setSelection(1);
+			element = (CostelementListViewItem) b.get(Costgroup.COSTELEMENT);
+			name.setText(element.getName());
+			desc.setText(element.getDesc());
+			value.setText(element.getValue());
 			
-		}else if(woche.equals(element.getPeriode())) {
-			periode.setSelection(2);
+			String tag 		= getString(R.string.dayly);
+			String woche	= getString(R.string.weekly);
+			String monat	= getString(R.string.monthly);
+			String quartal	= getString(R.string.quart);
+			String jahr		= getString(R.string.yearly);
 			
-		}else if(monat.equals(element.getPeriode())) {
-			periode.setSelection(3);
-		
-		}else if(quartal.equals(element.getPeriode())) {
-			periode.setSelection(4);
-		
-		}else if(jahr.equals(element.getPeriode())) {
-			periode.setSelection(5);
-		}	
-		
-		String 		selectedTolerance 	= element.getTolerance();
-		String[] 	tolerances 			= getResources().getStringArray(R.array.tolerances);
-		for(int i = 0; i < tolerances.length; i++)
-			if(tolerances[i].equals(selectedTolerance)) {
-				tolerance.setSelection(i);
-				break;
+			if(tag.equals(element.getPeriode())) {
+				periode.setSelection(1);
+				
+			}else if(woche.equals(element.getPeriode())) {
+				periode.setSelection(2);
+				
+			}else if(monat.equals(element.getPeriode())) {
+				periode.setSelection(3);
+			
+			}else if(quartal.equals(element.getPeriode())) {
+				periode.setSelection(4);
+			
+			}else if(jahr.equals(element.getPeriode())) {
+				periode.setSelection(5);
+			}	
+			
+			String 		selectedTolerance 	= element.getTolerance();
+			String[] 	tolerances 			= getResources().getStringArray(R.array.tolerances);
+			for(int i = 0; i < tolerances.length; i++)
+				if(tolerances[i].equals(selectedTolerance)) {
+					tolerance.setSelection(i);
+					break;
 				}
-		}
+	   	}
 	}	
 			
 	@Override
